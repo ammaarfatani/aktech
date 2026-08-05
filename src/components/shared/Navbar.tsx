@@ -39,57 +39,57 @@ export function Navbar() {
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         className="fixed top-0 left-0 right-0 z-[100] px-4 sm:px-6 pointer-events-none flex justify-center transition-all duration-700 ease-[0.16,1,0.3,1]"
         style={{
-         paddingTop: "1rem"
+          paddingTop: "1rem"
         }}
       >
         <div
-  className={cn(
-    "pointer-events-auto flex items-center justify-between",
-    "w-full max-w-[1400px] h-[88px] px-8 rounded-[999px]",
-    "transition-all duration-700 ease-[0.16,1,0.3,1]",
-    "relative"
-  )}
+          className={cn(
+            "pointer-events-auto flex items-center justify-between",
+            "w-full max-w-[1400px] h-[88px] px-8 rounded-[999px]",
+            "transition-all duration-700 ease-[0.16,1,0.3,1]",
+            "relative"
+          )}
           style={{
-  background: isScrolled
-    ? "rgba(6,8,22,0.88)"
-    : "rgba(6,8,22,0.45)",
+            background: isScrolled
+              ? "rgba(6,8,22,0.88)"
+              : "rgba(6,8,22,0.45)",
 
-  backdropFilter: "blur(24px)",
-  WebkitBackdropFilter: "blur(24px)",
+            backdropFilter: "blur(24px)",
+            WebkitBackdropFilter: "blur(24px)",
 
-  border: "1px solid rgba(56,189,248,0.12)",
+            border: "1px solid rgba(56,189,248,0.12)",
 
-  boxShadow: isScrolled
-    ? "0 10px 40px rgba(0,0,0,.45)"
-    : "0 10px 30px rgba(0,0,0,.25)",
-}}
+            boxShadow: isScrolled
+              ? "0 10px 40px rgba(0,0,0,.45)"
+              : "0 10px 30px rgba(0,0,0,.25)",
+          }}
         >
           {/* --- LOGO --- */}
           <Link
-  href="/"
-  className="flex items-center shrink-0 relative z-10"
->
-  <div
-    className={cn(
-      "relative transition-all duration-500",
-      isScrolled ? "w-12 h-12" : "w-16 h-16"
-    )}
-  >
-    <Image
-      src="/logo.png"
-      alt="AKTECH Logo"
-      fill
-      priority
-      className="object-contain"
-    />
-  </div>
-</Link>
+            href="/"
+            className="flex items-center shrink-0 relative z-10"
+          >
+            <div
+              className={cn(
+                "relative transition-all duration-500",
+                isScrolled ? "w-12 h-12" : "w-16 h-16"
+              )}
+            >
+              <Image
+                src="/logo.png"
+                alt="AKTECH Logo"
+                fill
+                priority
+                className="object-contain"
+              />
+            </div>
+          </Link>
 
           {/* --- DESKTOP NAV LINKS --- */}
           <nav className="hidden lg:flex items-center gap-2 relative z-10">
             {NAV_LINKS.map((link) => {
               const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
-              
+
               return (
                 <Link
                   key={link.name}
@@ -100,7 +100,7 @@ export function Navbar() {
                   )}
                 >
                   <span className="relative z-10 group-hover:text-white transition-colors duration-300">{link.name}</span>
-                  
+
                   {/* Active Indicator */}
                   {isActive && (
                     <motion.div
@@ -110,7 +110,7 @@ export function Navbar() {
                       transition={{ type: "spring", stiffness: 400, damping: 30 }}
                     />
                   )}
-                  
+
                   {/* Hover Glow */}
                   {!isActive && (
                     <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/[0.03]" />
@@ -122,8 +122,8 @@ export function Navbar() {
 
           {/* --- DESKTOP CTA BUTTON --- */}
           <div className="hidden lg:block relative z-10">
-            <Link 
-              href="#" 
+            <Link
+              href="#"
               className="relative h-10 px-8 flex items-center justify-center rounded-full text-[10px] font-bold uppercase tracking-[0.15em] transition-all duration-500 hover:scale-[1.05] group overflow-hidden"
               style={{
                 color: "#ffffff",
@@ -184,7 +184,7 @@ export function Navbar() {
                 </motion.div>
               ))}
             </nav>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -192,13 +192,13 @@ export function Navbar() {
               transition={{ delay: NAV_LINKS.length * 0.05 + 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="mt-16"
             >
-              <Link 
-                href="#" 
+              <Link
+                href="#"
                 onClick={() => setMobileMenuOpen(false)}
                 className="h-14 px-12 flex items-center justify-center rounded-full text-white font-bold text-[11px] uppercase tracking-[0.2em] transition-transform active:scale-95"
-                style={{ 
-                  background: "linear-gradient(135deg, #3B82F6, #06B6D4)", 
-                  boxShadow: "0 0 30px rgba(59,130,246,0.3)" 
+                style={{
+                  background: "linear-gradient(135deg, #3B82F6, #06B6D4)",
+                  boxShadow: "0 0 30px rgba(59,130,246,0.3)"
                 }}
               >
                 Let&apos;s Talk

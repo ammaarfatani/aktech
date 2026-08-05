@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus, MessageCircle, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
+import { MessageCircle, Sparkles } from "lucide-react";
+import { Accordion } from "@/components/ui/Accordion";
 
 const FAQS = [
   {
@@ -31,64 +31,14 @@ const FAQS = [
   }
 ];
 
-function FAQItem({ faq, index, isOpen, toggleOpen }: { faq: typeof FAQS[0], index: number, isOpen: boolean, toggleOpen: () => void }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative rounded-3xl overflow-hidden transition-all duration-500"
-      style={{
-        background: isOpen ? "rgba(5,9,20,0.9)" : "rgba(255,255,255,0.02)",
-        border: `1px solid ${isOpen ? "rgba(59,130,246,0.2)" : "rgba(255,255,255,0.05)"}`,
-      }}
-    >
-      {/* Background Hover Glow */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/5 group-hover:to-purple-500/5 transition-colors duration-500 pointer-events-none" />
-
-      {/* Top Edge Animated Highlight */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-      <button
-        onClick={toggleOpen}
-        className="relative z-10 w-full flex items-start justify-between p-6 sm:p-8 text-left focus:outline-none"
-      >
-        <span className={`text-lg sm:text-xl font-heading font-bold transition-colors duration-300 pr-8 mt-1 ${isOpen ? "text-white" : "text-gray-300 group-hover:text-white"}`}>
-          {faq.question}
-        </span>
-        <div 
-          className={`relative flex-shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 ${isOpen ? "bg-blue-500/20 text-blue-400 rotate-180 border border-blue-500/30 shadow-[0_0_20px_rgba(59,130,246,0.3)]" : "bg-white/5 text-gray-500 group-hover:bg-white/10 group-hover:text-gray-300 border border-transparent group-hover:border-white/10"}`}
-        >
-          {isOpen ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
-        </div>
-      </button>
-
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className="relative z-10 px-6 sm:px-8 pb-8 text-gray-400 text-base sm:text-lg font-light leading-relaxed">
-              {/* Divider Glow Line */}
-              <div className="w-full h-px bg-gradient-to-r from-blue-500/20 via-purple-500/10 to-transparent mb-6" />
-              {faq.answer}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
-  );
-}
-
 export function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const accordionItems = FAQS.map((faq) => ({
+    title: faq.question,
+    content: faq.answer,
+  }));
 
   return (
-    <section className="relative py-32 sm:py-40 overflow-hidden bg-[#02040f]" id="faq">
+    <section className="relative py-32 sm:py-40 overflow-hidden bg-[#060816]" id="faq">
       <style>{`
         @keyframes faqPan {
           0% { background-position: 0px 0px; }
@@ -181,7 +131,7 @@ export function FAQ() {
                 <p className="text-sm text-gray-400 mb-2">
                   Our strategic advisors are ready to discuss your custom project requirements.
                 </p>
-                <button className="text-sm font-semibold text-white tracking-widest uppercase hover:text-blue-400 transition-colors w-fit flex items-center gap-2">
+                <button className="text-sm font-semibold text-white tracking-widest uppercase hover:text-blue-400 transition-colors w-fit flex items-center gap-2 cursor-pointer">
                   Contact Support <span className="text-blue-500">→</span>
                 </button>
               </div>
@@ -189,16 +139,8 @@ export function FAQ() {
           </motion.div>
 
           {/* --- RIGHT: ACCORDION LIST --- */}
-          <div className="flex flex-col gap-4 sm:gap-6">
-            {FAQS.map((faq, index) => (
-              <FAQItem 
-                key={index} 
-                faq={faq} 
-                index={index} 
-                isOpen={openIndex === index}
-                toggleOpen={() => setOpenIndex(openIndex === index ? null : index)}
-              />
-            ))}
+          <div>
+            <Accordion items={accordionItems} />
           </div>
 
         </div>

@@ -1,8 +1,9 @@
 "use client";
 
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import { motion } from "framer-motion";
 import { Code, Monitor, Database, PenTool, Image, Video, LayoutTemplate, ArrowRight, Sparkles } from "lucide-react";
 import React from "react";
+import { GlowCard } from "@/components/ui/GlowCard";
 
 const SERVICES = [
   {
@@ -71,96 +72,76 @@ const SERVICES = [
 ];
 
 function ServiceCard({ service, index }: { service: typeof SERVICES[0], index: number }) {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
-    const { left, top } = currentTarget.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
-  }
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      onMouseMove={handleMouseMove}
-      className={`group relative rounded-3xl p-[1px] overflow-hidden ${service.colSpan}`}
+      className={service.colSpan}
     >
-      {/* Default Subtle Border */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/[0.08] to-transparent rounded-3xl transition-opacity duration-500 group-hover:opacity-0" />
-      
-      {/* Hover Animated Border Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-500/40 via-purple-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl" />
-      
-      {/* Mouse Tracking Glow (Border & Inner) */}
-      <motion.div
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-3xl"
-        style={{
-          background: useMotionTemplate`radial-gradient(400px circle at ${mouseX}px ${mouseY}px, ${service.color}15, transparent 80%)`,
-        }}
-      />
-
-      {/* Card Inner */}
-      <div className="relative h-full bg-[#050914]/90 backdrop-blur-xl rounded-[23px] p-8 sm:p-10 flex flex-col overflow-hidden transition-transform duration-500 group-hover:-translate-y-1">
-        
+      <GlowCard
+        className="h-full p-8 sm:p-10 flex flex-col justify-between"
+        glowColor={`${service.color}15`}
+        maxTilt={8}
+      >
         {/* Floating Corner Accent */}
         <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-white/[0.03] to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-        {/* Icon Container */}
-        <div className="relative mb-8 z-10">
-          <div 
-            className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110"
-            style={{
-              background: `linear-gradient(135deg, ${service.color}20, ${service.color}05)`,
-              border: `1px solid ${service.color}30`,
-              color: service.color,
-            }}
-          >
-            {/* Inner Icon Glow */}
-            <div 
-              className="absolute inset-0 rounded-2xl bg-current opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 pointer-events-none" 
-            />
-            {service.icon}
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10 flex flex-col flex-grow">
-          <h3 className="text-2xl font-heading font-bold text-white mb-4 transition-colors duration-300">
-            {service.title}
-          </h3>
-          
-          <p className="text-gray-400 text-[15px] sm:text-base leading-relaxed mb-8 flex-grow">
-            {service.description}
-          </p>
-
-          <div className="space-y-3 mb-8">
-            {service.deliverables.map((item, i) => (
-              <div key={i} className="flex items-center gap-3">
-                <div 
-                  className="w-1.5 h-1.5 rounded-full" 
-                  style={{ background: service.color, boxShadow: `0 0 10px ${service.color}` }} 
+        <div className="flex flex-col h-full justify-between">
+          <div>
+            {/* Icon Container */}
+            <div className="relative mb-8 z-10">
+              <div
+                className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110"
+                style={{
+                  background: `linear-gradient(135deg, ${service.color}20, ${service.color}05)`,
+                  border: `1px solid ${service.color}30`,
+                  color: service.color,
+                }}
+              >
+                {/* Inner Icon Glow */}
+                <div
+                  className="absolute inset-0 rounded-2xl bg-current opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 pointer-events-none"
                 />
-                <span className="text-sm font-medium text-gray-500 group-hover:text-gray-400 transition-colors duration-300">
-                  {item}
-                </span>
+                {service.icon}
               </div>
-            ))}
+            </div>
+
+            {/* Content */}
+            <h3 className="text-2xl font-heading font-bold text-white mb-4 transition-colors duration-300">
+              {service.title}
+            </h3>
+
+            <p className="text-gray-400 text-[15px] sm:text-base leading-relaxed mb-8 font-light">
+              {service.description}
+            </p>
+
+            <div className="space-y-3 mb-8">
+              {service.deliverables.map((item, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <div
+                    className="w-1.5 h-1.5 rounded-full"
+                    style={{ background: service.color, boxShadow: `0 0 10px ${service.color}` }}
+                  />
+                  <span className="text-sm font-medium text-gray-500 group-hover:text-gray-400 transition-colors duration-300">
+                    {item}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <button className="mt-auto flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 w-fit"
+          <button className="mt-auto flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 w-fit cursor-pointer"
             style={{ color: "rgba(255,255,255,0.5)" }}
             onMouseEnter={(e) => (e.currentTarget.style.color = service.color)}
             onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.5)")}
           >
-            Explore Service 
+            Explore Service
             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
         </div>
-      </div>
+      </GlowCard>
     </motion.div>
   );
 }
@@ -179,10 +160,10 @@ export function Services() {
       `}</style>
 
       {/* --- BACKGROUND EFFECTS --- */}
-      
+
       {/* Animated Grid */}
-      <div 
-        className="absolute inset-0 opacity-[0.12] animate-grid-pan pointer-events-none" 
+      <div
+        className="absolute inset-0 opacity-[0.12] animate-grid-pan pointer-events-none"
         style={{
           backgroundImage: 'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)',
           backgroundSize: '4rem 4rem',
@@ -190,7 +171,7 @@ export function Services() {
           WebkitMaskImage: 'radial-gradient(ellipse 70% 70% at 50% 0%, #000 30%, transparent 100%)',
         }}
       />
-      
+
       {/* Radial Atmospheric Glows */}
       <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-blue-600/10 blur-[150px] pointer-events-none mix-blend-screen" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-cyan-600/10 blur-[120px] pointer-events-none mix-blend-screen" />
@@ -198,16 +179,16 @@ export function Services() {
 
       {/* Floating Stars / Particles */}
       <div className="absolute inset-0 pointer-events-none opacity-40">
-         <svg className="w-full h-full">
-           <pattern id="stars" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
-             <circle fill="#ffffff" cx="15" cy="15" r="1" opacity="0.4" />
-             <circle fill="#ffffff" cx="60" cy="50" r="0.5" opacity="0.2" />
-             <circle fill="#ffffff" cx="90" cy="20" r="1" opacity="0.6" />
-             <circle fill="#ffffff" cx="30" cy="90" r="0.5" opacity="0.3" />
-             <circle fill="#ffffff" cx="100" cy="100" r="1.5" opacity="0.1" />
-           </pattern>
-           <rect x="0" y="0" width="100%" height="100%" fill="url(#stars)" />
-         </svg>
+        <svg className="w-full h-full">
+          <pattern id="stars" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
+            <circle fill="#ffffff" cx="15" cy="15" r="1" opacity="0.4" />
+            <circle fill="#ffffff" cx="60" cy="50" r="0.5" opacity="0.2" />
+            <circle fill="#ffffff" cx="90" cy="20" r="1" opacity="0.6" />
+            <circle fill="#ffffff" cx="30" cy="90" r="0.5" opacity="0.3" />
+            <circle fill="#ffffff" cx="100" cy="100" r="1.5" opacity="0.1" />
+          </pattern>
+          <rect x="0" y="0" width="100%" height="100%" fill="url(#stars)" />
+        </svg>
       </div>
 
       {/* Subtle Noise Texture */}
@@ -219,7 +200,7 @@ export function Services() {
       </svg>
 
       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 sm:px-10">
-        
+
         {/* --- HEADER --- */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}

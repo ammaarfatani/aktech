@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+import { Hero3DObject } from "@/components/ui/Hero3DObject";
+
 function Particle({ delay, x, y, size }: { delay: number; x: string; y: string; size: number }) {
   return (
     <motion.div
@@ -81,6 +83,10 @@ export function HeroCubeEcosystem() {
 
   return (
     <div className="relative w-full h-full min-h-[500px] flex items-center justify-center">
+      {/* 3D Torus Knot Midground Layer */}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0">
+        <Hero3DObject />
+      </div>
       {/* Atmospheric glow layers */}
       <div
         className="absolute"

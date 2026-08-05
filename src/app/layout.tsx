@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import "./globals.css";
 import { SmoothScrollProvider } from "@/providers/SmoothScrollProvider";
 import { Footer } from "@/components/shared/Footer";
+import { AIChatBot } from "@/components/AIChatBot";
 
 export const metadata: Metadata = {
   title: {
@@ -62,6 +63,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </SmoothScrollProvider>
+        <AIChatBot />
       </body>
     </html>
   );

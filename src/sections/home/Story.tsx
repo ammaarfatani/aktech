@@ -1,14 +1,49 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { GlowCard } from "@/components/ui/GlowCard";
 
 const STATS = [
-  { label: "Years Experience", value: "8+" },
-  { label: "Projects Delivered", value: "250+" },
-  { label: "Client Satisfaction", value: "99%" },
-  { label: "Countries Served", value: "15+" },
+  { label: "Years Experience", target: 8, suffix: "+" },
+  { label: "Projects Delivered", target: 250, suffix: "+" },
+  { label: "Client Satisfaction", target: 99, suffix: "%" },
+  { label: "Countries Served", target: 15, suffix: "+" },
 ];
+
+function Counter({ value, suffix = "" }: { value: number; suffix?: string }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    const startTime = performance.now();
+    const duration = 2000; // 2 seconds
+
+    const updateCount = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Easing function (easeOutQuad)
+      const easeProgress = progress * (2 - progress);
+      const current = Math.floor(easeProgress * value);
+      
+      setCount(current);
+
+      if (progress < 1) {
+        requestAnimationFrame(updateCount);
+      } else {
+        setCount(value);
+      }
+    };
+
+    requestAnimationFrame(updateCount);
+  }, [isInView, value]);
+
+  return <span ref={ref}>{count}{suffix}</span>;
+}
 
 export function Story() {
   return (
@@ -20,7 +55,7 @@ export function Story() {
 
       <div className="relative w-full max-w-[1400px] mx-auto px-6 sm:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
-          
+
           {/* Left: Content */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -64,7 +99,9 @@ export function Story() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.2 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <h3 className="text-4xl font-heading font-bold text-white mb-2">{stat.value}</h3>
+                  <h3 className="text-4xl font-heading font-bold text-white mb-2">
+                    <Counter value={stat.target} suffix={stat.suffix} />
+                  </h3>
                   <p className="text-xs uppercase tracking-widest text-gray-500 font-semibold">{stat.label}</p>
                 </motion.div>
               ))}
@@ -75,38 +112,32 @@ export function Story() {
           <div className="relative w-full h-[500px] lg:h-[600px] flex items-center justify-center">
             {/* Glow Core */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-500/10 blur-[80px] rounded-full" />
-            
+
             {/* Floating Cards */}
             <motion.div
               animate={{ y: [-10, 10, -10] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute left-[10%] top-[20%] w-64 h-80 rounded-2xl p-6 backdrop-blur-xl flex flex-col justify-end"
-              style={{
-                background: "linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)",
-                border: "1px solid rgba(255,255,255,0.05)",
-                boxShadow: "0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1)",
-              }}
+              className="absolute left-[10%] top-[20%] z-10"
             >
-              <div className="w-12 h-12 rounded-full mb-4" style={{ background: "linear-gradient(135deg, #3B82F6, #8B5CF6)" }} />
-              <div className="h-2 w-24 bg-white/20 rounded mb-2" />
-              <div className="h-2 w-16 bg-white/10 rounded" />
+              <GlowCard className="w-64 h-80 p-6 flex flex-col justify-end" maxTilt={10}>
+                <div className="w-12 h-12 rounded-full mb-4" style={{ background: "linear-gradient(135deg, #3B82F6, #8B5CF6)" }} />
+                <div className="h-2 w-24 bg-white/20 rounded mb-2" />
+                <div className="h-2 w-16 bg-white/10 rounded" />
+              </GlowCard>
             </motion.div>
 
             <motion.div
               animate={{ y: [10, -10, 10] }}
               transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute right-[10%] bottom-[10%] w-72 h-64 rounded-2xl p-6 backdrop-blur-xl flex flex-col justify-end z-10"
-              style={{
-                background: "linear-gradient(135deg, rgba(13,19,35,0.8) 0%, rgba(6,8,22,0.9) 100%)",
-                border: "1px solid rgba(59,130,246,0.2)",
-                boxShadow: "0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1)",
-              }}
+              className="absolute right-[10%] bottom-[10%] z-20"
             >
-              <div className="w-full h-32 rounded-lg bg-blue-500/10 border border-blue-500/20 mb-4 flex items-center justify-center">
-                <div className="w-8 h-8 rounded-full bg-blue-500/40 animate-ping" />
-              </div>
-              <div className="h-2 w-32 bg-white/30 rounded mb-2" />
-              <div className="h-2 w-20 bg-white/10 rounded" />
+              <GlowCard className="w-72 h-64 p-6 flex flex-col justify-end" maxTilt={12} glowColor="rgba(139,92,246,0.18)">
+                <div className="w-full h-32 rounded-lg bg-blue-500/10 border border-blue-500/20 mb-4 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-full bg-blue-500/40 animate-ping" />
+                </div>
+                <div className="h-2 w-32 bg-white/30 rounded mb-2" />
+                <div className="h-2 w-20 bg-white/10 rounded" />
+              </GlowCard>
             </motion.div>
 
             {/* Connecting Lines */}

@@ -10,11 +10,11 @@
   --color-surface-secondary: rgba(13, 19, 35, 0.5);
   --color-surface-card: rgba(17, 24, 39, 0.4);
   --color-border: rgba(31, 41, 55, 0.5);
-  
+
   --color-primary: #38BDF8;
   --color-secondary: #06B6D4;
   --color-accent: #8B5CF6;
-  
+
   --color-text-primary: #F8FAFC;
   --color-text-secondary: #94A3B8;
   --color-text-muted: #64748B;
@@ -30,11 +30,17 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-text-primary selection:bg-primary/30 selection:text-primary flex flex-col antialiased;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-heading tracking-tight;
   }
 }
@@ -55,6 +61,7 @@
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
+
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -89,19 +96,23 @@
 }
 
 /* Lenis Recommended Styles */
-html.lenis, html.lenis body {
+html.lenis,
+html.lenis body {
   height: auto;
 }
+
 .lenis.lenis-smooth {
   scroll-behavior: auto !important;
 }
+
 .lenis.lenis-smooth [data-lenis-prevent] {
   overscroll-behavior: contain;
 }
+
 .lenis.lenis-stopped {
   overflow: hidden;
 }
+
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
-
