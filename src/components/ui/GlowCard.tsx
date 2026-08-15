@@ -13,7 +13,7 @@ interface GlowCardProps extends HTMLMotionProps<"div"> {
 
 export function GlowCard({
   children,
-  glowColor = "rgba(56, 189, 248, 0.12)",
+  glowColor = "rgba(224, 0, 11, 0.12)",
   maxTilt = 8,
   className,
   ...props

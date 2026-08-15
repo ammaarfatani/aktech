@@ -17,19 +17,19 @@ export function AccordionItem({ title, children, isOpen, onToggle }: AccordionIt
     <div
       className={cn(
         "group relative rounded-3xl overflow-hidden transition-all duration-500 border",
-        isOpen ? "bg-[#0B1020]/90 border-blue-500/20 shadow-[0_0_20px_rgba(59,130,246,0.06)]" : "bg-white/[0.01] border-white/[0.04]"
+        isOpen ? "bg-white border-[#E0000B]/30 shadow-[0_10px_30px_rgba(224,0,11,0.08)]" : "bg-slate-50/70 border-black/5 hover:border-black/15 hover:bg-white"
       )}
     >
       {/* Top Edge Highlight */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-blue-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#E0000B] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
       <button
         onClick={onToggle}
         className="relative z-10 w-full flex items-center justify-between p-6 sm:p-8 text-left focus:outline-none cursor-pointer"
       >
         <span className={cn(
-          "text-base sm:text-lg font-heading font-semibold tracking-wide transition-colors duration-300 pr-8",
-          isOpen ? "text-white" : "text-gray-400 group-hover:text-white"
+          "text-base sm:text-lg font-heading font-bold tracking-wide transition-colors duration-300 pr-8",
+          isOpen ? "text-[#111111]" : "text-gray-700 group-hover:text-[#111111]"
         )}>
           {title}
         </span>
@@ -37,8 +37,8 @@ export function AccordionItem({ title, children, isOpen, onToggle }: AccordionIt
           className={cn(
             "relative flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-500 border",
             isOpen
-              ? "bg-blue-500/10 text-blue-400 border-blue-500/20 shadow-[0_0_15px_rgba(59,130,246,0.2)]"
-              : "bg-white/5 text-gray-500 border-transparent group-hover:bg-white/10 group-hover:text-gray-300 group-hover:border-white/10"
+              ? "bg-[#E0000B] text-white border-[#E0000B] shadow-[0_0_15px_rgba(224,0,11,0.3)]"
+              : "bg-black/5 text-[#111111] border-transparent group-hover:bg-[#111111] group-hover:text-white"
           )}
         >
           {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
@@ -53,8 +53,8 @@ export function AccordionItem({ title, children, isOpen, onToggle }: AccordionIt
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="relative z-10 px-6 sm:px-8 pb-8 text-gray-450 text-sm sm:text-base font-light leading-relaxed">
-              <div className="w-full h-px bg-gradient-to-r from-blue-500/20 to-transparent mb-6" />
+            <div className="relative z-10 px-6 sm:px-8 pb-8 text-gray-600 text-sm sm:text-base font-normal leading-relaxed">
+              <div className="w-full h-px bg-gradient-to-r from-[#E0000B]/30 to-transparent mb-6" />
               {children}
             </div>
           </motion.div>

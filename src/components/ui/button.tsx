@@ -34,20 +34,20 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variantClasses = {
       "primary-glow":
-        "relative text-white border border-transparent shadow-[0_0_20px_rgba(56,189,248,0.2)] transition-all duration-300 hover:shadow-[0_0_35px_rgba(56,189,248,0.4)] active:scale-95",
+        "relative bg-[#E0000B] text-white border border-transparent shadow-[0_0_20px_rgba(224,0,11,0.25)] transition-all duration-300 hover:bg-[#C00009] hover:shadow-[0_0_30px_rgba(224,0,11,0.4)] hover:scale-[1.02] active:scale-95",
       "secondary-glass":
-        "relative bg-white/[0.03] text-gray-200 border border-white/[0.08] hover:bg-white/[0.06] hover:text-white transition-all duration-300 active:scale-95",
+        "relative bg-white text-[#111111] border border-[#111111] hover:bg-[#111111] hover:text-white transition-all duration-300 hover:scale-[1.02] active:scale-95 shadow-sm",
       "light-btn":
-        "bg-slate-900 text-white hover:bg-slate-800 transition-colors duration-300 shadow-[0_8px_20px_rgba(15,23,42,0.15)] hover:shadow-[0_12px_25px_rgba(15,23,42,0.25)] active:scale-95",
-      ghost: "text-gray-400 hover:text-white hover:bg-white/5 transition-all duration-300 active:scale-95",
-      link: "text-primary underline-offset-4 hover:underline transition-all duration-300",
+        "bg-[#111111] text-white hover:bg-black transition-all duration-300 shadow-[0_8px_20px_rgba(17,17,17,0.15)] hover:shadow-[0_12px_25px_rgba(17,17,17,0.25)] hover:scale-[1.02] active:scale-95",
+      ghost: "text-[#4B5563] hover:text-[#111111] hover:bg-black/5 transition-all duration-300 active:scale-95",
+      link: "text-[#E0000B] underline-offset-4 hover:underline hover:text-[#C00009] transition-all duration-300",
     };
 
     const buttonElement = (
       <button
         ref={ref}
         className={cn(
-          "inline-flex items-center justify-center font-heading select-none cursor-pointer transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:opacity-50 disabled:pointer-events-none",
+          "inline-flex items-center justify-center font-heading select-none cursor-pointer transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E0000B] disabled:opacity-50 disabled:pointer-events-none",
           sizeClasses[size],
           variantClasses[variant],
           className
@@ -55,12 +55,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {variant === "primary-glow" && (
-          <>
-            {/* Background color gradient */}
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-400 -z-10" />
-            {/* Overlay glow */}
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400 to-cyan-300 opacity-0 hover:opacity-100 transition-opacity duration-300 -z-10 blur-[2px]" />
-          </>
+          <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#E0000B] to-[#C00009] opacity-0 hover:opacity-100 transition-opacity duration-300 -z-10 blur-[1px]" />
         )}
         {children}
       </button>

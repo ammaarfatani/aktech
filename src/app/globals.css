@@ -4,20 +4,21 @@
   --font-sans: var(--font-sans);
   --font-heading: var(--font-heading);
 
-  --color-background: #060816;
-  --color-background-soft: #0B1020;
-  --color-background-light: #0F172A;
-  --color-surface-secondary: rgba(13, 19, 35, 0.5);
-  --color-surface-card: rgba(17, 24, 39, 0.4);
-  --color-border: rgba(31, 41, 55, 0.5);
+  --color-background: #FFFFFF;
+  --color-background-soft: #F8FAFC;
+  --color-background-dark: #111111;
+  --color-surface-secondary: #F1F5F9;
+  --color-surface-card: #FFFFFF;
+  --color-border: rgba(17, 17, 17, 0.1);
 
-  --color-primary: #38BDF8;
-  --color-secondary: #06B6D4;
-  --color-accent: #8B5CF6;
+  --color-primary: #E0000B;
+  --color-primary-hover: #C00009;
+  --color-secondary: #111111;
+  --color-accent: #E0000B;
 
-  --color-text-primary: #F8FAFC;
-  --color-text-secondary: #94A3B8;
-  --color-text-muted: #64748B;
+  --color-text-primary: #111111;
+  --color-text-secondary: #4B5563;
+  --color-text-muted: #6B7280;
 
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
@@ -32,7 +33,7 @@
   }
 
   body {
-    @apply bg-background text-text-primary selection:bg-primary/30 selection:text-primary flex flex-col antialiased;
+    @apply bg-background text-text-primary selection:bg-[#E0000B]/20 selection:text-[#E0000B] flex flex-col antialiased;
   }
 
   h1,
@@ -47,7 +48,7 @@
 
 @layer utilities {
   .glass-card {
-    @apply bg-surface-card/40 backdrop-blur-xl border border-white/5 transition-all duration-500;
+    @apply bg-white/80 backdrop-blur-xl border border-black/5 shadow-sm transition-all duration-500;
   }
 
   .section-padding {
@@ -67,16 +68,20 @@
     scrollbar-width: none;
   }
 
-  .bg-radial-navy {
-    background: radial-gradient(circle at 50% 50%, #0F172A 0%, #060816 100%);
+  .bg-radial-light {
+    background: radial-gradient(circle at 50% 50%, #F8FAFC 0%, #FFFFFF 100%);
   }
 
-  .glow-blue {
-    box-shadow: 0 0 30px rgba(56, 189, 248, 0.1);
+  .glow-red {
+    box-shadow: 0 0 30px rgba(224, 0, 11, 0.15);
+  }
+
+  .text-gradient-red {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#111111] via-[#E0000B] to-[#111111];
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#E0000B] to-[#111111];
   }
 
   .cinematic-grain::before {
@@ -86,7 +91,7 @@
     z-index: -1;
     pointer-events: none;
     background-image: url('https://grainy-gradients.vercel.app/noise.svg');
-    opacity: 0.03;
+    opacity: 0.02;
     mix-blend-mode: overlay;
   }
 

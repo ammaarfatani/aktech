@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { fontSans, fontHeading } from "@/styles/fonts";
 import { Navbar } from "@/components/shared/Navbar";
 import { CustomCursor } from "@/components/ui/CustomCursor";
@@ -7,11 +7,21 @@ import { cn } from "@/lib/utils";
 import "./globals.css";
 import { SmoothScrollProvider } from "@/providers/SmoothScrollProvider";
 import { Footer } from "@/components/shared/Footer";
-import { AIChatBot } from "@/components/AIChatBot";
+import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { OrganizationJsonLd, WebSiteJsonLd, ProfessionalServiceJsonLd } from "@/components/shared/JsonLd";
+import { Analytics } from "@/components/shared/Analytics";
+
+export const viewport: Viewport = {
+  themeColor: "#111111",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: siteConfig.name,
+    default: "AKTECH Digital Solutions | Web, Software & AI Development Agency",
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -19,25 +29,51 @@ export const metadata: Metadata = {
   authors: [
     {
       name: siteConfig.author,
+      url: siteConfig.url,
     },
   ],
   creator: siteConfig.author,
+  publisher: siteConfig.author,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: siteConfig.url,
-    title: siteConfig.name,
+    title: "AKTECH Digital Solutions | Web, Software & AI Development Agency",
     description: siteConfig.description,
     siteName: siteConfig.name,
+    images: [
+      {
+        url: `${siteConfig.url}/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "AKTECH Digital Solutions — Enterprise Web & AI Engineering",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.name,
+    title: "AKTECH Digital Solutions | Web, Software & AI Development Agency",
     description: siteConfig.description,
-    creator: "@aktech",
+    images: [`${siteConfig.url}/og-image.jpg`],
   },
   icons: {
     icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/logo.png",
+  },
+  alternates: {
+    canonical: siteConfig.url,
   },
 };
 
@@ -47,10 +83,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="scroll-smooth">
+      <head>
+        <Analytics />
+        <OrganizationJsonLd />
+        <WebSiteJsonLd />
+        <ProfessionalServiceJsonLd />
+      </head>
       <body
         className={cn(
-          "min-h-screen bg-[#060816] text-[#F9FAFB] antialiased selection:bg-blue-500/30 selection:text-blue-300 flex flex-col",
+          "min-h-screen bg-white text-[#111111] antialiased selection:bg-[#E0000B]/20 selection:text-[#E0000B] flex flex-col",
           fontSans.variable,
           fontHeading.variable
         )}
@@ -58,12 +100,12 @@ export default function RootLayout({
         <SmoothScrollProvider>
           <CustomCursor />
           <Navbar />
-          <main className="flex-1">
+          <main className="flex-1" id="main-content">
             {children}
           </main>
           <Footer />
         </SmoothScrollProvider>
-        <AIChatBot />
+        <WhatsAppButton />
       </body>
     </html>
   );

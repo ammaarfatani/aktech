@@ -70,7 +70,7 @@ export function CustomCursor() {
     <>
       {/* Tiny precise dot (instant follow) */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 bg-white rounded-full mix-blend-difference pointer-events-none z-[100]"
+        className="fixed top-0 left-0 w-2 h-2 bg-[#E0000B] rounded-full mix-blend-difference pointer-events-none z-[100]"
         style={{
           x: cursorX,
           y: cursorY,
@@ -81,9 +81,9 @@ export function CustomCursor() {
         }}
       />
       
-      {/* Smooth trailing glow ring - Simplified for performance */}
+      {/* Smooth trailing glow ring */}
       <motion.div
-        className="fixed top-0 left-0 border border-white/30 rounded-full mix-blend-difference pointer-events-none z-[99]"
+        className="fixed top-0 left-0 border border-[#E0000B]/40 rounded-full mix-blend-difference pointer-events-none z-[99]"
         style={{
           x: smoothX,
           y: smoothY,
@@ -95,7 +95,7 @@ export function CustomCursor() {
         }}
         animate={{
           scale: isClicking ? 0.9 : isHovered ? 1.6 : 1,
-          backgroundColor: isHovered ? "rgba(255, 255, 255, 1)" : "rgba(255, 255, 255, 0)",
+          backgroundColor: isHovered ? "rgba(224, 0, 11, 0.9)" : "rgba(224, 0, 11, 0)",
           borderWidth: isHovered ? "0px" : "1px",
         }}
         transition={{ duration: 0.15, ease: "easeOut" }}
