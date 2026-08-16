@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import {
@@ -34,7 +34,26 @@ export default function ContactPage() {
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [showSuccessToast, setShowSuccessToast] = useState(false);
+
+  useEffect(() => {
+    if (showSuccessToast) {
+      const timer = setTimeout(() => {
+        setShowSuccessToast(false);
+      }, 4500);
+      return () => clearTimeout(timer);
+    }
+  }, [showSuccessToast]);
+
+  useEffect(() => {
+    if (submitError) {
+      const timer = setTimeout(() => {
+        setSubmitError(null);
+      }, 6000);
+      return () => clearTimeout(timer);
+    }
+  }, [submitError]);
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -49,45 +68,93 @@ export default function ContactPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
 
     setIsSubmitting(true);
+    setSubmitError(null);
+
+    const payload = {
+      fullName: formData.name.trim(),
+      email: formData.email.trim(),
+      phone: formData.phone.trim(),
+      company: formData.company.trim(),
+      service: formData.service,
+      timeline: formData.timeline,
+      budget: formData.budget,
+      description: formData.message.trim(),
+    };
+
+    const ENDPOINT =
+      "https://script.google.com/macros/s/AKfycbxnxXMQOhp7NcD-jjS7G8DPjifEaIQGO_ee6Fm4zdZayS6Ga00tufIb67YSsIoFeaQoSQ/exec";
 
     try {
-      // Structure submitted data
-      const submission = {
-        id: `sub_${Date.now()}`,
-        ...formData,
-        submittedAt: new Date().toISOString(),
-      };
-
-      // Read existing submissions from localStorage
-      const existingRaw = localStorage.getItem("aktech_contact_submissions");
-      const existing = existingRaw ? JSON.parse(existingRaw) : [];
-      existing.unshift(submission);
-
-      // Save back to localStorage
-      localStorage.setItem("aktech_contact_submissions", JSON.stringify(existing));
-
-      // Trigger success modal
-      setTimeout(() => {
-        setIsSubmitting(false);
-        setShowSuccessModal(true);
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          company: "",
-          service: "Web Development",
-          budget: "$1,000 – $2,500",
-          timeline: "ASAP",
-          message: "",
+      // Send request to Google Apps Script Web App endpoint
+      let responseOk = false;
+      try {
+        const response = await fetch(ENDPOINT, {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8",
+          },
+          body: JSON.stringify(payload),
         });
-      }, 600);
+        if (response.ok || response.type === "opaque" || response.status === 200) {
+          responseOk = true;
+        }
+      } catch {
+        // Fallback for strict browser CORS handling on 302 redirects
+        await fetch(ENDPOINT, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8",
+          },
+          body: JSON.stringify(payload),
+        });
+        responseOk = true;
+      }
+
+      if (!responseOk) {
+        throw new Error("Google Apps Script endpoint returned an error.");
+      }
+
+      // Persist local submission backup
+      try {
+        const submission = {
+          id: `sub_${Date.now()}`,
+          ...payload,
+          submittedAt: new Date().toISOString(),
+        };
+        const existingRaw = localStorage.getItem("aktech_contact_submissions");
+        const existing = existingRaw ? JSON.parse(existingRaw) : [];
+        existing.unshift(submission);
+        localStorage.setItem("aktech_contact_submissions", JSON.stringify(existing));
+      } catch (storageErr) {
+        console.warn("Local backup failed:", storageErr);
+      }
+
+      // Clear / reset form fields
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        service: "Web Development",
+        budget: "$1,000 – $2,500",
+        timeline: "ASAP",
+        message: "",
+      });
+
+      // Trigger top-right success toast
+      setShowSuccessToast(true);
     } catch (err) {
-      console.error("Local submission error:", err);
+      console.error("Submission error:", err);
+      setSubmitError(
+        "Failed to send your project request. Please check your internet connection and try again."
+      );
+    } finally {
       setIsSubmitting(false);
     }
   };
@@ -317,6 +384,19 @@ export default function ContactPage() {
                   {errors.message && <p className="text-xs text-[#E0000B] mt-1 font-semibold">{errors.message}</p>}
                 </div>
 
+                {submitError && (
+                  <div className="p-4 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-xs font-semibold flex items-center justify-between">
+                    <span>{submitError}</span>
+                    <button
+                      type="button"
+                      onClick={() => setSubmitError(null)}
+                      className="text-red-500 hover:text-red-800 p-1"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
+                )}
+
                 {/* Submit Button */}
                 <button
                   type="submit"
@@ -460,52 +540,92 @@ export default function ContactPage() {
       </div>
 
       {/* ═════════════════════════════════════════════════════════════
-          3. CUSTOM SUCCESS NOTIFICATION TOAST / MODAL
+          3. PREMIUM FLOATING TOP-RIGHT TOAST NOTIFICATION
          ═════════════════════════════════════════════════════════════ */}
-      <AnimatePresence>
-        {showSuccessModal && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/60 backdrop-blur-md"
-          >
+      <div className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[300] flex flex-col gap-3 max-w-sm w-[calc(100vw-2rem)] sm:w-[380px] pointer-events-none">
+        <AnimatePresence mode="sync">
+          {showSuccessToast && (
             <motion.div
-              initial={{ scale: 0.9, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              transition={{ type: "spring", stiffness: 400, damping: 30 }}
-              className="bg-white rounded-[2.5rem] p-8 sm:p-12 max-w-md w-full text-center shadow-2xl relative border border-black/10"
+              key="success-toast"
+              initial={{ opacity: 0, y: -25, x: 20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, x: 20, scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 28 }}
+              className="pointer-events-auto bg-white/95 backdrop-blur-xl border border-black/10 rounded-2xl p-5 shadow-[0_20px_50px_rgba(0,0,0,0.12)] hover:shadow-[0_25px_60px_rgba(0,0,0,0.18)] transition-all duration-300 relative group overflow-hidden"
             >
-              <button
-                onClick={() => setShowSuccessModal(false)}
-                className="absolute top-6 right-6 p-2 rounded-full hover:bg-gray-100 text-gray-400 hover:text-black transition-colors"
-              >
-                <X className="w-5 h-5" />
-              </button>
+              {/* Subtle top red accent line */}
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#E0000B] via-[#FF3B45] to-[#E0000B]" />
 
-              <div className="w-16 h-16 rounded-full bg-[#E0000B]/10 text-[#E0000B] flex items-center justify-center mx-auto mb-6">
-                <CheckCircle2 className="w-8 h-8" />
+              <div className="flex items-start gap-3.5">
+                {/* Animated Checkmark Icon Badge */}
+                <div className="w-10 h-10 rounded-full bg-[#E0000B]/10 border border-[#E0000B]/20 flex items-center justify-center shrink-0 mt-0.5">
+                  <motion.div
+                    initial={{ scale: 0, rotate: -45 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    transition={{ type: "spring", stiffness: 500, damping: 25, delay: 0.1 }}
+                  >
+                    <CheckCircle2 className="w-5 h-5 text-[#E0000B]" />
+                  </motion.div>
+                </div>
+
+                {/* Toast Content */}
+                <div className="flex-1 pr-5">
+                  <h4 className="font-heading font-extrabold text-xs sm:text-sm text-[#111111] uppercase tracking-wide">
+                    Message Sent Successfully
+                  </h4>
+                  <p className="text-xs text-gray-600 leading-relaxed mt-1 font-normal">
+                    Your project request has been received. We&apos;ll get back to you soon.
+                  </p>
+                </div>
+
+                {/* Small Close Button */}
+                <button
+                  type="button"
+                  onClick={() => setShowSuccessToast(false)}
+                  className="absolute top-3.5 right-3.5 p-1.5 rounded-full text-gray-400 hover:text-[#111111] hover:bg-black/5 transition-colors cursor-pointer"
+                  aria-label="Close notification"
+                >
+                  <X className="w-4 h-4" />
+                </button>
               </div>
-
-              <h3 className="font-heading font-extrabold text-2xl text-[#111111] mb-2 uppercase">
-                Message Sent Successfully!
-              </h3>
-
-              <p className="text-gray-600 text-sm leading-relaxed mb-8">
-                Thank you for reaching out. We&apos;ve received your project details and saved them locally. Our team will review your requirements and get back to you shortly at <span className="font-bold text-[#111111]">{formData.email || "your email"}</span>.
-              </p>
-
-              <button
-                onClick={() => setShowSuccessModal(false)}
-                className="w-full py-4 rounded-full bg-[#111111] text-white font-heading font-bold text-xs uppercase tracking-wider hover:bg-[#E0000B] transition-colors shadow-lg cursor-pointer"
-              >
-                Close &amp; Continue Browsing
-              </button>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+
+          {submitError && (
+            <motion.div
+              key="error-toast"
+              initial={{ opacity: 0, y: -25, x: 20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, x: 20, scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 28 }}
+              className="pointer-events-auto bg-white/95 backdrop-blur-xl border border-red-200 rounded-2xl p-5 shadow-[0_20px_50px_rgba(0,0,0,0.12)] relative overflow-hidden"
+            >
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-red-500" />
+              <div className="flex items-start gap-3.5">
+                <div className="w-10 h-10 rounded-full bg-red-100 border border-red-200 flex items-center justify-center shrink-0 mt-0.5 text-red-600">
+                  <X className="w-5 h-5" />
+                </div>
+                <div className="flex-1 pr-5">
+                  <h4 className="font-heading font-extrabold text-xs sm:text-sm text-[#111111] uppercase tracking-wide">
+                    Submission Error
+                  </h4>
+                  <p className="text-xs text-gray-600 leading-relaxed mt-1 font-normal">
+                    {submitError}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setSubmitError(null)}
+                  className="absolute top-3.5 right-3.5 p-1.5 rounded-full text-gray-400 hover:text-[#111111] hover:bg-black/5 transition-colors cursor-pointer"
+                  aria-label="Close notification"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 }
