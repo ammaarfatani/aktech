@@ -18,6 +18,7 @@ import {
   DollarSign,
   Briefcase,
 } from "lucide-react";
+import { siteConfig } from "@/config/site";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -400,6 +401,54 @@ export default function ContactPage() {
                   <p className="text-gray-500 text-xs mt-0.5">
                     We review and reply to every project request within 24 business hours.
                   </p>
+                </div>
+              </div>
+
+              {/* Card 4: Official Social Media Channels */}
+              <div className="bg-white border border-black/10 p-6 rounded-2xl shadow-sm">
+                <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#E0000B] mb-3 block">
+                  OFFICIAL SOCIAL MEDIA
+                </span>
+                <div className="grid grid-cols-2 gap-3">
+                  <a
+                    href={siteConfig.links.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between p-3 rounded-xl bg-gray-50 hover:bg-[#111111] hover:text-white transition-all text-xs font-bold text-[#111111] group"
+                  >
+                    <span>Facebook</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#E0000B] transition-colors" />
+                  </a>
+
+                  <a
+                    href={siteConfig.links.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between p-3 rounded-xl bg-gray-50 hover:bg-[#111111] hover:text-white transition-all text-xs font-bold text-[#111111] group"
+                  >
+                    <span>LinkedIn</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#E0000B] transition-colors" />
+                  </a>
+
+                  <a
+                    href={siteConfig.links.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between p-3 rounded-xl bg-gray-50 hover:bg-[#111111] hover:text-white transition-all text-xs font-bold text-[#111111] group"
+                  >
+                    <span>Instagram</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#E0000B] transition-colors" />
+                  </a>
+
+                  <a
+                    href={siteConfig.links.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between p-3 rounded-xl bg-gray-50 hover:bg-[#111111] hover:text-white transition-all text-xs font-bold text-[#111111] group"
+                  >
+                    <span>WhatsApp</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#E0000B] transition-colors" />
+                  </a>
                 </div>
               </div>
 

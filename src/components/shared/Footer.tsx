@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Sparkles, Mail } from "lucide-react";
+import { siteConfig } from "@/config/site";
 
 export function Footer() {
   return (
@@ -213,7 +214,17 @@ export function Footer() {
               </a>
 
               <a
-                href="https://www.instagram.com/aktech_digital_solutions/"
+                href={siteConfig.links.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#111111] transition-colors flex items-center gap-1 group"
+              >
+                <span>Facebook</span>
+                <ArrowUpRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#E0000B] transition-all" />
+              </a>
+
+              <a
+                href={siteConfig.links.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-[#111111] transition-colors flex items-center gap-1 group"
@@ -223,7 +234,7 @@ export function Footer() {
               </a>
 
               <a
-                href="https://www.linkedin.com/in/aktech-digital-solutions-bbb848418"
+                href={siteConfig.links.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-[#111111] transition-colors flex items-center gap-1 group"
@@ -233,7 +244,7 @@ export function Footer() {
               </a>
 
               <a
-                href="https://wa.me/923713410797"
+                href={siteConfig.links.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-[#111111] transition-colors flex items-center gap-1 group"

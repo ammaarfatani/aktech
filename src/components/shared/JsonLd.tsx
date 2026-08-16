@@ -14,6 +14,7 @@ export function OrganizationJsonLd() {
     email: siteConfig.email,
     telephone: siteConfig.phone,
     sameAs: [
+      siteConfig.links.facebook,
       siteConfig.links.instagram,
       siteConfig.links.linkedin,
       siteConfig.links.whatsapp,

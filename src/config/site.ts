@@ -22,8 +22,9 @@ export const siteConfig = {
     addressCountry: "PK",
   },
   links: {
+    facebook: "https://www.facebook.com/profile.php?id=61593629511161",
     instagram: "https://www.instagram.com/aktech_digital_solutions/",
-    linkedin: "https://www.linkedin.com/in/aktech-digital-solutions-bbb848418",
+    linkedin: "https://www.linkedin.com/company/aktech-digital-solution/",
     whatsapp: "https://wa.me/923713410797",
   },
   keywords: [
