@@ -68,9 +68,14 @@ export const metadata: Metadata = {
     images: [`${siteConfig.url}/og-image.jpg`],
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/logo.png", type: "image/png", sizes: "500x500" },
+    ],
     shortcut: "/favicon.ico",
-    apple: "/logo.png",
+    apple: [
+      { url: "/logo.png", sizes: "500x500", type: "image/png" },
+    ],
   },
   alternates: {
     canonical: siteConfig.url,
