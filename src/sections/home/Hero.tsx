@@ -66,7 +66,7 @@ export function Hero() {
               >
                 <span className="w-2 h-2 rounded-full bg-[#E0000B] animate-pulse shadow-[0_0_10px_#E0000B]" />
                 <span className="text-[11px] font-bold tracking-[0.25em] uppercase text-white">
-                  PK <span className="text-[#E0000B]">•</span> UK <span className="text-[#E0000B]">•</span> UAE <span className="text-[#E0000B] mx-1.5">|</span> AKTECH DIGITAL SOLUTIONS
+                  Karachi, PK | AKTECH DIGITAL SOLUTIONS
                 </span>
               </motion.div>
 

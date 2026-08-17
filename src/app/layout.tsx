@@ -10,9 +10,10 @@ import { Footer } from "@/components/shared/Footer";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { OrganizationJsonLd, WebSiteJsonLd, ProfessionalServiceJsonLd } from "@/components/shared/JsonLd";
 import { Analytics } from "@/components/shared/Analytics";
+import { GlobalPageLoader } from "@/components/shared/GlobalPageLoader";
 
 export const viewport: Viewport = {
-  themeColor: "#111111",
+  themeColor: "#181818",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -68,9 +69,9 @@ export const metadata: Metadata = {
     images: [`${siteConfig.url}/og-image.jpg`],
   },
   icons: {
-  icon: "/favicon.ico",
-  shortcut: "/favicon.ico",
-},
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+  },
   alternates: {
     canonical: siteConfig.url,
   },
@@ -82,7 +83,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="scroll-smooth">
+    <html lang="en" suppressHydrationWarning className="scroll-smooth bg-[#181818]">
       <head>
         <Analytics />
         <OrganizationJsonLd />
@@ -91,11 +92,12 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          "min-h-screen bg-white text-[#111111] antialiased selection:bg-[#E0000B]/20 selection:text-[#E0000B] flex flex-col",
+          "min-h-screen bg-[#181818] text-[#111111] antialiased selection:bg-[#E0000B]/20 selection:text-[#E0000B] flex flex-col",
           fontSans.variable,
           fontHeading.variable
         )}
       >
+        <GlobalPageLoader />
         <SmoothScrollProvider>
           <CustomCursor />
           <Navbar />
