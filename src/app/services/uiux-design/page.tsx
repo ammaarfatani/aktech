@@ -33,14 +33,14 @@ export default function UIUXDesignServicePage() {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-[#111111] pt-32 sm:pt-36 pb-24 selection:bg-[#E0000B]/20 selection:text-[#E0000B] overflow-x-hidden">
-      
+
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-10">
 
         {/* ═════════════════════════════════════════════════════════════
             1. CINEMATIC VIDEO HERO SECTION
            ═════════════════════════════════════════════════════════════ */}
         <section className="mb-20 sm:mb-28">
-          
+
           {/* Breadcrumb & Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -114,7 +114,7 @@ export default function UIUXDesignServicePage() {
             {/* CINEMATIC VIDEO COMPONENT */}
             <video
               ref={videoRef}
-              src="/services/ui-ux.mp4"
+              src="/services/uiux.mp4"
               autoPlay
               loop
               muted
@@ -130,7 +130,7 @@ export default function UIUXDesignServicePage() {
             2. CORE UI/UX CAPABILITIES
            ═════════════════════════════════════════════════════════════ */}
         <section className="mb-24 sm:mb-32">
-          
+
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#E0000B] mb-3 block">
               USER EXPERIENCE SPECIALIZATIONS
@@ -200,9 +200,9 @@ export default function UIUXDesignServicePage() {
            ═════════════════════════════════════════════════════════════ */}
         <section className="mb-24 sm:mb-32">
           <div className="bg-white border border-black/10 rounded-[2.5rem] p-8 sm:p-14 lg:p-16 shadow-lg">
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-              
+
               {/* Left Column */}
               <div className="lg:col-span-6">
                 <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#E0000B] mb-3 block">
@@ -280,7 +280,7 @@ export default function UIUXDesignServicePage() {
             4. OUR UI/UX DESIGN PROCESS
            ═════════════════════════════════════════════════════════════ */}
         <section className="mb-24 sm:mb-32">
-          
+
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#E0000B] mb-3 block">
               DESIGN METHODOLOGY
