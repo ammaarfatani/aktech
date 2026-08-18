@@ -1,16 +1,18 @@
 import { NextRequest } from "next/server";
+import { generateAIResponse } from "@/lib/aiAssistantEngine";
 
 /**
  * POST /api/chat
- * Proxies user messages to the n8n AI Agent webhook,
- * keeping the webhook URL safely on the server side.
- *
- * n8n Chat Trigger nodes expect: { action, sessionId, chatInput }
+ * Production AI Assistant Route for AKTech Digital Solutions.
+ * Processes user inquiries with full site knowledge, page context awareness,
+ * business recommendation engine, smart navigation links, and fallback webhook support.
  */
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const message = body?.message;
+    const currentPath = body?.currentPath || "/";
+    const sessionId = body?.sessionId || "aktech-ai-session";
 
     if (!message || typeof message !== "string" || message.trim().length === 0) {
       return Response.json(
@@ -19,96 +21,76 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const trimmedMessage = message.trim();
+
+    // 1. Check if external n8n webhook is configured
     const webhookUrl = process.env.N8N_WEBHOOK_URL;
 
-    if (!webhookUrl) {
-      console.error("N8N_WEBHOOK_URL environment variable is not configured.");
-      return Response.json(
-        { error: "AI service is not configured. Please contact support." },
-        { status: 500 }
-      );
-    }
+    if (webhookUrl) {
+      try {
+        const n8nPayload = {
+          action: "sendMessage",
+          sessionId,
+          chatInput: trimmedMessage,
+          currentPath
+        };
 
-    // Build the request body in n8n Chat Trigger format
-    // sessionId ties conversation history together per browser session
-    const sessionId = body?.sessionId || "default-session";
+        const n8nResponse = await fetch(webhookUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(n8nPayload),
+        });
 
-    const n8nPayload = {
-      action: "sendMessage",
-      sessionId,
-      chatInput: message.trim(),
-    };
+        if (n8nResponse.ok) {
+          const rawBody = await n8nResponse.text();
+          let data: Record<string, unknown> | string;
+          try {
+            data = JSON.parse(rawBody);
+          } catch {
+            data = rawBody;
+          }
 
-    console.log("[Chat API] Sending to n8n:", JSON.stringify(n8nPayload));
+          let reply: string | null = null;
+          if (typeof data === "string") {
+            reply = data;
+          } else if (data && typeof data === "object") {
+            reply =
+              (data.output as string) ??
+              (data.reply as string) ??
+              (data.message as string) ??
+              (data.text as string) ??
+              (data.response as string) ??
+              null;
+          }
 
-    const n8nResponse = await fetch(webhookUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(n8nPayload),
-    });
-
-    // Read raw response body first for debugging
-    const rawBody = await n8nResponse.text();
-    console.log("[Chat API] n8n status:", n8nResponse.status);
-    console.log("[Chat API] n8n raw response:", rawBody);
-
-    if (!n8nResponse.ok) {
-      console.error(`n8n webhook error (${n8nResponse.status}):`, rawBody);
-      return Response.json(
-        { error: "AI service is temporarily unavailable. Please try again." },
-        { status: 502 }
-      );
-    }
-
-    // Try to parse as JSON; some n8n workflows return plain text
-    let data: Record<string, unknown> | string;
-    try {
-      data = JSON.parse(rawBody);
-    } catch {
-      // n8n returned plain text — use it directly
-      data = rawBody;
-    }
-
-    // Dynamically extract the AI response from various possible n8n fields
-    let reply: string | null = null;
-
-    if (typeof data === "string") {
-      reply = data;
-    } else if (data && typeof data === "object") {
-      // Check common n8n response fields
-      reply =
-        (data.output as string) ??
-        (data.reply as string) ??
-        (data.message as string) ??
-        (data.text as string) ??
-        (data.response as string) ??
-        (data.answer as string) ??
-        null;
-
-      // Some n8n workflows return an array — grab the first item's output
-      if (!reply && Array.isArray(data)) {
-        const first = data[0];
-        if (first && typeof first === "object") {
-          reply =
-            (first as Record<string, unknown>).output as string ??
-            (first as Record<string, unknown>).text as string ??
-            (first as Record<string, unknown>).message as string ??
-            null;
+          if (reply && reply.trim().length > 0) {
+            // Merge n8n response with smart links fallback
+            const localFallback = generateAIResponse(trimmedMessage, { currentPath, sessionId });
+            return Response.json({
+              reply,
+              smartLinks: localFallback.smartLinks || [],
+              suggestedPrompts: localFallback.suggestedPrompts || []
+            });
+          }
         }
+      } catch (webhookErr) {
+        console.warn("[Chat API] n8n Webhook bypassed/failed, falling back to local AI engine:", webhookErr);
       }
     }
 
-    if (!reply) {
-      console.error("[Chat API] Could not extract reply from n8n data:", JSON.stringify(data));
-      return Response.json(
-        { error: "Received an unexpected response from AI. Please try again." },
-        { status: 500 }
-      );
-    }
+    // 2. High-Speed Native AI Knowledge Base & Reasoning Engine
+    const aiResult = generateAIResponse(trimmedMessage, { currentPath, sessionId });
 
-    return Response.json({ reply });
+    return Response.json({
+      reply: aiResult.reply,
+      smartLinks: aiResult.smartLinks || [],
+      suggestedPrompts: aiResult.suggestedPrompts || [],
+      projectHighlights: aiResult.projectHighlights || [],
+      leadCapturePrompt: aiResult.leadCapturePrompt || false
+    });
+
   } catch (error) {
     console.error("[Chat API] Unexpected error:", error);
     return Response.json(

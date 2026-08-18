@@ -8,6 +8,7 @@ import "./globals.css";
 import { SmoothScrollProvider } from "@/providers/SmoothScrollProvider";
 import { Footer } from "@/components/shared/Footer";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { AIAssistant } from "@/components/shared/AIAssistant";
 import { OrganizationJsonLd, WebSiteJsonLd, ProfessionalServiceJsonLd } from "@/components/shared/JsonLd";
 import { Analytics } from "@/components/shared/Analytics";
 import { GlobalPageLoader } from "@/components/shared/GlobalPageLoader";
@@ -107,6 +108,7 @@ export default function RootLayout({
           <Footer />
         </SmoothScrollProvider>
         <WhatsAppButton />
+        <AIAssistant />
       </body>
     </html>
   );
