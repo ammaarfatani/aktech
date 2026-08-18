@@ -8,11 +8,20 @@ export function OrganizationJsonLd() {
     "@id": `${siteConfig.url}/#organization`,
     name: siteConfig.legalName,
     alternateName: siteConfig.shortName,
+    description: siteConfig.description,
     url: `${siteConfig.url}/`,
     logo: `${siteConfig.url}/logo.png`,
     image: `${siteConfig.url}/og-image.jpg`,
     email: siteConfig.email,
     telephone: siteConfig.phone,
+
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: siteConfig.address.addressLocality,
+      addressRegion: siteConfig.address.addressRegion,
+      addressCountry: siteConfig.address.addressCountry,
+    },
+
     sameAs: [
       siteConfig.links.facebook,
       siteConfig.links.linkedin,
@@ -23,7 +32,9 @@ export function OrganizationJsonLd() {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(schema),
+      }}
     />
   );
 }
