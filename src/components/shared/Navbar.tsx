@@ -28,71 +28,77 @@ const SERVICE_CATEGORIES = [
   {
     title: "AI & Automation",
     icon: Bot,
+    href: "/services/ai-agent",
     items: [
-      "AI Agents",
-      "AI Chatbots",
-      "Workflow Automation",
-      "Business Automation",
-      "n8n Automation",
-      "AI Integrations",
+      { name: "AI Agents", href: "/services/ai-agent" },
+      { name: "AI Chatbots", href: "/services/ai-agent" },
+      { name: "Workflow Automation", href: "/services/ai-agent" },
+      { name: "Business Automation", href: "/services/ai-agent" },
+      { name: "n8n Automation", href: "/services/ai-agent" },
+      { name: "AI Integrations", href: "/services/ai-agent" },
     ],
   },
   {
     title: "Web Development",
     icon: Globe,
+    href: "/services/web-development",
     items: [
-      "Custom Websites",
-      "Web Applications",
-      "SaaS Development",
-      "E-Commerce Development",
-      "WordPress Development",
-      "Shopify Development",
-      "API Development & Integration",
+      { name: "Custom Websites", href: "/services/web-development" },
+      { name: "Web Applications", href: "/services/web-development" },
+      { name: "SaaS Development", href: "/services/web-development" },
+      { name: "E-Commerce Development", href: "/services/web-development" },
+      { name: "WordPress Development", href: "/services/web-development" },
+      { name: "Shopify Development", href: "/services/web-development" },
+      { name: "API Development & Integration", href: "/services/web-development" },
     ],
   },
   {
     title: "Mobile App Development",
     icon: Smartphone,
+    href: "/services/mobile-app-development",
     items: [
-      "Android Apps",
-      "iOS Apps",
-      "Cross-Platform Apps",
-      "React Native Development",
+      { name: "Android Apps", href: "/services/mobile-app-development" },
+      { name: "iOS Apps", href: "/services/mobile-app-development" },
+      { name: "Cross-Platform Apps", href: "/services/mobile-app-development" },
+      { name: "React Native Development", href: "/services/mobile-app-development" },
     ],
   },
   {
     title: "CRM / Business Systems",
     icon: LayoutGrid,
+    href: "/services/crm-business-systems",
     items: [
-      "CRM Systems",
-      "Inventory Systems",
-      "POS Systems",
-      "ERP Solutions",
-      "Admin Dashboards",
-      "Business Management Systems",
+      { name: "CRM Systems", href: "/services/crm-business-systems" },
+      { name: "Inventory Systems", href: "/services/crm-business-systems" },
+      { name: "POS Systems", href: "/services/crm-business-systems" },
+      { name: "ERP Solutions", href: "/services/erp-systems" },
+      { name: "Admin Dashboards", href: "/services/crm-business-systems" },
+      { name: "Business Management Systems", href: "/services/crm-business-systems" },
     ],
   },
   {
     title: "UI/UX & Design",
     icon: Palette,
+    href: "/services/uiux-design",
     items: [
-      "UI/UX Design",
-      "Web Design",
-      "Product Design",
-      "Landing Pages",
-      "Design Systems",
-      "Brand Identity",
+      { name: "UI/UX Design", href: "/services/uiux-design" },
+      { name: "Web Design", href: "/services/uiux-design" },
+      { name: "Product Design", href: "/services/uiux-design" },
+      { name: "Landing Pages", href: "/services/uiux-design" },
+      { name: "Design Systems", href: "/services/uiux-design" },
+      { name: "Brand Identity", href: "/services/uiux-design" },
     ],
   },
   {
     title: "SEO / Digital Growth",
     icon: Search,
+    href: "/services/seo",
     items: [
-      "Technical SEO",
-      "Local SEO",
-      "E-Commerce SEO",
-      "Digital Marketing",
-      "Social Media",
+      { name: "Technical SEO", href: "/services/seo" },
+      { name: "Local SEO", href: "/services/seo" },
+      { name: "E-Commerce SEO", href: "/services/seo" },
+      { name: "Digital Marketing", href: "/services/seo" },
+      { name: "Social Media", href: "/services/seo" },
     ],
   },
 ];
@@ -430,7 +436,7 @@ export function Navbar() {
                             <div className="flex items-center gap-2 mb-2.5">
                               <IconComp className="w-3.5 h-3.5 text-[#E0000B]" strokeWidth={2.5} />
                               <Link
-                                href="/services"
+                                href={category.href}
                                 onClick={() => setMegaOpen(false)}
                                 className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#111111] hover:text-[#E0000B] transition-colors"
                               >
@@ -442,13 +448,13 @@ export function Navbar() {
                             {/* Service Items */}
                             <ul className="flex flex-col gap-1.5">
                               {category.items.map((item) => (
-                                <li key={item}>
+                                <li key={item.name}>
                                   <Link
-                                    href="/services"
+                                    href={item.href}
                                     onClick={() => setMegaOpen(false)}
                                     className="group flex items-center gap-2 py-1 text-[13px] text-gray-600 hover:text-[#111111] transition-colors duration-200 font-medium"
                                   >
-                                    <span>{item}</span>
+                                    <span>{item.name}</span>
                                     <ArrowRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 text-[#E0000B]" />
                                   </Link>
                                 </li>
@@ -533,16 +539,23 @@ export function Navbar() {
                                   <div key={category.title}>
                                     <div className="flex items-center gap-2 mb-2">
                                       <IconComp className="w-3.5 h-3.5 text-[#E0000B]" strokeWidth={2.5} />
-                                      <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/70">
+                                      <Link
+                                        href={category.href}
+                                        onClick={() => {
+                                          setMobileMenuOpen(false);
+                                          setMobileServicesOpen(false);
+                                        }}
+                                        className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/70 hover:text-white"
+                                      >
                                         {category.title}
-                                      </span>
+                                      </Link>
                                     </div>
                                     <div className="w-full h-px bg-white/10 mb-2" />
                                     <ul className="flex flex-col gap-1 pl-5">
                                       {category.items.map((item) => (
-                                        <li key={item}>
+                                        <li key={item.name}>
                                           <Link
-                                            href="/services"
+                                            href={item.href}
                                             onClick={() => {
                                               setMobileMenuOpen(false);
                                               setMobileServicesOpen(false);
@@ -550,7 +563,7 @@ export function Navbar() {
                                             className="flex items-center gap-2 py-1 text-sm text-gray-400 hover:text-white transition-colors font-medium"
                                           >
                                             <ChevronRight className="w-3 h-3 text-[#E0000B]/60" />
-                                            {item}
+                                            {item.name}
                                           </Link>
                                         </li>
                                       ))}
