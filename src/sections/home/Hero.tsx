@@ -32,12 +32,15 @@ export function Hero() {
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none scale-105"
+          className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none scale-105 opacity-80 brightness-90"
         >
           <source src="/hero/hero-video.mp4" type="video/mp4" />
         </video>
 
-        {/* Subtle Cinematic Overlay */}
+        {/* Semi-Transparent Dark Overlay to Smooth Pixelation/Artifacts */}
+        <div className="absolute inset-0 z-10 bg-black/40 pointer-events-none" />
+
+        {/* Subtle Cinematic Vignette Gradient Overlay */}
         <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/50 via-transparent to-black/75 pointer-events-none" />
 
         {/* Ambient Subtle Red Accent Glow */}
