@@ -23,7 +23,7 @@ export const siteConfig = {
   },
   links: {
     facebook: "https://www.facebook.com/profile.php?id=61593629511161",
-    instagram: "https://www.instagram.com/aktech_digital_solutions/",
+    instagram: "https://www.instagram.com/aktech.digital.solution/",
     linkedin: "https://www.linkedin.com/company/aktech-digital-solution/",
     whatsapp: "https://wa.me/923713410797",
   },
