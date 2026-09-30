@@ -25,7 +25,7 @@ const ROW_1: WorkCardItem[] = [
 
 const ROW_2: WorkCardItem[] = [
   { id: "7", title: "Restro POS & ERP", category: "ERP / POS", image: "/projects/resto-crm.png", aspectRatio: "w-[420px] sm:w-[500px] h-[240px] sm:h-[290px]" },
-  { id: "8", title: "House of Wasila", category: "MEDIA", image: "/projects/houseofwasila.png", aspectRatio: "w-[340px] sm:w-[400px] h-[240px] sm:h-[290px]" },
+  // { id: "8", title: "House of Wasila", category: "MEDIA", image: "/projects/houseofwasila.png", aspectRatio: "w-[340px] sm:w-[400px] h-[240px] sm:h-[290px]" },
   { id: "9", title: "Retail Inventory CRM", category: "CRM", image: "/projects/inventory-crm .png", aspectRatio: "w-[380px] sm:w-[440px] h-[240px] sm:h-[290px]" },
   { id: "10", title: "Bawarchi Restaurant", category: "FOOD", image: "/projects/bawarchi.png", aspectRatio: "w-[320px] sm:w-[380px] h-[240px] sm:h-[290px]" },
   { id: "11", title: "Perfumes Luxury", category: "E-COMMERCE", image: "/projects/perfumes.png", aspectRatio: "w-[360px] sm:w-[420px] h-[240px] sm:h-[290px]" },
@@ -33,7 +33,7 @@ const ROW_2: WorkCardItem[] = [
 ];
 
 const ROW_3: WorkCardItem[] = [
-  { id: "13", title: "House of Musab", category: "MEDIA", image: "/projects/houseofmusab.png", aspectRatio: "w-[360px] sm:w-[420px] h-[240px] sm:h-[290px]" },
+  // { id: "13", title: "House of Musab", category: "MEDIA", image: "/projects/houseofmusab.png", aspectRatio: "w-[360px] sm:w-[420px] h-[240px] sm:h-[290px]" },
   { id: "14", title: "Lahori Restaurant", category: "RESTAURANT", image: "/projects/lahori.png", aspectRatio: "w-[340px] sm:w-[400px] h-[240px] sm:h-[290px]" },
   { id: "15", title: "Cafe POS", category: "POS", image: "/projects/cafe.png", aspectRatio: "w-[300px] sm:w-[360px] h-[240px] sm:h-[290px]" },
   { id: "16", title: "Zivora Label", category: "E-COMMERCE", image: "/projects/zivora.png", aspectRatio: "w-[380px] sm:w-[440px] h-[240px] sm:h-[290px]" },
