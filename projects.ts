@@ -307,7 +307,7 @@ export const projects: Project[] = [
       "Retail workflow management",
       "Centralized business data",
     ],
-    screenshots: ["/projects/inventory-crm .png"],
+    screenshots: ["/projects/inventory-crm.png"],
     video: "/videos/crm2.mp4",
     caseStudy: {
       challenge: "Creating a practical retail management system that could centralize daily sales, inventory and customer information.",
@@ -324,7 +324,7 @@ export const additionalScreenshots: { src: string; title: string; category: stri
   { src: "/projects/syed.png", title: "SH Hoorain", category: "E-COMMERCE" },
   { src: "/projects/zivora.png", title: "Zivora", category: "E-COMMERCE" },
   { src: "/projects/sized.png", title: "Sized", category: "WEB" },
-  { src: "/projects/urge.png", title: "Urge", category: "WEB" },
+  { src: "/projects/zurane.png", title: "Zurane", category: "E-COMMERCE" },
 ];
 
 export const filterCategories = ["ALL", "WEB", "E-COMMERCE", "FULL-STACK", "AI", "MEDIA", "ERP / CRM", "FINTECH"] as const;

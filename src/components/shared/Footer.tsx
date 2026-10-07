@@ -213,6 +213,8 @@ export function Footer() {
                   { label: "Home", href: "/" },
                   { label: "About", href: "/about" },
                   { label: "Services", href: "/services" },
+                  { label: "Products", href: "/products" },
+                  { label: "Case Studies", href: "/case-studies" },
                   { label: "Portfolio", href: "/portfolio" },
                   { label: "Clients", href: "/clients" },
                   { label: "Contact", href: "/contact" },

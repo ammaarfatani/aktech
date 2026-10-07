@@ -1,3 +1,4 @@
+import { ProductEcosystem, FeaturedCaseStudy } from "@/sections/home/ProductEcosystem";
 import { Hero } from "@/sections/home/Hero";
 import { StudioIntro } from "@/sections/home/StudioIntro";
 import { ServicesMarquee } from "@/sections/home/ServicesMarquee";
@@ -14,6 +15,8 @@ export default function Home() {
       <StudioIntro />
       <ServicesMarquee />
       <CreativeWorkSection />
+      <ProductEcosystem />
+      <FeaturedCaseStudy />
       <ServicesShowcase />
       <HowWeWork />
       <Testimonials />

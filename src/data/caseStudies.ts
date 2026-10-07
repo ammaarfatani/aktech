@@ -20,6 +20,19 @@ export type CaseStudy = {
 
 export const FEATURED_CASE_STUDIES: CaseStudy[] = [
   {
+    id: "zurane", slug: "zurane", number: "01",
+    title: "Zurane — E-Commerce Experience", category: "FASHION / E-COMMERCE",
+    shortDescription: "An e-commerce web experience designed and developed by AKTECH for Zurane, bringing fashion collections into an image-led storefront.",
+    mainImage: "/projects/zurane.png", screenshots: ["/projects/zurane.png"],
+    role: ["Storefront Design", "Frontend Development"], year: "Not specified", client: "Zurane",
+    features: ["Full-width fashion campaign presentation", "Collection and promotional announcements", "Clear storefront navigation", "Search, account and shopping-bag entry points", "Consistent brand typography and visual hierarchy"],
+    caseStudy: {
+      challenge: "Present a fashion brand's collections with a clear visual identity while giving visitors recognizable entry points into the shopping experience.",
+      approach: "AKTECH designed and developed the storefront experience around large campaign imagery, a centered brand identity and a restrained navigation bar. The provided project capture shows promotional messaging and search, account and shopping-bag controls. The case study focuses on this visible frontend work.",
+      result: "A cohesive fashion storefront with prominent collection imagery and a clear shopping-oriented interface. The supplied screenshot documents the visual result; no sales, conversion or performance measurements are claimed.",
+    },
+  },
+  {
     id: "international-school",
     slug: "international-school",
     number: "01",

@@ -111,6 +111,7 @@ const NAV_LINKS = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Services", href: "/services", hasMega: true },
+  { name: "Products", href: "/products" },
   { name: "Portfolio", href: "/portfolio" },
   { name: "Clients", href: "/clients" },
   { name: "Contact Us", href: "/contact" },

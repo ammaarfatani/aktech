@@ -80,7 +80,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
       <BreadcrumbJsonLd
         items={[
           { name: "Home", item: "/" },
-          { name: "Portfolio", item: "/portfolio" },
+          { name: "Case Studies", item: "/case-studies" },
           { name: project.title, item: `/case-studies/${slug}` },
         ]}
       />
@@ -88,7 +88,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
       {/* ───── TOP BREADCRUMB / BACK LINK ───── */}
       <div className="max-w-[1200px] mx-auto mb-8">
         <Link
-          href="/portfolio"
+          href="/case-studies"
           className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-gray-500 hover:text-[#E0000B] transition-colors"
         >
           <ArrowLeft className="w-4 h-4 text-[#E0000B]" />
@@ -128,9 +128,9 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
 
           <div>
             <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 block mb-1">
-              Year
+              {project.slug === "zurane" ? "Project" : "Year"}
             </span>
-            <span className="text-base font-bold text-[#111111]">{project.year}</span>
+            <span className="text-base font-bold text-[#111111]">{project.slug === "zurane" ? "Fashion storefront" : project.year}</span>
           </div>
 
           <div className="col-span-2 sm:col-span-1">
@@ -142,14 +142,14 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
         </div>
 
         {/* Main Hero Showcase Image */}
-        <div className="relative w-full h-[400px] sm:h-[600px] lg:h-[700px] rounded-[2.5rem] overflow-hidden border border-black/10 shadow-2xl mt-12 bg-gray-100">
+        <div className={`relative w-full ${project.slug === "zurane" ? "aspect-[1903/879]" : "h-[400px] sm:h-[600px] lg:h-[700px]"} rounded-[2.5rem] overflow-hidden border border-black/10 shadow-2xl mt-12 bg-gray-100`}>
           <Image
             src={project.mainImage}
             alt={project.title}
             fill
             sizes="100vw"
             priority
-            className="object-cover object-top"
+            className={project.slug === "zurane" ? "object-contain" : "object-cover object-top"}
           />
         </div>
       </header>
@@ -240,14 +240,14 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
               {project.screenshots.map((imgSrc, idx) => (
                 <div
                   key={idx}
-                  className="relative w-full h-[350px] sm:h-[550px] rounded-3xl overflow-hidden border border-black/10 shadow-xl bg-gray-50"
+                  className={`relative w-full ${project.slug === "zurane" ? "aspect-[1903/879]" : "h-[350px] sm:h-[550px]"} rounded-3xl overflow-hidden border border-black/10 shadow-xl bg-gray-50`}
                 >
                   <Image
                     src={imgSrc}
                     alt={`${project.title} Screenshot ${idx + 1}`}
                     fill
                     sizes="100vw"
-                    className="object-cover object-top"
+                    className={project.slug === "zurane" ? "object-contain" : "object-cover object-top"}
                   />
                 </div>
               ))}
@@ -280,7 +280,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
 
         {/* Back to All Projects */}
         <Link
-          href="/portfolio"
+          href="/case-studies"
           className="px-6 py-3 rounded-full bg-[#111111] text-white text-xs font-bold uppercase tracking-[0.2em] hover:bg-[#E0000B] transition-colors"
         >
           Back to Case Studies

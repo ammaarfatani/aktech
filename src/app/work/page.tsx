@@ -23,15 +23,15 @@ const ALL_WORK_ITEMS = [
   })),
   ...additionalScreenshots.map((item, idx) => ({
     id: `extra-${idx}`,
-    slug: `extra-${idx}`,
+    slug: item.src === "/projects/zurane.png" ? "zurane" : `extra-${idx}`,
     number: (projects.length + idx + 1).toString().padStart(2, "0"),
     title: item.title,
     category: item.category,
     filterCategory: item.category === "E-COMMERCE" ? "E-COMMERCE" : "WEB",
-    description: `A custom ${item.category.toLowerCase()} experience engineered for high performance, modern visual aesthetics, and conversion efficiency.`,
+    description: item.src === "/projects/zurane.png" ? "A fashion storefront designed and developed by AKTECH, with image-led collection presentation and clear shopping navigation." : `A custom ${item.category.toLowerCase()} experience engineered for high performance, modern visual aesthetics, and conversion efficiency.`,
     image: item.src,
     video: null,
-    technologies: ["Next.js", "Tailwind CSS", "UI/UX Design"],
+    technologies: item.src === "/projects/zurane.png" ? ["Storefront Design", "Frontend Development"] : ["Next.js", "Tailwind CSS", "UI/UX Design"],
   })),
 ];
 

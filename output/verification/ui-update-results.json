@@ -1,0 +1,97 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "route": "/products",
+      "passed": true
+    },
+    {
+      "width": 1440,
+      "route": "/products/acadivo",
+      "passed": true
+    },
+    {
+      "width": 1440,
+      "route": "/products/restro-erp",
+      "passed": true
+    },
+    {
+      "width": 1440,
+      "route": "/products/fitivo",
+      "passed": true
+    },
+    {
+      "width": 768,
+      "route": "/products",
+      "passed": true
+    },
+    {
+      "width": 768,
+      "route": "/products/acadivo",
+      "passed": true
+    },
+    {
+      "width": 768,
+      "route": "/products/restro-erp",
+      "passed": true
+    },
+    {
+      "width": 768,
+      "route": "/products/fitivo",
+      "passed": true
+    },
+    {
+      "width": 390,
+      "route": "/products",
+      "passed": true
+    },
+    {
+      "width": 390,
+      "route": "/products/acadivo",
+      "passed": true
+    },
+    {
+      "width": 390,
+      "route": "/products/restro-erp",
+      "passed": true
+    },
+    {
+      "width": 390,
+      "route": "/products/fitivo",
+      "passed": true
+    },
+    {
+      "width": 320,
+      "route": "/products",
+      "passed": true
+    },
+    {
+      "width": 320,
+      "route": "/products/acadivo",
+      "passed": true
+    },
+    {
+      "width": 320,
+      "route": "/products/restro-erp",
+      "passed": true
+    },
+    {
+      "width": 320,
+      "route": "/products/fitivo",
+      "passed": true
+    },
+    {
+      "width": 1440,
+      "workCards": 34,
+      "fit": "contain",
+      "sizesPreserved": true
+    },
+    {
+      "width": 390,
+      "workCards": 34,
+      "fit": "contain",
+      "sizesPreserved": true
+    }
+  ],
+  "errors": []
+}
