@@ -98,6 +98,7 @@ export function ProjectEstimator() {
         inquiryType: "estimate",
       });
       trackConversion("generate_lead", serviceForProjectType(projectType));
+      trackConversion("project_estimator_submission", serviceForProjectType(projectType));
       setSuccess(true);
     } catch (error) {
       setSubmitError(error instanceof Error ? error.message : "Something went wrong. Please try again or email hello@aktech.tech.");

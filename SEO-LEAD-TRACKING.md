@@ -4,12 +4,12 @@
 Keep credentials in the deployment environment; do not commit real IDs or secrets. Current optional variables:
 
 ```dotenv
-NEXT_PUBLIC_GA_ID=G-REPLACEWITHYOURID
+NEXT_PUBLIC_GA_ID=G-5LT8FGHRJ2
 NEXT_PUBLIC_GSC_VERIFICATION=replace-with-url-prefix-verification-token
 CONTACT_WEBHOOK_URL=https://script.google.com/macros/s/YOUR_DEPLOYMENT/exec
 ```
 
-GA only loads for a syntactically valid ID after the visitor enables optional analytics in the footer. Search Console verification is rendered through Next metadata. No GTM is added, avoiding duplicate installations. Public IDs are not secrets. CONTACT_WEBHOOK_URL is server-only; when unset the route retains the existing repository Google Apps Script endpoint. Existing N8N_WEBHOOK_URL remains untouched.
+GA only loads for a valid ID after the visitor enables optional analytics in the footer. Default fallback measurement ID is `G-5LT8FGHRJ2`. Search Console verification is rendered through Next metadata. No GTM is added, avoiding duplicate installations. CONTACT_WEBHOOK_URL is server-only; when unset the route retains the existing repository Google Apps Script endpoint. Existing N8N_WEBHOOK_URL remains untouched.
 
 ## Contact delivery contract — required launch verification
 The browser POSTs to /api/contact. The server validates field types, lengths, required data, service/contact choices, phone requirement, origin, JSON content type and a 16KB streamed request limit. A honeypot rejects obvious spam. One request per attempt is sent to the configured existing receiver with a 15-second timeout. No automatic retries. Success requires HTTP success plus JSON `{ "success": true }` or `{ "status": "success" }`; a login page, opaque response or unrecognized body is not accepted as delivery.
@@ -23,11 +23,20 @@ Old browser backups containing private inquiry data are removed when the contact
 ## Events and privacy
 | Event | Trigger | Meaning |
 |---|---|---|
-| generate_lead | One confirmed form response | Inquiry accepted by receiver, not a qualified sale |
-| whatsapp_click | Delegated click on a wa.me link | Contact intent, not proof of a sent message |
-| phone_click | Delegated click on tel link | Call intent, not completed call |
-| consultation_request | Dedicated discovery CTA click | Request intent, not a calendar booking |
-| page_view | Initial load and pathname changes after opt-in | Sanitized origin/path, no query or referrer |
+| page_view | Route change / navigation after consent | Sanitized origin/path, page title, no query params or PII |
+| whatsapp_click | Click on any wa.me or WhatsApp link | WhatsApp contact intent with prefilled message |
+| phone_click | Delegated click on tel: link | Call intent |
+| consultation_request | Discovery CTA click (pre-submission) | Request intent |
+| generate_lead | Confirmed form response across all funnels | Overall lead KPI in GA4 |
+| contact_form_submission | Confirmed /contact form submission | Verified contact inquiry accepted by Google Apps Script |
+| consultation_booking_submission | Confirmed /book-consultation submission | Verified consultation request accepted by Google Apps Script |
+| project_estimator_submission | Confirmed /project-estimator submission | Verified project scope lead accepted by Google Apps Script |
+
+### DebugView Activation
+To test events in Google Analytics 4 DebugView in real time:
+1. Append `?debug_ga=true` to any URL (e.g. `https://aktech.tech/contact?debug_ga=true`).
+2. Open GA4 > **Admin** > **DebugView**.
+3. All `page_view`, `whatsapp_click`, and form submission events will stream live with `debug_mode: true`.
 
 One delegated click listener prevents per-button duplicate events. No name, email, phone, free text, WhatsApp message, company or full query string is sent in explicit analytics events. Form events include an allowlisted service value. The server receiver gets the originating landing path from the CTA; analytics conversions report the current page path. There is no calendar integration or booking-confirmed event. Verify GA Enhanced Measurement settings: disable automatic form interaction and history/pageview tracking because this application sends manual pageviews and lead events; audit outbound click settings before enabling collection. Do not install a second GA snippet through hosting or GTM.
 

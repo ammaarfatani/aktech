@@ -122,6 +122,7 @@ export default function ContactPage() {
       const result = await response.json();
       if (!response.ok || result.success !== true) throw new Error(result.error || "Delivery could not be confirmed.");
       trackConversion("generate_lead", formData.service);
+      trackConversion("contact_form_submission", formData.service);
       // Clear / reset form fields
       setFormData({
         country: "",

@@ -44,7 +44,12 @@ test("analytics respects consent and sends no query or form values",()=>{
   const analytics=load("src/lib/analytics.ts");analytics.trackConversion("generate_lead","Web Development");assert.equal(events.length,0);
   global.localStorage={getItem:()=>"granted"};analytics.trackConversion("generate_lead","Web Development");assert.equal(events.length,1);
   assert.deepEqual(events[0],["event","generate_lead",{page_location:"https://aktech.tech/contact",page_referrer:"",landing_path:"/contact",service:"Web Development"}]);
-  global.localStorage={getItem:()=>{throw new Error("blocked");}};analytics.trackConversion("whatsapp_click");assert.equal(events.length,1);
+  analytics.trackConversion("contact_form_submission","Web Development");assert.equal(events.length,2);
+  analytics.trackConversion("consultation_booking_submission","AI Agents");assert.equal(events.length,3);
+  analytics.trackConversion("project_estimator_submission","Mobile Apps");assert.equal(events.length,4);
+  global.window.location.search="?debug_ga=true";analytics.trackConversion("whatsapp_click");assert.equal(events.length,5);
+  assert.equal(events[4][2].debug_mode,true);
+  global.localStorage={getItem:()=>{throw new Error("blocked");}};analytics.trackConversion("whatsapp_click");assert.equal(events.length,5);
  } finally {global.window=previousWindow;global.localStorage=previousStorage;}
 });
 test("preview indexing protection never applies to production",async()=>{

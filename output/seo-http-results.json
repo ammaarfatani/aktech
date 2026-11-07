@@ -43,6 +43,69 @@
       "h1": 1
     },
     {
+      "path": "/our-process",
+      "status": 200,
+      "canonical": "https://aktech.tech/our-process",
+      "schemas": 3,
+      "h1": 1
+    },
+    {
+      "path": "/solutions",
+      "status": 200,
+      "canonical": "https://aktech.tech/solutions",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/careers",
+      "status": 200,
+      "canonical": "https://aktech.tech/careers",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/project-estimator",
+      "status": 200,
+      "canonical": "https://aktech.tech/project-estimator",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/book-consultation",
+      "status": 200,
+      "canonical": "https://aktech.tech/book-consultation",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/insights",
+      "status": 200,
+      "canonical": "https://aktech.tech/insights",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/faq",
+      "status": 200,
+      "canonical": "https://aktech.tech/faq",
+      "schemas": 5,
+      "h1": 1
+    },
+    {
+      "path": "/privacy",
+      "status": 200,
+      "canonical": "https://aktech.tech/privacy",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/terms",
+      "status": 200,
+      "canonical": "https://aktech.tech/terms",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
       "path": "/case-studies/zurane",
       "status": 200,
       "canonical": "https://aktech.tech/case-studies/zurane",
@@ -102,7 +165,7 @@
       "path": "/case-studies",
       "status": 200,
       "canonical": "https://aktech.tech/case-studies",
-      "schemas": 3,
+      "schemas": 4,
       "h1": 1
     },
     {
@@ -124,6 +187,160 @@
       "status": 200,
       "canonical": "https://aktech.tech/products/fitivo",
       "schemas": 3,
+      "h1": 1
+    },
+    {
+      "path": "/solutions/crm-sales-management",
+      "status": 200,
+      "canonical": "https://aktech.tech/solutions/crm-sales-management",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/solutions/erp-business-operations",
+      "status": 200,
+      "canonical": "https://aktech.tech/solutions/erp-business-operations",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/solutions/school-management-systems",
+      "status": 200,
+      "canonical": "https://aktech.tech/solutions/school-management-systems",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/solutions/restaurant-pos-management",
+      "status": 200,
+      "canonical": "https://aktech.tech/solutions/restaurant-pos-management",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/solutions/ecommerce-solutions",
+      "status": 200,
+      "canonical": "https://aktech.tech/solutions/ecommerce-solutions",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/solutions/saas-product-development",
+      "status": 200,
+      "canonical": "https://aktech.tech/solutions/saas-product-development",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/solutions/ai-agents-business-automation",
+      "status": 200,
+      "canonical": "https://aktech.tech/solutions/ai-agents-business-automation",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/solutions/analytics-business-dashboards",
+      "status": 200,
+      "canonical": "https://aktech.tech/solutions/analytics-business-dashboards",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/insights/ai-automation-small-businesses",
+      "status": 200,
+      "canonical": "https://aktech.tech/insights/ai-automation-small-businesses",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/insights/custom-software-vs-off-the-shelf",
+      "status": 200,
+      "canonical": "https://aktech.tech/insights/custom-software-vs-off-the-shelf",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/insights/why-businesses-need-professional-websites",
+      "status": 200,
+      "canonical": "https://aktech.tech/insights/why-businesses-need-professional-websites",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/insights/nextjs-for-modern-business-websites",
+      "status": 200,
+      "canonical": "https://aktech.tech/insights/nextjs-for-modern-business-websites",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/insights/crm-systems-improve-sales-operations",
+      "status": 200,
+      "canonical": "https://aktech.tech/insights/crm-systems-improve-sales-operations",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/insights/future-of-saas-growing-businesses",
+      "status": 200,
+      "canonical": "https://aktech.tech/insights/future-of-saas-growing-businesses",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/insights/choose-the-right-technology-stack",
+      "status": 200,
+      "canonical": "https://aktech.tech/insights/choose-the-right-technology-stack",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/insights/why-ui-ux-matters-for-business-growth",
+      "status": 200,
+      "canonical": "https://aktech.tech/insights/why-ui-ux-matters-for-business-growth",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/insights/technical-seo-modern-websites",
+      "status": 200,
+      "canonical": "https://aktech.tech/insights/technical-seo-modern-websites",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/insights/business-automation-reduces-manual-work",
+      "status": 200,
+      "canonical": "https://aktech.tech/insights/business-automation-reduces-manual-work",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/careers/cold-calling-executive",
+      "status": 200,
+      "canonical": "https://aktech.tech/careers/cold-calling-executive",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/careers/full-stack-software-developer",
+      "status": 200,
+      "canonical": "https://aktech.tech/careers/full-stack-software-developer",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/careers/motion-graphics-designer",
+      "status": 200,
+      "canonical": "https://aktech.tech/careers/motion-graphics-designer",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/careers/ui-ux-designer",
+      "status": 200,
+      "canonical": "https://aktech.tech/careers/ui-ux-designer",
+      "schemas": 4,
       "h1": 1
     },
     {
@@ -246,6 +463,6 @@
       "h1": 1
     }
   ],
-  "linksChecked": 36,
+  "linksChecked": 66,
   "broken": []
 }

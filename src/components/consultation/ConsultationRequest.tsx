@@ -86,6 +86,7 @@ export function ConsultationRequest() {
         inquiryType: "consultation",
       });
       trackConversion("generate_lead", form.topic);
+      trackConversion("consultation_booking_submission", form.topic);
       setSuccess(true);
     } catch (error) {
       setSubmitError(error instanceof Error ? error.message : "Something went wrong. Please try again or email hello@aktech.tech.");
