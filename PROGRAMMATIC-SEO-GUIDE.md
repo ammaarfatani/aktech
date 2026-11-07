@@ -37,4 +37,12 @@ Eight new pages:
 - /industries/restaurants/business-systems
 - /solutions/lead-management-automation
 
-Additional hub: /locations. Unpublished review records: /locations/pakistan/karachi/website-development and /locations/uae/web-development.
+Additional hub: /locations. Unpublished review records, rewritten 8 November 2026 so they are not city-swapped copies, and still not indexable:
+
+- /locations/pakistan/karachi/website-development
+- /locations/pakistan/lahore/software-development
+- /locations/uae/web-development
+- /locations/uk/web-development
+- /locations/usa/custom-software-development
+
+Do not publish these until a named reviewer sets approvedBy. Canada and Australia are not separate pages; cover them from the locations hub until a distinct page is justified.

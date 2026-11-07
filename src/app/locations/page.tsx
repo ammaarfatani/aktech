@@ -11,6 +11,14 @@ export const metadata: Metadata = {
   alternates: { canonical: `${siteConfig.url}/locations` },
 };
 
+const MARKETS = [
+  { title: "Karachi", body: "Business websites for local teams. Digital collaboration. No published street address." },
+  { title: "Lahore", body: "Custom software discussed remotely. No Lahore office and no promised site visits." },
+  { title: "UAE", body: "Remote delivery. No Emirates office. Arabic, English and Gulf review hours are scoped first." },
+  { title: "United Kingdom", body: "Remote websites for UK companies. No London office. UK-time reviews are agreed, not assumed." },
+  { title: "United States", body: "Remote custom software. No US office. Eastern-to-Pacific overlap is planned per project." },
+];
+
 const CAPABILITIES = [
   { title: "Worldwide remote collaboration", body: "Discovery, design reviews, development updates and handover happen through shared tools and video — wherever your team sits." },
   { title: "International project inquiries", body: "Country, timezone and preferred meeting windows are part of the brief. Inquiries are not limited to one market." },
@@ -61,6 +69,21 @@ export default function LocationsPage() {
               <article key={item.title} className="rounded-[1.5rem] border border-black/6 bg-white p-6">
                 <h3 className="font-heading text-lg font-extrabold">{item.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#4B5563]">{item.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 py-16 sm:px-8 lg:px-12">
+        <div className="mx-auto max-w-[1100px]">
+          <h2 className="font-heading text-3xl font-extrabold tracking-tight">Markets we can discuss</h2>
+          <p className="mt-3 max-w-2xl text-[#4B5563]">These are remote-collaboration contexts, not offices. Matching city and country pages stay unpublished until each one is reviewed and approved.</p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {MARKETS.map((item) => (
+              <article key={item.title} className="rounded-2xl border border-black/8 bg-[#F8F8F6] p-5">
+                <h3 className="font-heading text-lg font-extrabold">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-[#4B5563]">{item.body}</p>
               </article>
             ))}
           </div>

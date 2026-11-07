@@ -1,4 +1,13 @@
-# SEO audit — 5 November 2026
+# SEO audit — rechecked 8 November 2026
+
+## Recheck
+Next.js 16.2.6 App Router is confirmed. Programmatic registry, sitemap, robots, www-to-apex redirect, draft gating and lead validation were already in the repository. This pass did not redesign the site and did not deploy.
+
+Location records that shared the same benefits and FAQs were rewritten into five distinct review drafts (Karachi, Lahore, UAE, UK, USA). They remain `status: review` with an empty `approvedBy`, so they 404, stay out of the sitemap, and are not linked as live URLs. The /locations hub now names those markets as remote-collaboration contexts, not offices.
+
+No Search Console, Analytics property, keyword-volume tool, or Google Business Profile was accessed. No ranking or traffic numbers are claimed. Core Web Vitals were not measured in this pass.
+
+## Original audit — 5 November 2026
 
 ## Baseline and rollback
 Clean working tree on main at 04bf8a1d370aaa02e8b8c156724e938f54a5bad3. Work isolated on codex/seo-lead-generation. Review the diff before committing; roll back by reverting the implementation commit or redeploying the baseline. Do not reset or discard subsequent work. No production changes authorized or performed.

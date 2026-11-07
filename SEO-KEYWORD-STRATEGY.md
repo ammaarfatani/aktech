@@ -27,9 +27,9 @@ A public search sample for Karachi web development / CRM / AI automation surface
 For every row record tool/source, date, country, device, volume range, difficulty method, observed SERP competitors, qualified lead count, sales value and confidence. Leave unavailable measurements blank. Use Search Console query/page exports after verification; optionally validate with Keyword Planner through an owner account. Do not sum close keyword variants as independent demand.
 
 ## Pakistan and international sequence
-Karachi is the actual operating location. Lahore, Islamabad, Rawalpindi and Hyderabad are candidates for remote collaboration content, not additional offices. The Karachi draft stays in review until it adds independently useful detail beyond the main web-development page. Consolidate if the distinction remains weak.
+Karachi is the actual operating context for client work. Lahore is a remote-software draft, not an office. Islamabad, Rawalpindi and Hyderabad stay on the hub until a page can say something the Karachi or Lahore draft does not.
 
-UAE: validate remote delivery, content-language ownership, RTL scope and payment/fulfillment constraints with actual project requirements. UK: validate handover, approval ownership and meeting overlap. USA: determine the buyer's time zone, procurement process and integration ownership. Canada: clarify content-language needs and stakeholder availability. Australia: plan review windows and asynchronous approvals. Country mentions do not establish experience, local teams or regulatory expertise. One truthful /locations hub currently serves all these markets; no hreflang is appropriate for this single English-language site.
+Five location records were rewritten on 8 November 2026 and left in review: Karachi websites, Lahore software, UAE web, UK web, and USA custom software. They are not canonical targets until a named reviewer sets approvedBy and status to published. Canada and Australia stay on /locations. No hreflang: this is one English site. Country mentions do not establish offices, local teams or regulatory expertise.
 
 ## Content briefs (review only; no articles published)
 | Topic | Reader decision | Evidence required | Link target |

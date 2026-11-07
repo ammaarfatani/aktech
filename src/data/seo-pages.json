@@ -428,22 +428,23 @@
     "kind": "location",
     "status": "review",
     "approvedBy": "",
-    "updated": "2026-11-05",
-    "primaryKeyword": "website development in karachi",
+    "updated": "2026-11-08",
+    "primaryKeyword": "website development company in Karachi",
     "secondaryKeywords": [
-      "custom e-commerce development"
+      "business website developers Karachi",
+      "custom website development services"
     ],
     "intent": "commercial",
-    "title": "Website Development in Karachi",
-    "description": "Website development for businesses in Karachi, delivered through remote collaboration. Discuss catalog, inquiry channels and content — this page does not promise a walk-in office.",
+    "title": "Website Development Company in Karachi",
+    "description": "AKTECH builds business websites with teams in Karachi. Discovery, reviews and handover are digital. No street address or walk-in studio is published.",
     "canonical": "https://aktech.tech/locations/pakistan/karachi/website-development",
-    "h1": "Website Development in Karachi",
-    "introduction": "AKTECH collaborates remotely with businesses in Karachi. Discuss the people who maintain your catalog, the inquiry channels your customers use and whether content needs more than one language. Meeting format and availability must be agreed; this page does not promise a walk-in office.",
-    "context": "This is a local landing for Karachi businesses, not an additional office. AKTECH delivers website work through digital collaboration: discovery, reviews and handover online. Agree timezone overlap, content languages and decision owners before build starts.",
+    "h1": "Website development for Karachi businesses",
+    "introduction": "Karachi businesses usually need a site that can take inquiries in English or Urdu, show services clearly on a phone, and hand leads to someone who will actually reply. AKTECH plans that workflow before choosing WordPress, Shopify or a custom build. This page describes how a Karachi team can start a project. It is not a storefront address.",
+    "context": "Meetings are scheduled in Pakistan time. Share who approves copy, who answers WhatsApp inquiries, and whether prices, delivery areas or branch details must appear on the site. A street address is not published, and this page does not offer walk-in meetings.",
     "benefits": [
-      "Map product attributes, variants and filtering so shoppers can find relevant items.",
-      "Define payment success, failure and cancelled-checkout flows before integration.",
-      "Plan order status, inventory updates and administrative access alongside the storefront."
+      "Plan inquiry, WhatsApp and call paths before the visual design is locked.",
+      "Decide early whether the site needs Urdu, English or both, and who maintains that copy.",
+      "Separate a brochure site from a catalog or store so the platform matches the operation."
     ],
     "stack": [
       "React",
@@ -460,16 +461,17 @@
     ],
     "faqs": [
       {
-        "question": "How do we choose between custom development and a hosted store?",
-        "answer": "Compare catalog complexity, integrations, ownership needs and ongoing maintenance. We scope the workflows first; custom development is not automatically the best choice."
+        "question": "Can we meet in person in Karachi?",
+        "answer": "Client work on this page is scoped as digital collaboration. A street address is not published, and a meeting is only arranged after both sides agree a time. Do not assume a walk-in studio."
       },
       {
-        "question": "How can we request a project estimate?",
-        "answer": "Share your objectives, existing tools, country and a short project description. AKTECH will use that context to discuss scope and the next discovery steps; price and timing depend on the agreed requirements."
+        "question": "Do you publish website prices for Karachi projects?",
+        "answer": "No public rate card is published. Share the pages, languages, inquiry channels and any store or booking workflow so a tailored estimate can be discussed."
       }
     ],
     "related": [
-      "/services/web-development"
+      "/services/web-development",
+      "/locations"
     ],
     "cta": "Get a Project Quote",
     "service": "Web Development"
@@ -479,22 +481,23 @@
     "kind": "location",
     "status": "review",
     "approvedBy": "",
-    "updated": "2026-11-05",
-    "primaryKeyword": "remote web development for uae businesses",
+    "updated": "2026-11-08",
+    "primaryKeyword": "remote web development for UAE businesses",
     "secondaryKeywords": [
-      "custom e-commerce development"
+      "website development for Dubai businesses",
+      "remote software collaboration UAE"
     ],
     "intent": "commercial",
     "title": "Remote Web Development for UAE Businesses",
-    "description": "Remote web development for UAE businesses. AKTECH does not operate a UAE office. Scope English and Arabic content, RTL needs and local payment integrations.",
+    "description": "AKTECH collaborates remotely with UAE teams. There is no UAE office. Scope bilingual content, local payments and Gulf working hours before build.",
     "canonical": "https://aktech.tech/locations/uae/web-development",
-    "h1": "Remote Web Development for UAE Businesses",
-    "introduction": "AKTECH collaborates remotely with UAE businesses and does not operate a UAE office. Scope English and Arabic content ownership, right-to-left interface requirements if needed, and who will validate local payment and delivery integrations. Agree meeting windows and milestone approvals before work begins.",
-    "context": "International delivery is digital: discovery, design reviews and releases happen online. Share timezone, preferred meeting hours and the people who approve milestones. This page does not imply a local team or walk-in studio in the UAE.",
+    "h1": "Remote web development for UAE businesses",
+    "introduction": "A UAE company can work with AKTECH without a local office in Dubai, Abu Dhabi or anywhere else in the country. The useful questions are language, payments and review hours: who owns English and Arabic copy, whether the interface must support right-to-left layout, and which payment or delivery provider your team will validate.",
+    "context": "The UAE uses Gulf Standard Time (UTC+4). Project reviews are scheduled against Pakistan Time (UTC+5), a one-hour difference. Agree that window in writing. AKTECH does not provide UAE company formation, VAT advice or an on-the-ground team.",
     "benefits": [
-      "Map product attributes, variants and filtering so shoppers can find relevant items.",
-      "Define payment success, failure and cancelled-checkout flows before integration.",
-      "Plan order status, inventory updates and administrative access alongside the storefront."
+      "Name the people who approve Arabic and English content before design starts.",
+      "List payment, delivery and WhatsApp flows your own team must validate locally.",
+      "Set a recurring review hour in Gulf Standard Time instead of assuming same-day overlap."
     ],
     "stack": [
       "React",
@@ -511,17 +514,153 @@
     ],
     "faqs": [
       {
-        "question": "How do we choose between custom development and a hosted store?",
-        "answer": "Compare catalog complexity, integrations, ownership needs and ongoing maintenance. We scope the workflows first; custom development is not automatically the best choice."
+        "question": "Do you have an office in Dubai or elsewhere in the UAE?",
+        "answer": "No. UAE work is remote. AKTECH does not list a UAE office, local staff or a trade licence in the Emirates."
       },
       {
-        "question": "How can we request a project estimate?",
-        "answer": "Share your objectives, existing tools, country and a short project description. AKTECH will use that context to discuss scope and the next discovery steps; price and timing depend on the agreed requirements."
+        "question": "Who checks Arabic content and local payment flows?",
+        "answer": "Your team must own Arabic copy and confirm any payment, delivery or compliance step that depends on a UAE provider. AKTECH can build the interface once those decisions are written down."
       }
     ],
     "related": [
-      "/services/web-development"
+      "/services/web-development",
+      "/locations"
     ],
+    "cta": "Request a Free Consultation",
+    "service": "Web Development"
+  },
+  {
+    "path": "/locations/pakistan/lahore/software-development",
+    "kind": "location",
+    "status": "review",
+    "approvedBy": "",
+    "updated": "2026-11-08",
+    "primaryKeyword": "software development company for Lahore businesses",
+    "secondaryKeywords": [
+      "custom software development Pakistan",
+      "remote software team Lahore"
+    ],
+    "intent": "commercial",
+    "title": "Software Development for Lahore Businesses",
+    "description": "Custom software for Lahore teams, delivered remotely. AKTECH does not operate a Lahore office. Scope users, data and approvals before estimating.",
+    "canonical": "https://aktech.tech/locations/pakistan/lahore/software-development",
+    "h1": "Custom software for Lahore businesses",
+    "introduction": "Lahore companies looking for software usually already have the work in spreadsheets, WhatsApp groups or a tool that no longer matches the process. AKTECH can design and build that system remotely. There is no Lahore office and no claim of on-site staff in Punjab.",
+    "context": "Use this page when the need is an application, internal tool or operations system — not a simple brochure site, which belongs with website development. Name the people in Lahore who will test the software and accept each milestone. Reviews are held online in Pakistan Time.",
+    "benefits": [
+      "Describe the current spreadsheet or WhatsApp process before choosing a database or interface.",
+      "Assign one Lahore-side decision maker for scope changes so remote reviews do not stall.",
+      "Treat hosting, access and training as part of delivery, not as an afterthought."
+    ],
+    "stack": ["TypeScript", "Next.js", "Node.js", "PostgreSQL"],
+    "portfolio": [],
+    "process": [
+      "Map the Lahore team's actual users, records and exceptions.",
+      "Agree a written scope and acceptance checks before build.",
+      "Review working software on video, not slide decks.",
+      "Hand over access notes and a support boundary."
+    ],
+    "faqs": [
+      {
+        "question": "Will someone travel to Lahore?",
+        "answer": "Not as a standard offer. Collaboration is remote. Any visit would have to be agreed separately and is not promised on this page."
+      },
+      {
+        "question": "Is this the same as the Karachi website page?",
+        "answer": "No. The Karachi page is about business websites. This page is about custom software for teams in Lahore, delivered remotely."
+      }
+    ],
+    "related": ["/services/custom-software-development", "/locations"],
+    "cta": "Get a Project Quote",
+    "service": "Web Development"
+  },
+  {
+    "path": "/locations/uk/web-development",
+    "kind": "location",
+    "status": "review",
+    "approvedBy": "",
+    "updated": "2026-11-08",
+    "primaryKeyword": "remote website development for UK businesses",
+    "secondaryKeywords": [
+      "website development agency for London companies",
+      "remote web development United Kingdom"
+    ],
+    "intent": "commercial",
+    "title": "Remote Website Development for UK Businesses",
+    "description": "Remote website development for UK companies. AKTECH has no UK office. Agree London-time reviews, content ownership and privacy responsibilities first.",
+    "canonical": "https://aktech.tech/locations/uk/web-development",
+    "h1": "Remote website development for UK businesses",
+    "introduction": "UK companies can commission a website from AKTECH without a London studio, a UK limited company or a local account team. The practical constraint is the working day: UK morning overlaps late afternoon in Pakistan, so reviews need a fixed slot rather than an open-ended same-day promise.",
+    "context": "Say whether the site must show GBP pricing, UK English spelling and a privacy notice your own counsel has approved. AKTECH does not give UK legal, GDPR or Companies House advice, and does not claim UK clients, rankings or a registered UK office.",
+    "benefits": [
+      "Fix one recurring review hour that works in UK time and Pakistan time.",
+      "Confirm who writes and legally approves privacy, cookie and terms copy.",
+      "State whether the build is a marketing site, a booking flow or a store before choosing a platform."
+    ],
+    "stack": ["Next.js", "WordPress", "Shopify"],
+    "portfolio": [],
+    "process": [
+      "Share the UK audience, existing site and the job the new site must do.",
+      "Agree content ownership, review hours and acceptance criteria.",
+      "Build in increments the UK stakeholder can review online.",
+      "Hand over admin access and a written support boundary."
+    ],
+    "faqs": [
+      {
+        "question": "Do you have a London office?",
+        "answer": "No. UK projects are remote. This page does not describe a UK establishment or local staff."
+      },
+      {
+        "question": "Can you guarantee UK search rankings?",
+        "answer": "No. Technical SEO can be scoped separately. Rankings depend on competition, content and time, and are not promised here."
+      }
+    ],
+    "related": ["/services/web-development", "/locations"],
+    "cta": "Request a Free Consultation",
+    "service": "Web Development"
+  },
+  {
+    "path": "/locations/usa/custom-software-development",
+    "kind": "location",
+    "status": "review",
+    "approvedBy": "",
+    "updated": "2026-11-08",
+    "primaryKeyword": "remote custom software development for US businesses",
+    "secondaryKeywords": [
+      "custom software development company",
+      "remote engineering for US teams"
+    ],
+    "intent": "commercial",
+    "title": "Remote Custom Software Development for US Businesses",
+    "description": "Custom software for US teams, delivered remotely. AKTECH has no US office. Time zones from Eastern to Pacific must be agreed before kickoff.",
+    "canonical": "https://aktech.tech/locations/usa/custom-software-development",
+    "h1": "Remote custom software for US businesses",
+    "introduction": "US companies hire AKTECH for software when the scope is clear enough to review across time zones. There is no office in New York, Texas, California or any other state, and no claim of a US entity. Eastern Time morning is evening in Pakistan; Pacific Time overlap is shorter, so the review calendar has to be explicit.",
+    "context": "Tell us the product job, the systems it must talk to, and who can accept a milestone. Currency, contracts and tax treatment are agreed in writing per project. This page does not quote hourly rates or promise US business-hour coverage.",
+    "benefits": [
+      "Name the US time zone of the decision maker before the first working session.",
+      "Write acceptance checks that can be reviewed asynchronously when live overlap is short.",
+      "List integrations and data the US team must provide; do not assume access to private systems."
+    ],
+    "stack": ["TypeScript", "Next.js", "Node.js", "PostgreSQL"],
+    "portfolio": [],
+    "process": [
+      "Confirm the US-side owner, time zone and existing tools.",
+      "Write scope and acceptance criteria before estimating.",
+      "Review recorded increments plus a short live overlap.",
+      "Hand over the repository, access and support terms that were agreed."
+    ],
+    "faqs": [
+      {
+        "question": "Do you have engineers in the United States?",
+        "answer": "This page does not claim a US team or office. Delivery is remote. Say which US time zone you need for reviews."
+      },
+      {
+        "question": "Will you sign a US contract and quote in dollars?",
+        "answer": "Commercial terms, currency and contract form are agreed per project. They are not preset on this page."
+      }
+    ],
+    "related": ["/services/custom-software-development", "/locations"],
     "cta": "Get a Project Quote",
     "service": "Web Development"
   }
