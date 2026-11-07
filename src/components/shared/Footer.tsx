@@ -130,6 +130,7 @@ export function Footer() {
             
             {/* LEFT: BRAND COLUMN */}
             <div className="lg:col-span-5 flex flex-col items-start pr-0 lg:pr-8 min-w-0 w-full">
+              <Link href="/locations" className="mb-5 inline-block text-sm underline">Location &amp; remote collaboration</Link>
               <Link href="/" className="flex items-center gap-3.5 mb-6 group min-w-0">
                 <div className="relative w-10 h-10 sm:w-11 sm:h-11 shrink-0">
                   <Image
@@ -184,12 +185,12 @@ export function Footer() {
               </h4>
               <ul className="grid grid-cols-2 sm:grid-cols-2 gap-x-4 gap-y-2.5 text-xs sm:text-sm">
                 {[
-                  { label: "Web Development", href: "/services" },
-                  { label: "Mobile Apps", href: "/services" },
-                  { label: "AI Agents & Automation", href: "/services" },
-                  { label: "CRM & Business Systems", href: "/services" },
-                  { label: "UI/UX Design", href: "/services" },
-                  { label: "SEO & Digital Growth", href: "/services" },
+                  { label: "Web Development", href: "/services/web-development" },
+                  { label: "Mobile Apps", href: "/services/mobile-app-development" },
+                  { label: "AI Agents & Automation", href: "/services/ai-agent" },
+                  { label: "CRM & Business Systems", href: "/services/crm-business-systems" },
+                  { label: "UI/UX Design", href: "/services/uiux-design" },
+                  { label: "SEO & Digital Growth", href: "/services/seo" },
                 ].map((service, idx) => (
                   <li key={idx} className="min-w-0">
                     <Link

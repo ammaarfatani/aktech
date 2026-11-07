@@ -11,7 +11,7 @@ import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { AIAssistant } from "@/components/shared/AIAssistant";
 import { OrganizationJsonLd, WebSiteJsonLd, ProfessionalServiceJsonLd } from "@/components/shared/JsonLd";
 import { Analytics } from "@/components/shared/Analytics";
-import { GlobalPageLoader } from "@/components/shared/GlobalPageLoader";
+import { ConversionTracking } from "@/components/shared/ConversionTracking";
 
 export const viewport: Viewport = {
   themeColor: "#181818",
@@ -21,6 +21,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  verification: { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION },
   metadataBase: new URL(siteConfig.url),
   title: {
     default: "AKTECH Digital Solutions | Web, Software & AI Development Agency",
@@ -56,7 +57,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     images: [
       {
-        url: `${siteConfig.url}/og-image.jpg`,
+        url: `${siteConfig.url}/opengraph-image`,
         width: 1200,
         height: 630,
         alt: "AKTECH Digital Solutions — Enterprise Web & AI Engineering",
@@ -67,7 +68,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AKTECH Digital Solutions | Web, Software & AI Development Agency",
     description: siteConfig.description,
-    images: [`${siteConfig.url}/og-image.jpg`],
+    images: [`${siteConfig.url}/opengraph-image`],
   },
   icons: {
     icon: "/favicon.ico",
@@ -86,7 +87,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth bg-[#181818]">
       <head>
-        <Analytics />
         <OrganizationJsonLd />
         <WebSiteJsonLd />
         <ProfessionalServiceJsonLd />
@@ -98,7 +98,8 @@ export default function RootLayout({
           fontHeading.variable
         )}
       >
-        <GlobalPageLoader />
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:p-4">Skip to content</a>
+        <ConversionTracking />
         <SmoothScrollProvider>
           <CustomCursor />
           <Navbar />
@@ -106,6 +107,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <Analytics />
         </SmoothScrollProvider>
         <WhatsAppButton />
         <AIAssistant />

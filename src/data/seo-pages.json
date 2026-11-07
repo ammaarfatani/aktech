@@ -1,0 +1,528 @@
+[
+  {
+    "path": "/services/ecommerce-development",
+    "kind": "service",
+    "status": "published",
+    "approvedBy": "Implementation review: existing capability and portfolio scope",
+    "updated": "2026-11-05",
+    "primaryKeyword": "custom ecommerce development services",
+    "secondaryKeywords": [
+      "custom e-commerce development"
+    ],
+    "intent": "commercial",
+    "title": "Custom E-commerce Development",
+    "description": "A growing catalog needs more than a product grid. AKTECH develops shopping experiences that connect discovery, product selection, checkout and order.",
+    "canonical": "https://aktech.tech/services/ecommerce-development",
+    "h1": "Build a store around your catalog and order workflow",
+    "introduction": "A growing catalog needs more than a product grid. AKTECH develops shopping experiences that connect discovery, product selection, checkout and order operations. Start by defining the buying journey and the operational handoffs behind each sale.",
+    "context": "Product variants, stock visibility and checkout exceptions should be agreed before choosing a platform. A custom build is most useful when standard storefront features cannot support an important workflow; a simpler platform can be a better fit for a straightforward catalog.",
+    "benefits": [
+      "Map product attributes, variants and filtering so shoppers can find relevant items.",
+      "Define payment success, failure and cancelled-checkout flows before integration.",
+      "Plan order status, inventory updates and administrative access alongside the storefront."
+    ],
+    "stack": [
+      "React",
+      "Next.js",
+      "Node.js",
+      "PostgreSQL"
+    ],
+    "portfolio": [
+      "custom-ecommerce",
+      "lyba"
+    ],
+    "process": [
+      "Discovery: document current tools, users, constraints and the workflow to improve.",
+      "Scope: agree deliverables, dependencies and acceptance criteria before estimating delivery.",
+      "Build and review: inspect working increments using realistic content and exception scenarios.",
+      "Handover: verify the agreed scope, document administration and discuss ongoing support."
+    ],
+    "faqs": [
+      {
+        "question": "How do we choose between custom development and a hosted store?",
+        "answer": "Compare catalog complexity, integrations, ownership needs and ongoing maintenance. We scope the workflows first; custom development is not automatically the best choice."
+      },
+      {
+        "question": "How can we request a project estimate?",
+        "answer": "Share your objectives, existing tools, country and a short project description. AKTECH will use that context to discuss scope and the next discovery steps; price and timing depend on the agreed requirements."
+      }
+    ],
+    "related": [
+      "/services/web-development",
+      "/case-studies"
+    ],
+    "cta": "Get a Project Quote",
+    "service": "Web Development"
+  },
+  {
+    "path": "/services/custom-software-development",
+    "kind": "service",
+    "status": "published",
+    "approvedBy": "Implementation review: existing capability and portfolio scope",
+    "updated": "2026-11-05",
+    "primaryKeyword": "custom software development company",
+    "secondaryKeywords": [
+      "custom software development"
+    ],
+    "intent": "commercial",
+    "title": "Custom Software Development",
+    "description": "When spreadsheets and disconnected applications make routine work difficult, the first step is to map the decisions, records and people involved. AKTECH.",
+    "canonical": "https://aktech.tech/services/custom-software-development",
+    "h1": "Software shaped around the way your business works",
+    "introduction": "When spreadsheets and disconnected applications make routine work difficult, the first step is to map the decisions, records and people involved. AKTECH helps turn that workflow into a scoped web application with clear roles and acceptance criteria.",
+    "context": "Avoid rebuilding every business process at once. Start with a bounded workflow such as order handling or internal approvals, identify the source of truth for each record, and decide how the application will coexist with existing tools.",
+    "benefits": [
+      "Model permissions and record ownership before designing dashboards.",
+      "Identify imports, exports and integration boundaries to avoid duplicate data entry.",
+      "Agree acceptance scenarios and a staged migration plan before replacing a live workflow."
+    ],
+    "stack": [
+      "React",
+      "Node.js",
+      "PostgreSQL"
+    ],
+    "portfolio": [
+      "restro-erp"
+    ],
+    "process": [
+      "Discovery: document current tools, users, constraints and the workflow to improve.",
+      "Scope: agree deliverables, dependencies and acceptance criteria before estimating delivery.",
+      "Build and review: inspect working increments using realistic content and exception scenarios.",
+      "Handover: verify the agreed scope, document administration and discuss ongoing support."
+    ],
+    "faqs": [
+      {
+        "question": "Should we replace our current tools all at once?",
+        "answer": "Usually a staged approach reduces disruption. Map dependencies and test a small workflow first; decide what to retain, integrate or replace during discovery."
+      },
+      {
+        "question": "How can we request a project estimate?",
+        "answer": "Share your objectives, existing tools, country and a short project description. AKTECH will use that context to discuss scope and the next discovery steps; price and timing depend on the agreed requirements."
+      }
+    ],
+    "related": [
+      "/services/erp-systems",
+      "/case-studies"
+    ],
+    "cta": "Get a Project Quote",
+    "service": "CRM & Business Systems"
+  },
+  {
+    "path": "/technologies/nextjs-development",
+    "kind": "technology",
+    "status": "published",
+    "approvedBy": "Implementation review: existing capability and portfolio scope",
+    "updated": "2026-11-05",
+    "primaryKeyword": "Next.js development agency",
+    "secondaryKeywords": [
+      "next.js development services"
+    ],
+    "intent": "commercial",
+    "title": "Next.js Development Services",
+    "description": "AKTECH uses Next.js for websites and application interfaces where navigation, content delivery and interactive features need to work together. We identify.",
+    "canonical": "https://aktech.tech/technologies/nextjs-development",
+    "h1": "Next.js websites with a clear content and application boundary",
+    "introduction": "AKTECH uses Next.js for websites and application interfaces where navigation, content delivery and interactive features need to work together. We identify which screens can be rendered ahead of time and which depend on live business data.",
+    "context": "A school website and an authenticated operations dashboard have different rendering needs. Public content should remain discoverable and stable while private data stays behind authorization. That distinction informs routing, caching and deployment decisions.",
+    "benefits": [
+      "Separate public content from authenticated features and sensitive records.",
+      "Define metadata, redirects and content ownership alongside route design.",
+      "Review image sizes, client JavaScript and loading behavior on representative mobile devices."
+    ],
+    "stack": [
+      "Next.js",
+      "React",
+      "TypeScript"
+    ],
+    "portfolio": [
+      "international-school"
+    ],
+    "process": [
+      "Discovery: document current tools, users, constraints and the workflow to improve.",
+      "Scope: agree deliverables, dependencies and acceptance criteria before estimating delivery.",
+      "Build and review: inspect working increments using realistic content and exception scenarios.",
+      "Handover: verify the agreed scope, document administration and discuss ongoing support."
+    ],
+    "faqs": [
+      {
+        "question": "Can Next.js support an existing website migration?",
+        "answer": "Yes, after mapping URLs, content, integrations and hosting requirements. Preserve valuable routes and plan permanent redirects only where a URL change is necessary."
+      },
+      {
+        "question": "How can we request a project estimate?",
+        "answer": "Share your objectives, existing tools, country and a short project description. AKTECH will use that context to discuss scope and the next discovery steps; price and timing depend on the agreed requirements."
+      }
+    ],
+    "related": [
+      "/services/web-development",
+      "/case-studies"
+    ],
+    "cta": "Get a Project Quote",
+    "service": "Web Development"
+  },
+  {
+    "path": "/technologies/react-development",
+    "kind": "technology",
+    "status": "published",
+    "approvedBy": "Implementation review: existing capability and portfolio scope",
+    "updated": "2026-11-05",
+    "primaryKeyword": "React.js development company",
+    "secondaryKeywords": [
+      "react application development"
+    ],
+    "intent": "commercial",
+    "title": "React Application Development",
+    "description": "Interactive product catalogs and operational interfaces need predictable state, clear feedback and usable navigation. AKTECH develops React interfaces.",
+    "canonical": "https://aktech.tech/technologies/react-development",
+    "h1": "React interfaces for complex user workflows",
+    "introduction": "Interactive product catalogs and operational interfaces need predictable state, clear feedback and usable navigation. AKTECH develops React interfaces around the actions users perform, from filtering records to completing multistep tasks.",
+    "context": "Choose interaction patterns after identifying loading, empty, validation and failure states. An interface should help people recover from an error without losing their work; visual polish alone does not solve that requirement.",
+    "benefits": [
+      "Define component boundaries around repeated user tasks.",
+      "Plan API contracts, authorization behavior and loading states together.",
+      "Test keyboard navigation and narrow-screen layouts for high-value workflows."
+    ],
+    "stack": [
+      "React",
+      "TypeScript",
+      "Node.js"
+    ],
+    "portfolio": [
+      "custom-ecommerce"
+    ],
+    "process": [
+      "Discovery: document current tools, users, constraints and the workflow to improve.",
+      "Scope: agree deliverables, dependencies and acceptance criteria before estimating delivery.",
+      "Build and review: inspect working increments using realistic content and exception scenarios.",
+      "Handover: verify the agreed scope, document administration and discuss ongoing support."
+    ],
+    "faqs": [
+      {
+        "question": "Do we need to rebuild our backend to use React?",
+        "answer": "Not necessarily. An existing backend can remain if it offers suitable APIs, authorization and performance. We review those contracts before proposing a frontend scope."
+      },
+      {
+        "question": "How can we request a project estimate?",
+        "answer": "Share your objectives, existing tools, country and a short project description. AKTECH will use that context to discuss scope and the next discovery steps; price and timing depend on the agreed requirements."
+      }
+    ],
+    "related": [
+      "/services/uiux-design",
+      "/case-studies"
+    ],
+    "cta": "Get a Project Quote",
+    "service": "Web Development"
+  },
+  {
+    "path": "/industries/education/website-development",
+    "kind": "industry",
+    "status": "published",
+    "approvedBy": "Implementation review: existing capability and portfolio scope",
+    "updated": "2026-11-05",
+    "primaryKeyword": "school website development services",
+    "secondaryKeywords": [
+      "school website development"
+    ],
+    "intent": "commercial",
+    "title": "School Website Development",
+    "description": "Parents need clear information about admissions, programs and how to contact a school. AKTECH can structure a school website around those questions, with.",
+    "canonical": "https://aktech.tech/industries/education/website-development",
+    "h1": "Make school information easier for families to find",
+    "introduction": "Parents need clear information about admissions, programs and how to contact a school. AKTECH can structure a school website around those questions, with content owners and update workflows agreed before implementation.",
+    "context": "An admissions inquiry is different from a student record. Public forms should collect only what staff need to respond, while confidential student information belongs in an appropriately secured system. Website planning should distinguish the two.",
+    "benefits": [
+      "Organize programs, admissions requirements and inquiry routes around family needs.",
+      "Assign ownership for term dates, announcements and policy updates.",
+      "Design accessible mobile pages and clear inquiry confirmation states."
+    ],
+    "stack": [
+      "Next.js",
+      "React"
+    ],
+    "portfolio": [
+      "international-school"
+    ],
+    "process": [
+      "Discovery: document current tools, users, constraints and the workflow to improve.",
+      "Scope: agree deliverables, dependencies and acceptance criteria before estimating delivery.",
+      "Build and review: inspect working increments using realistic content and exception scenarios.",
+      "Handover: verify the agreed scope, document administration and discuss ongoing support."
+    ],
+    "faqs": [
+      {
+        "question": "Can a website project include a school management system?",
+        "answer": "These are separate scopes. Start with public information and admissions inquiries, then assess authenticated administration, permissions and migration as a dedicated software project."
+      },
+      {
+        "question": "How can we request a project estimate?",
+        "answer": "Share your objectives, existing tools, country and a short project description. AKTECH will use that context to discuss scope and the next discovery steps; price and timing depend on the agreed requirements."
+      }
+    ],
+    "related": [
+      "/services/web-development",
+      "/case-studies"
+    ],
+    "cta": "Get a Project Quote",
+    "service": "Web Development"
+  },
+  {
+    "path": "/industries/retail/ecommerce-development",
+    "kind": "industry",
+    "status": "published",
+    "approvedBy": "Implementation review: existing capability and portfolio scope",
+    "updated": "2026-11-05",
+    "primaryKeyword": "retail ecommerce development",
+    "secondaryKeywords": [
+      "retail e-commerce development"
+    ],
+    "intent": "commercial",
+    "title": "Retail E-commerce Development",
+    "description": "Retail websites must communicate products clearly while supporting stock, variants and fulfillment workflows. AKTECH helps define how a shopper moves from.",
+    "canonical": "https://aktech.tech/industries/retail/ecommerce-development",
+    "h1": "Connect the retail browsing experience to order operations",
+    "introduction": "Retail websites must communicate products clearly while supporting stock, variants and fulfillment workflows. AKTECH helps define how a shopper moves from a collection to the right product and how staff handle the resulting order.",
+    "context": "Fashion catalogs often depend on sizes, colors and campaign imagery. Those requirements affect product data, filters, image preparation and out-of-stock behavior. Resolve these details before building a generic catalog structure.",
+    "benefits": [
+      "Plan variant naming, availability and filtering using representative product data.",
+      "Make delivery and return information discoverable before checkout.",
+      "Define catalog administration and order handoffs so staff can operate the store."
+    ],
+    "stack": [
+      "React",
+      "Next.js",
+      "Node.js"
+    ],
+    "portfolio": [
+      "lyba",
+      "zurane"
+    ],
+    "process": [
+      "Discovery: document current tools, users, constraints and the workflow to improve.",
+      "Scope: agree deliverables, dependencies and acceptance criteria before estimating delivery.",
+      "Build and review: inspect working increments using realistic content and exception scenarios.",
+      "Handover: verify the agreed scope, document administration and discuss ongoing support."
+    ],
+    "faqs": [
+      {
+        "question": "What should we prepare before an e-commerce project?",
+        "answer": "Bring sample products with variants, images, fulfillment rules and payment requirements. These reveal operational constraints early and help produce a realistic scope."
+      },
+      {
+        "question": "How can we request a project estimate?",
+        "answer": "Share your objectives, existing tools, country and a short project description. AKTECH will use that context to discuss scope and the next discovery steps; price and timing depend on the agreed requirements."
+      }
+    ],
+    "related": [
+      "/services/ecommerce-development",
+      "/case-studies"
+    ],
+    "cta": "Get a Project Quote",
+    "service": "Web Development"
+  },
+  {
+    "path": "/industries/restaurants/business-systems",
+    "kind": "industry",
+    "status": "published",
+    "approvedBy": "Implementation review: existing capability and portfolio scope",
+    "updated": "2026-11-05",
+    "primaryKeyword": "restaurant business software development",
+    "secondaryKeywords": [
+      "restaurant business systems"
+    ],
+    "intent": "commercial",
+    "title": "Restaurant Business Systems",
+    "description": "Restaurant operations involve menu updates, orders and staff responsibilities that change throughout the day. AKTECH can help scope a business system.",
+    "canonical": "https://aktech.tech/industries/restaurants/business-systems",
+    "h1": "Coordinate restaurant operations with clearer workflows",
+    "introduction": "Restaurant operations involve menu updates, orders and staff responsibilities that change throughout the day. AKTECH can help scope a business system around those workflows, starting with the points where information is delayed or entered twice.",
+    "context": "Before connecting sales and inventory, agree how menu items consume stock and how corrections are recorded. Offline behavior, device access and staff permissions also need explicit decisions rather than assumptions about a generic ERP.",
+    "benefits": [
+      "Document order states and the people allowed to change or cancel them.",
+      "Map menu changes and inventory adjustments to an auditable workflow.",
+      "Plan staff onboarding, data migration and recovery from connectivity problems."
+    ],
+    "stack": [
+      "React",
+      "Node.js",
+      "Database-backed applications"
+    ],
+    "portfolio": [
+      "restro-erp"
+    ],
+    "process": [
+      "Discovery: document current tools, users, constraints and the workflow to improve.",
+      "Scope: agree deliverables, dependencies and acceptance criteria before estimating delivery.",
+      "Build and review: inspect working increments using realistic content and exception scenarios.",
+      "Handover: verify the agreed scope, document administration and discuss ongoing support."
+    ],
+    "faqs": [
+      {
+        "question": "Can the system integrate with our existing point of sale?",
+        "answer": "That depends on the current system and its integration options. Share its API or export documentation during discovery so compatibility can be assessed before a commitment."
+      },
+      {
+        "question": "How can we request a project estimate?",
+        "answer": "Share your objectives, existing tools, country and a short project description. AKTECH will use that context to discuss scope and the next discovery steps; price and timing depend on the agreed requirements."
+      }
+    ],
+    "related": [
+      "/services/erp-systems",
+      "/case-studies"
+    ],
+    "cta": "Get a Project Quote",
+    "service": "CRM & Business Systems"
+  },
+  {
+    "path": "/solutions/lead-management-automation",
+    "kind": "solution",
+    "status": "published",
+    "approvedBy": "Implementation review: existing capability and portfolio scope",
+    "updated": "2026-11-05",
+    "primaryKeyword": "lead management automation services",
+    "secondaryKeywords": [
+      "lead management automation"
+    ],
+    "intent": "commercial",
+    "title": "Lead Management Automation",
+    "description": "A contact form is only the beginning of lead handling. AKTECH can help map how an inquiry reaches the right person, what qualifies it and how follow-up.",
+    "canonical": "https://aktech.tech/solutions/lead-management-automation",
+    "h1": "Turn incoming inquiries into a manageable follow-up workflow",
+    "introduction": "A contact form is only the beginning of lead handling. AKTECH can help map how an inquiry reaches the right person, what qualifies it and how follow-up status becomes visible without copying customer details across unrelated tools.",
+    "context": "Start with a reliable capture and assignment process before introducing AI classification. Define who reviews uncertain cases, how failed deliveries are detected and how duplicate submissions are reconciled. Automation should support accountable follow-up.",
+    "benefits": [
+      "Connect inquiry capture to a defined owner and service category.",
+      "Use explicit stages and reminders instead of unstructured inbox handoffs.",
+      "Keep personal details out of analytics and define retention for inquiry records."
+    ],
+    "stack": [
+      "n8n",
+      "API integrations",
+      "Custom CRM"
+    ],
+    "portfolio": [],
+    "process": [
+      "Discovery: document current tools, users, constraints and the workflow to improve.",
+      "Scope: agree deliverables, dependencies and acceptance criteria before estimating delivery.",
+      "Build and review: inspect working increments using realistic content and exception scenarios.",
+      "Handover: verify the agreed scope, document administration and discuss ongoing support."
+    ],
+    "faqs": [
+      {
+        "question": "Should AI decide whether a lead is qualified?",
+        "answer": "Begin with explicit criteria and human review. If AI is added, evaluate it on representative examples and retain a way to correct classifications and review uncertain inquiries."
+      },
+      {
+        "question": "How can we request a project estimate?",
+        "answer": "Share your objectives, existing tools, country and a short project description. AKTECH will use that context to discuss scope and the next discovery steps; price and timing depend on the agreed requirements."
+      }
+    ],
+    "related": [
+      "/services/crm-business-systems",
+      "/case-studies"
+    ],
+    "cta": "Get a Project Quote",
+    "service": "AI Agents & Automation"
+  },
+  {
+    "path": "/locations/pakistan/karachi/website-development",
+    "kind": "location",
+    "status": "review",
+    "approvedBy": "",
+    "updated": "2026-11-05",
+    "primaryKeyword": "website development in karachi",
+    "secondaryKeywords": [
+      "custom e-commerce development"
+    ],
+    "intent": "commercial",
+    "title": "Website Development in Karachi",
+    "description": "AKTECH operates from Karachi. Discuss the people who maintain your catalog, the inquiry channels your customers use and whether content needs.",
+    "canonical": "https://aktech.tech/locations/pakistan/karachi/website-development",
+    "h1": "Website Development in Karachi",
+    "introduction": "AKTECH operates from Karachi. Discuss the people who maintain your catalog, the inquiry channels your customers use and whether content needs more than one language. Meeting format and availability must be agreed; this page does not promise a walk-in office.",
+    "context": "AKTECH operates from Karachi. Discuss the people who maintain your catalog, the inquiry channels your customers use and whether content needs more than one language. Meeting format and availability must be agreed; this page does not promise a walk-in office.",
+    "benefits": [
+      "Map product attributes, variants and filtering so shoppers can find relevant items.",
+      "Define payment success, failure and cancelled-checkout flows before integration.",
+      "Plan order status, inventory updates and administrative access alongside the storefront."
+    ],
+    "stack": [
+      "React",
+      "Next.js",
+      "Node.js",
+      "PostgreSQL"
+    ],
+    "portfolio": [],
+    "process": [
+      "Discovery: document current tools, users, constraints and the workflow to improve.",
+      "Scope: agree deliverables, dependencies and acceptance criteria before estimating delivery.",
+      "Build and review: inspect working increments using realistic content and exception scenarios.",
+      "Handover: verify the agreed scope, document administration and discuss ongoing support."
+    ],
+    "faqs": [
+      {
+        "question": "How do we choose between custom development and a hosted store?",
+        "answer": "Compare catalog complexity, integrations, ownership needs and ongoing maintenance. We scope the workflows first; custom development is not automatically the best choice."
+      },
+      {
+        "question": "How can we request a project estimate?",
+        "answer": "Share your objectives, existing tools, country and a short project description. AKTECH will use that context to discuss scope and the next discovery steps; price and timing depend on the agreed requirements."
+      }
+    ],
+    "related": [
+      "/services/web-development"
+    ],
+    "cta": "Get a Project Quote",
+    "service": "Web Development"
+  },
+  {
+    "path": "/locations/uae/web-development",
+    "kind": "location",
+    "status": "review",
+    "approvedBy": "",
+    "updated": "2026-11-05",
+    "primaryKeyword": "remote web development for uae businesses",
+    "secondaryKeywords": [
+      "custom e-commerce development"
+    ],
+    "intent": "commercial",
+    "title": "Remote Web Development for UAE Businesses",
+    "description": "Delivery is remote from Karachi, not from a UAE office. Scope English and Arabic content ownership, right-to-left interface requirements if.",
+    "canonical": "https://aktech.tech/locations/uae/web-development",
+    "h1": "Remote Web Development for UAE Businesses",
+    "introduction": "Delivery is remote from Karachi, not from a UAE office. Scope English and Arabic content ownership, right-to-left interface requirements if needed, and who will validate local payment and delivery integrations. Agree meeting windows and milestone approvals before work begins.",
+    "context": "Delivery is remote from Karachi, not from a UAE office. Scope English and Arabic content ownership, right-to-left interface requirements if needed, and who will validate local payment and delivery integrations. Agree meeting windows and milestone approvals before work begins.",
+    "benefits": [
+      "Map product attributes, variants and filtering so shoppers can find relevant items.",
+      "Define payment success, failure and cancelled-checkout flows before integration.",
+      "Plan order status, inventory updates and administrative access alongside the storefront."
+    ],
+    "stack": [
+      "React",
+      "Next.js",
+      "Node.js",
+      "PostgreSQL"
+    ],
+    "portfolio": [],
+    "process": [
+      "Discovery: document current tools, users, constraints and the workflow to improve.",
+      "Scope: agree deliverables, dependencies and acceptance criteria before estimating delivery.",
+      "Build and review: inspect working increments using realistic content and exception scenarios.",
+      "Handover: verify the agreed scope, document administration and discuss ongoing support."
+    ],
+    "faqs": [
+      {
+        "question": "How do we choose between custom development and a hosted store?",
+        "answer": "Compare catalog complexity, integrations, ownership needs and ongoing maintenance. We scope the workflows first; custom development is not automatically the best choice."
+      },
+      {
+        "question": "How can we request a project estimate?",
+        "answer": "Share your objectives, existing tools, country and a short project description. AKTECH will use that context to discuss scope and the next discovery steps; price and timing depend on the agreed requirements."
+      }
+    ],
+    "related": [
+      "/services/web-development"
+    ],
+    "cta": "Get a Project Quote",
+    "service": "Web Development"
+  }
+]

@@ -1,12 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageCircle } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { siteConfig } from "@/config/site";
+import services from "@/data/seo-services.json";
 
 export function WhatsAppButton() {
-  const phoneNumber = "923713410797";
-  const defaultMessage = encodeURIComponent("Hi AKTECH, I’d like to discuss a project.");
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${defaultMessage}`;
+  const pathname = usePathname();
+  const service = services.find(page => page.path === pathname);
+  const defaultMessage = encodeURIComponent(`Hi AKTECH, I would like to discuss ${service?.title || "a project"}. Page: ${siteConfig.url}${pathname}`);
+  const whatsappUrl = `${siteConfig.links.whatsapp}?text=${defaultMessage}`;
 
   return (
     <motion.a

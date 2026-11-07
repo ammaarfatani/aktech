@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Sparkles, ArrowUpRight, Filter } from "lucide-react";
+import { getCaseStudy } from "@/data/caseStudies";
 import { projects, additionalScreenshots, filterCategories } from "../../../projects";
 
 // Combine all 16 unique projects and extra storefronts into a single portfolio collection
@@ -230,7 +231,7 @@ export default function WorkPage() {
 
               {/* Slider Controls */}
               <div className="flex items-center gap-4 shrink-0">
-                {currentProject.slug && !currentProject.slug.startsWith("extra-") && (
+                {currentProject.slug && getCaseStudy(currentProject.slug) && (
                   <Link
                     href={`/case-studies/${currentProject.slug}`}
                     className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2"

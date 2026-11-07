@@ -1,3 +1,4 @@
+import { ServiceDirectory } from "@/components/seo/ServiceDirectory";
 import { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 import { BreadcrumbJsonLd } from "@/components/shared/JsonLd";
@@ -46,6 +47,7 @@ export default function ServicesLayout({
         ]}
       />
       {children}
+      <ServiceDirectory />
     </>
   );
 }

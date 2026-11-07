@@ -1,3 +1,4 @@
+import { publishedPages, services } from "@/lib/seo";
 import { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site";
 import { FEATURED_CASE_STUDIES } from "@/data/caseStudies";
@@ -5,49 +6,42 @@ import { products } from "@/data/products";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;
-  const currentDate = new Date().toISOString();
+
 
   // Core main pages
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}`,
-      lastModified: currentDate,
       changeFrequency: "weekly",
       priority: 1.0,
     },
     {
       url: `${baseUrl}/services`,
-      lastModified: currentDate,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/portfolio`,
-      lastModified: currentDate,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/about`,
-      lastModified: currentDate,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${baseUrl}/clients`,
-      lastModified: currentDate,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified: currentDate,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${baseUrl}/work`,
-      lastModified: currentDate,
       changeFrequency: "weekly",
       priority: 0.7,
     },
@@ -56,11 +50,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Dynamic Case Studies
   const caseStudyRoutes: MetadataRoute.Sitemap = FEATURED_CASE_STUDIES.map((project) => ({
     url: `${baseUrl}/case-studies/${project.slug}`,
-    lastModified: currentDate,
     changeFrequency: "monthly",
     priority: 0.7,
   }));
 
-  const productRoutes: MetadataRoute.Sitemap = ["/products", "/case-studies", ...products.map(product => `/products/${product.slug}`)].map(path => ({ url: `${baseUrl}${path}`, lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 }));
-  return [...staticRoutes, ...caseStudyRoutes, ...productRoutes];
+  const productRoutes: MetadataRoute.Sitemap = ["/products", "/case-studies", ...products.map(product => `/products/${product.slug}`)].map(path => ({ url: `${baseUrl}${path}`, changeFrequency: "monthly", priority: 0.8 }));
+  const landingRoutes = publishedPages.map(page => ({ url: `${baseUrl}${page.path}`, lastModified: page.updated }));
+  const serviceRoutes = services.map(page => ({ url: `${baseUrl}${page.path}`, lastModified: "2026-11-05" }));
+  return [...staticRoutes.filter(page => page.url !== `${baseUrl}/work`), ...caseStudyRoutes, ...productRoutes, ...serviceRoutes, ...landingRoutes, { url: `${baseUrl}/locations` }];
 }

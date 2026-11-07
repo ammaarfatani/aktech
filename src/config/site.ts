@@ -12,7 +12,7 @@ export const siteConfig = {
   description:
     "AKTECH Digital Solutions is a global software engineering and digital agency specializing in custom web applications, Next.js development, mobile apps, AI agents & automation, and business management systems.",
   url: getSiteUrl(),
-  ogImage: "/og-image.jpg",
+  ogImage: "/opengraph-image",
   email: "hello@aktech.tech",
   phone: "+923713410797",
   formattedPhone: "+92 371 3410797",

@@ -107,7 +107,7 @@ export function Hero() {
               >
                 {/* Primary CTA */}
                 <Link
-                  href="#contact"
+                  href="/contact"
                   className="group relative flex items-center justify-center gap-3 px-8 py-4 rounded-full text-xs font-bold uppercase tracking-[0.2em] text-white transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden"
                   style={{
                     background: "#E0000B",

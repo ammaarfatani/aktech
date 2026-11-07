@@ -331,7 +331,7 @@ export function AIAssistant() {
             />
           </div>
 
-          <span className="font-heading font-extrabold text-xs tracking-wider uppercase text-[#111111] group-hover:text-[#E0000B] transition-colors">
+          <span className="hidden sm:inline font-heading font-extrabold text-xs tracking-wider uppercase text-[#111111] group-hover:text-[#E0000B] transition-colors">
             AKTech AI Agent
           </span>
 

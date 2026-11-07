@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
 import {
   Sparkles,
   ArrowUpRight,
@@ -18,16 +17,20 @@ import {
   DollarSign,
   Briefcase,
 } from "lucide-react";
+import { trackConversion } from "@/lib/analytics";
 import { siteConfig } from "@/config/site";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
+    country: "",
+    preferredContact: "Email",
+    website: "",
     name: "",
     email: "",
     phone: "",
     company: "",
     service: "Web Development",
-    budget: "$1,000 – $2,500",
+    budget: "",
     timeline: "ASAP",
     message: "",
   });
@@ -55,6 +58,16 @@ export default function ContactPage() {
     }
   }, [submitError]);
 
+  useEffect(() => {
+    const service = new URLSearchParams(window.location.search).get("service");
+    const allowed = ["Web Development", "Mobile Apps", "AI Agents & Automation", "CRM & Business Systems", "ERP Systems", "UI/UX Design", "SEO & Digital Growth"];
+    // Hydrate the form from browser URL state once, without changing server HTML.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (service && allowed.includes(service)) setFormData(previous => ({...previous, service}));
+    // Remove private backups created by earlier versions of the form.
+    try { localStorage.removeItem("aktech_contact_submissions"); } catch {}
+  }, []);
+
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
     if (!formData.name.trim()) newErrors.name = "Full name is required";
@@ -63,7 +76,9 @@ export default function ContactPage() {
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "Please enter a valid email address";
     }
-    if (!formData.message.trim()) newErrors.message = "Please describe your project details";
+    if (formData.preferredContact !== "Email" && !formData.phone.trim()) newErrors.phone = "Phone number required for this contact method";
+    if (!formData.country.trim()) newErrors.country = "Country is required";
+    if (formData.message.trim().length < 10) newErrors.message = "Please describe your project details";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -76,6 +91,10 @@ export default function ContactPage() {
     setSubmitError(null);
 
     const payload = {
+      country: formData.country.trim(),
+      preferredContact: formData.preferredContact,
+      website: formData.website,
+      landingPath: new URLSearchParams(window.location.search).get("landing") || "/contact",
       fullName: formData.name.trim(),
       email: formData.email.trim(),
       phone: formData.phone.trim(),
@@ -86,63 +105,24 @@ export default function ContactPage() {
       description: formData.message.trim(),
     };
 
-    const ENDPOINT =
-      "https://script.google.com/macros/s/AKfycbxnxXMQOhp7NcD-jjS7G8DPjifEaIQGO_ee6Fm4zdZayS6Ga00tufIb67YSsIoFeaQoSQ/exec";
-
     try {
-      // Send request to Google Apps Script Web App endpoint
-      let responseOk = false;
-      try {
-        const response = await fetch(ENDPOINT, {
-          method: "POST",
-          headers: {
-            "Content-Type": "text/plain;charset=utf-8",
-          },
-          body: JSON.stringify(payload),
-        });
-        if (response.ok || response.type === "opaque" || response.status === 200) {
-          responseOk = true;
-        }
-      } catch {
-        // Fallback for strict browser CORS handling on 302 redirects
-        await fetch(ENDPOINT, {
-          method: "POST",
-          mode: "no-cors",
-          headers: {
-            "Content-Type": "text/plain;charset=utf-8",
-          },
-          body: JSON.stringify(payload),
-        });
-        responseOk = true;
-      }
-
-      if (!responseOk) {
-        throw new Error("Google Apps Script endpoint returned an error.");
-      }
-
-      // Persist local submission backup
-      try {
-        const submission = {
-          id: `sub_${Date.now()}`,
-          ...payload,
-          submittedAt: new Date().toISOString(),
-        };
-        const existingRaw = localStorage.getItem("aktech_contact_submissions");
-        const existing = existingRaw ? JSON.parse(existingRaw) : [];
-        existing.unshift(submission);
-        localStorage.setItem("aktech_contact_submissions", JSON.stringify(existing));
-      } catch (storageErr) {
-        console.warn("Local backup failed:", storageErr);
-      }
-
+      const response = await fetch("/api/contact", {
+        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload),
+      });
+      const result = await response.json();
+      if (!response.ok || result.success !== true) throw new Error(result.error || "Delivery could not be confirmed.");
+      trackConversion("generate_lead", formData.service);
       // Clear / reset form fields
       setFormData({
+        country: "",
+        preferredContact: "Email",
+        website: "",
         name: "",
         email: "",
         phone: "",
         company: "",
         service: "Web Development",
-        budget: "$1,000 – $2,500",
+        budget: "",
         timeline: "ASAP",
         message: "",
       });
@@ -150,9 +130,9 @@ export default function ContactPage() {
       // Trigger top-right success toast
       setShowSuccessToast(true);
     } catch (err) {
-      console.error("Submission error:", err);
+
       setSubmitError(
-        "Failed to send your project request. Please check your internet connection and try again."
+        err instanceof Error ? err.message : "Delivery could not be confirmed. Please contact us on WhatsApp before resending."
       );
     } finally {
       setIsSubmitting(false);
@@ -218,14 +198,14 @@ export default function ContactPage() {
                 {/* Row 1: Name & Email */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-[#111111] mb-2">
+                    <label htmlFor="contact-name" className="block text-xs font-bold uppercase tracking-wider text-[#111111] mb-2">
                       Full Name *
                     </label>
                     <div className="relative">
                       <User className="w-4 h-4 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" />
                       <input
                         type="text"
-                        value={formData.name}
+                        id="contact-name" name="name" autoComplete="name" required maxLength={120} value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="John Doe"
                         className={`w-full pl-11 pr-4 py-3.5 rounded-2xl bg-gray-50 border text-sm text-[#111111] font-medium outline-none transition-all ${
@@ -237,14 +217,14 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-[#111111] mb-2">
+                    <label htmlFor="contact-email" className="block text-xs font-bold uppercase tracking-wider text-[#111111] mb-2">
                       Email Address *
                     </label>
                     <div className="relative">
                       <Mail className="w-4 h-4 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" />
                       <input
                         type="email"
-                        value={formData.email}
+                        id="contact-email" name="email" autoComplete="email" required maxLength={254} value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="john@company.com"
                         className={`w-full pl-11 pr-4 py-3.5 rounded-2xl bg-gray-50 border text-sm text-[#111111] font-medium outline-none transition-all ${
@@ -256,17 +236,23 @@ export default function ContactPage() {
                   </div>
                 </div>
 
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <div><label htmlFor="contact-country" className="mb-2 block text-sm font-bold">Country *</label><input id="contact-country" autoComplete="country-name" required maxLength={80} value={formData.country} onChange={e=>setFormData({...formData,country:e.target.value})} className="w-full rounded-2xl border border-black/10 bg-gray-50 p-4" />{errors.country && <p role="alert">{errors.country}</p>}</div>
+                  <div><label htmlFor="contact-method" className="mb-2 block text-sm font-bold">Preferred contact method</label><select id="contact-method" value={formData.preferredContact} onChange={e=>setFormData({...formData,preferredContact:e.target.value})} className="w-full rounded-2xl border border-black/10 bg-gray-50 p-4"><option>Email</option><option>WhatsApp</option><option>Phone</option></select>{errors.phone && <p role="alert">{errors.phone}</p>}</div>
+                </div>
+                <div hidden aria-hidden="true"><label htmlFor="contact-website">Leave empty</label><input id="contact-website" tabIndex={-1} autoComplete="off" value={formData.website} onChange={e=>setFormData({...formData,website:e.target.value})} /></div>
+                <p className="text-sm text-gray-600">We use these details to respond to your inquiry through our existing Google-hosted contact workflow. Please do not include passwords or sensitive customer records.</p>
                 {/* Row 2: Phone & Company */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-[#111111] mb-2">
+                    <label htmlFor="contact-phone" className="block text-xs font-bold uppercase tracking-wider text-[#111111] mb-2">
                       Phone / WhatsApp (Optional)
                     </label>
                     <div className="relative">
                       <Phone className="w-4 h-4 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" />
                       <input
                         type="text"
-                        value={formData.phone}
+                        id="contact-phone" name="phone" autoComplete="tel" maxLength={40} value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder="+1 (555) 000-0000"
                         className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-gray-50 border border-black/10 text-sm text-[#111111] font-medium outline-none focus:border-[#111111] focus:bg-white transition-all"
@@ -275,14 +261,14 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-[#111111] mb-2">
+                    <label htmlFor="contact-company" className="block text-xs font-bold uppercase tracking-wider text-[#111111] mb-2">
                       Company Name (Optional)
                     </label>
                     <div className="relative">
                       <Building className="w-4 h-4 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" />
                       <input
                         type="text"
-                        value={formData.company}
+                        id="contact-company" name="company" maxLength={160} value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                         placeholder="Acme Corp"
                         className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-gray-50 border border-black/10 text-sm text-[#111111] font-medium outline-none focus:border-[#111111] focus:bg-white transition-all"
@@ -294,13 +280,13 @@ export default function ContactPage() {
                 {/* Row 3: Service Required & Timeline */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-[#111111] mb-2">
+                    <label htmlFor="contact-service" className="block text-xs font-bold uppercase tracking-wider text-[#111111] mb-2">
                       Service Required
                     </label>
                     <div className="relative">
                       <Briefcase className="w-4 h-4 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
                       <select
-                        value={formData.service}
+                        id="contact-service" name="service" value={formData.service}
                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                         className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-gray-50 border border-black/10 text-sm text-[#111111] font-medium outline-none focus:border-[#111111] focus:bg-white transition-all appearance-none cursor-pointer"
                       >
@@ -308,6 +294,7 @@ export default function ContactPage() {
                         <option value="Mobile Apps">Mobile Apps</option>
                         <option value="AI Agents & Automation">AI Agents &amp; Automation</option>
                         <option value="CRM & Business Systems">CRM &amp; Business Systems</option>
+                        <option value="ERP Systems">ERP Systems</option>
                         <option value="UI/UX Design">UI/UX Design</option>
                         <option value="SEO & Digital Growth">SEO &amp; Digital Growth</option>
                       </select>
@@ -315,13 +302,13 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-[#111111] mb-2">
+                    <label htmlFor="contact-timeline" className="block text-xs font-bold uppercase tracking-wider text-[#111111] mb-2">
                       Project Timeline
                     </label>
                     <div className="relative">
                       <Clock className="w-4 h-4 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
                       <select
-                        value={formData.timeline}
+                        id="contact-timeline" name="timeline" value={formData.timeline}
                         onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
                         className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-gray-50 border border-black/10 text-sm text-[#111111] font-medium outline-none focus:border-[#111111] focus:bg-white transition-all appearance-none cursor-pointer"
                       >
@@ -338,10 +325,11 @@ export default function ContactPage() {
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-[#111111] mb-3 flex items-center gap-2">
                     <DollarSign className="w-4 h-4 text-[#E0000B]" />
-                    <span>Estimated Budget Range</span>
+                    <span>Estimated Budget Range (Optional)</span>
                   </label>
                   <div className="flex flex-wrap gap-3">
                     {[
+                      "Not specified",
                       "Under $500",
                       "$500 – $1,000",
                       "$1,000 – $2,500",
@@ -369,12 +357,12 @@ export default function ContactPage() {
 
                 {/* Message Textarea */}
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-[#111111] mb-2">
+                  <label htmlFor="contact-message" className="block text-xs font-bold uppercase tracking-wider text-[#111111] mb-2">
                     Describe Your Project *
                   </label>
                   <textarea
                     rows={5}
-                    value={formData.message}
+                    id="contact-message" name="message" required minLength={10} maxLength={5000} value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Tell us about your business goals, target audience, technical requirements, or idea..."
                     className={`w-full p-4 rounded-2xl bg-gray-50 border text-sm text-[#111111] font-medium outline-none transition-all resize-none ${
@@ -386,7 +374,7 @@ export default function ContactPage() {
 
                 {submitError && (
                   <div className="p-4 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-xs font-semibold flex items-center justify-between">
-                    <span>{submitError}</span>
+                    <span role="alert">{submitError}</span>
                     <button
                       type="button"
                       onClick={() => setSubmitError(null)}

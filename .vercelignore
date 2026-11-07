@@ -1,0 +1,8 @@
+# Local verification and private configuration never belong in a deployment upload.
+output/
+.env*
+*.pem
+*.tsbuildinfo
+.git/
+node_modules/
+.next/

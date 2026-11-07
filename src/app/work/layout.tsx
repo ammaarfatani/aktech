@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "Next.js projects showcase",
   ],
   alternates: {
-    canonical: `${siteConfig.url}/work`,
+    canonical: `${siteConfig.url}/portfolio`,
   },
   openGraph: {
     title: "Our Work | Interactive Portfolio Index | AKTECH",
