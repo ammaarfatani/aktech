@@ -2,7 +2,7 @@ export const leadServices = ["Web Development", "Mobile Apps", "AI Agents & Auto
 export function validateLead(value: unknown) {
  if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error("Invalid request");
  const input = value as Record<string, unknown>;
- const limits: Record<string, number> = {fullName:120,email:254,phone:40,company:160,country:80,service:80,budget:80,timeline:80,description:5000,preferredContact:20,website:200,landingPath:200};
+ const limits: Record<string, number> = {fullName:120,email:254,phone:40,company:160,country:80,service:80,budget:80,timeline:80,description:5000,preferredContact:20,website:200,landingPath:200,inquiryType:40};
  const data: Record<string,string> = {};
  for (const [key,max] of Object.entries(limits)) {
   if (input[key] !== undefined && typeof input[key] !== "string") throw new Error("Invalid field");
@@ -14,6 +14,9 @@ export function validateLead(value: unknown) {
  if (!leadServices.includes(data.service) || !["Email","WhatsApp","Phone"].includes(data.preferredContact)) throw new Error("Choose a service and contact method.");
  if (data.preferredContact !== "Email" && !/^[+()\d\s-]{7,40}$/.test(data.phone)) throw new Error("Provide a phone number for your preferred contact method.");
  if (!/^\/(?:[a-z0-9-]+\/?)*$/.test(data.landingPath)) data.landingPath = "/contact";
+ if (!["contact", "estimate", "consultation"].includes(data.inquiryType)) data.inquiryType = "contact";
+ const typeLabel = data.inquiryType === "estimate" ? "ESTIMATE" : data.inquiryType === "consultation" ? "CONSULTATION" : "CONTACT";
+ data.description = `[INQUIRY TYPE: ${typeLabel}] ${data.description}`.slice(0, 5000);
  return data;
 }
 export function consumeLimit(store: Map<string,{count:number;expires:number}>, key: string, now: number, maximum=5) {

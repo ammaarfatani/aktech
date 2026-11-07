@@ -12,11 +12,7 @@ const SERVICE_TAGS = [
   "SaaS & CRM",
 ];
 
-const STATS = [
-  { value: "30", suffix: "+", label: "Projects Launched" },
-  { value: "1", suffix: "+", label: "Years Excellence" },
-  { value: "20", suffix: "+", label: "Global Clients" },
-];
+const FOCUS = ["Custom software", "Websites & SaaS", "AI automation", "Digital products"];
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -32,6 +28,7 @@ export function Hero() {
           muted
           loop
           playsInline
+          preload="metadata"
           className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none scale-105 opacity-80 brightness-90"
         >
           <source src="/hero/hero-video.mp4" type="video/mp4" />
@@ -69,7 +66,7 @@ export function Hero() {
               >
                 <span className="w-2 h-2 rounded-full bg-[#E0000B] animate-pulse shadow-[0_0_10px_#E0000B]" />
                 <span className="text-[11px] font-bold tracking-[0.25em] uppercase text-white">
-                  Karachi, PK | AKTECH DIGITAL SOLUTIONS
+                  A Global Digital Solutions Agency
                 </span>
               </motion.div>
 
@@ -80,12 +77,12 @@ export function Hero() {
                 transition={{ duration: 1, delay: 0.2, ease }}
                 className="font-heading font-extrabold text-4xl sm:text-6xl lg:text-7xl text-white tracking-tight leading-[1.08] mb-6 drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]"
               >
-                Architecting <br className="hidden sm:block" />
+                We Engineer <br className="hidden sm:block" />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-[#E0000B]">
                   Digital Experiences
                 </span>
                 <br />
-                For Global Brands
+                That Move Businesses Forward.
               </motion.h1>
 
               {/* Short Description */}
@@ -95,7 +92,7 @@ export function Hero() {
                 transition={{ duration: 1, delay: 0.3, ease }}
                 className="text-base sm:text-lg text-gray-200 leading-relaxed max-w-xl mb-10 font-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
               >
-                We combine cinematic visual design, modern AI engineering, and cloud-native architecture to build high-converting platforms that scale effortlessly.
+                Building digital solutions for businesses worldwide. AKTECH designs and engineers custom software, websites, SaaS products, AI automation and digital experiences for teams that need systems they can actually run.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -167,23 +164,16 @@ export function Hero() {
                 ))}
               </motion.div>
 
-              {/* Key Statistics */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.5, ease }}
-                className="grid grid-cols-3 gap-4 pt-6 border-t border-white/15"
+                className="grid grid-cols-2 gap-3 pt-6 border-t border-white/15"
               >
-                {STATS.map((stat, idx) => (
-                  <div key={idx} className="flex flex-col">
-                    <div className="text-3xl sm:text-4xl font-heading font-extrabold text-white tracking-tight flex items-center drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
-                      {stat.value}
-                      <span className="text-[#E0000B]">{stat.suffix}</span>
-                    </div>
-                    <span className="text-[10px] sm:text-[11px] uppercase tracking-wider font-bold text-gray-300 mt-1">
-                      {stat.label}
-                    </span>
-                  </div>
+                {FOCUS.map((item) => (
+                  <p key={item} className="text-xs font-bold uppercase tracking-[0.16em] text-gray-200">
+                    {item}
+                  </p>
                 ))}
               </motion.div>
 
@@ -197,7 +187,7 @@ export function Hero() {
         <div className="relative z-20 w-full px-6 sm:px-10 py-4 border-t border-white/15 bg-black/30 backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-bold uppercase tracking-[0.2em] text-gray-300">
           <div className="flex items-center gap-2 text-white">
             <span className="w-2 h-2 rounded-full bg-[#E0000B] animate-pulse" />
-            <span>GLOBAL DELIVERY • PK • UK • UAE</span>
+            <span>Engineering Digital Experiences Worldwide</span>
           </div>
 
           <div className="hidden md:flex items-center gap-4 text-[11px] text-gray-300">

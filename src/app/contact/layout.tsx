@@ -5,7 +5,7 @@ import { BreadcrumbJsonLd } from "@/components/shared/JsonLd";
 export const metadata: Metadata = {
   title: "Contact Us | Hire AKTECH Web & Software Developers",
   description:
-    "Get in touch with AKTECH Digital Solutions. Request a project quote, discuss your technical requirements, or email hello@aktech.tech for instant 24-hour response.",
+    "Get in touch with AKTECH Digital Solutions from anywhere. Request a project conversation, share your country and timezone, or email hello@aktech.tech.",
   keywords: [
     "contact AKTECH",
     "hire web developers",
@@ -20,13 +20,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Contact Us | Hire AKTECH Web & Software Developers",
     description:
-      "Get in touch with AKTECH Digital Solutions. Request a project quote, discuss your technical requirements, or email hello@aktech.tech for instant 24-hour response.",
+      "Get in touch with AKTECH Digital Solutions from anywhere. Request a project conversation, share your country and timezone, or email hello@aktech.tech.",
     url: `${siteConfig.url}/contact`,
   },
   twitter: {
     title: "Contact Us | Hire AKTECH Web & Software Developers",
     description:
-      "Get in touch with AKTECH Digital Solutions. Request a project quote, discuss your technical requirements, or email hello@aktech.tech for instant 24-hour response.",
+      "Get in touch with AKTECH Digital Solutions from anywhere. Request a project conversation, share your country and timezone, or email hello@aktech.tech.",
   },
 };
 

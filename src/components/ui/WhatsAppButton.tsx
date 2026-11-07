@@ -20,7 +20,7 @@ export function WhatsAppButton() {
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ duration: 0.5, delay: 1, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed bottom-6 right-6 z-[9999] group flex items-center gap-3 p-3.5 sm:px-5 sm:py-3.5 rounded-full bg-[#25D366] text-white shadow-xl shadow-[#25D366]/30 hover:shadow-2xl hover:shadow-[#25D366]/50 hover:scale-105 active:scale-95 transition-all duration-300 ease-out cursor-pointer"
+      className="fixed bottom-6 left-4 sm:left-6 z-[9999] group flex items-center gap-3 p-3.5 sm:px-5 sm:py-3.5 rounded-full bg-[#25D366] text-white shadow-xl shadow-[#25D366]/30 hover:shadow-2xl hover:shadow-[#25D366]/50 hover:scale-105 active:scale-95 transition-all duration-300 ease-out cursor-pointer"
     >
       {/* Subtle pulse ring */}
       <span className="absolute inset-0 rounded-full bg-[#25D366]/40 animate-[chatPulseRing_2s_ease-out_infinite] pointer-events-none" />

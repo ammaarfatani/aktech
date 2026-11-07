@@ -1,0 +1,92 @@
+[
+  {
+    "id": "prj_3djZrggpZsu14d32Hlrjh80XEiwI",
+    "name": "aktech-wupq",
+    "accountId": "team_tq2RaiT49npNelHWJqUJVvme",
+    "repo": "aktech",
+    "productionBranch": "main",
+    "production": {
+      "id": "dpl_HFMNVGLuGzBzjEQmzrgnMLoF5ytY",
+      "url": "aktech-wupq-olkc7ktfy-ammar-fatanis-projects.vercel.app",
+      "sha": "04bf8a1d370aaa02e8b8c156724e938f54a5bad3"
+    },
+    "framework": "nextjs",
+    "nodeVersion": "24.x",
+    "rootDirectory": null,
+    "domains": [
+      {
+        "name": "www.aktech.tech",
+        "redirect": null,
+        "gitBranch": null
+      },
+      {
+        "name": "aktech.tech",
+        "redirect": null,
+        "gitBranch": null
+      },
+      {
+        "name": "aktech-wupq.vercel.app",
+        "redirect": "www.aktech.tech",
+        "gitBranch": null
+      }
+    ],
+    "protection": {
+      "deploymentType": "all_except_custom_domains"
+    }
+  },
+  {
+    "id": "prj_hSq55mx3PCHFV5RVZaPgXwTY8yf4",
+    "name": "aktech-gtw3",
+    "accountId": "team_tq2RaiT49npNelHWJqUJVvme",
+    "repo": "Aktech",
+    "productionBranch": "main",
+    "production": {
+      "id": "dpl_CSTJEGbPW3sbXYDGwX8TtbEREHSA",
+      "url": "aktech-gtw3-87zm26lwq-ammar-fatanis-projects.vercel.app",
+      "sha": "c8ae6d45c66d73f861576fbc0caf2974d56190f2"
+    },
+    "framework": "nextjs",
+    "nodeVersion": "24.x",
+    "rootDirectory": null,
+    "domains": [
+      {
+        "name": "aktech-gtw3.vercel.app",
+        "redirect": null,
+        "gitBranch": null
+      }
+    ],
+    "protection": {
+      "deploymentType": "all_except_custom_domains"
+    }
+  },
+  {
+    "id": "prj_utIf3uPWSkwYJK1v2w4hG1hqD9iA",
+    "name": "aktech",
+    "accountId": "team_tq2RaiT49npNelHWJqUJVvme",
+    "repo": "Aktech",
+    "productionBranch": "main",
+    "production": {
+      "id": "dpl_3MhZLzAmrdAeWBZ15pEhnkb2Xjjr",
+      "url": "aktech-5hj1bxw5f-ammar-fatanis-projects.vercel.app",
+      "sha": "c8ae6d45c66d73f861576fbc0caf2974d56190f2"
+    },
+    "framework": "nextjs",
+    "nodeVersion": "24.x",
+    "rootDirectory": null,
+    "domains": [
+      {
+        "name": "aktech-tech.vercel.app",
+        "redirect": null,
+        "gitBranch": null
+      },
+      {
+        "name": "aktech-one.vercel.app",
+        "redirect": "aktech-tech.vercel.app",
+        "gitBranch": null
+      }
+    ],
+    "protection": {
+      "deploymentType": "all_except_custom_domains"
+    }
+  }
+]

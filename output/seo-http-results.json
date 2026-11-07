@@ -1,0 +1,251 @@
+{
+  "results": [
+    {
+      "path": "/",
+      "status": 200,
+      "canonical": "https://aktech.tech",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/services",
+      "status": 200,
+      "canonical": "https://aktech.tech/services",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/portfolio",
+      "status": 200,
+      "canonical": "https://aktech.tech/portfolio",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/about",
+      "status": 200,
+      "canonical": "https://aktech.tech/about",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/clients",
+      "status": 200,
+      "canonical": "https://aktech.tech/clients",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/contact",
+      "status": 200,
+      "canonical": "https://aktech.tech/contact",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/case-studies/zurane",
+      "status": 200,
+      "canonical": "https://aktech.tech/case-studies/zurane",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/case-studies/international-school",
+      "status": 200,
+      "canonical": "https://aktech.tech/case-studies/international-school",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/case-studies/custom-ecommerce",
+      "status": 200,
+      "canonical": "https://aktech.tech/case-studies/custom-ecommerce",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/case-studies/lyba",
+      "status": 200,
+      "canonical": "https://aktech.tech/case-studies/lyba",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/case-studies/fitness-gym",
+      "status": 200,
+      "canonical": "https://aktech.tech/case-studies/fitness-gym",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/case-studies/webcloners",
+      "status": 200,
+      "canonical": "https://aktech.tech/case-studies/webcloners",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/case-studies/restro-erp",
+      "status": 200,
+      "canonical": "https://aktech.tech/case-studies/restro-erp",
+      "schemas": 4,
+      "h1": 1
+    },
+    {
+      "path": "/products",
+      "status": 200,
+      "canonical": "https://aktech.tech/products",
+      "schemas": 3,
+      "h1": 1
+    },
+    {
+      "path": "/case-studies",
+      "status": 200,
+      "canonical": "https://aktech.tech/case-studies",
+      "schemas": 3,
+      "h1": 1
+    },
+    {
+      "path": "/products/acadivo",
+      "status": 200,
+      "canonical": "https://aktech.tech/products/acadivo",
+      "schemas": 3,
+      "h1": 1
+    },
+    {
+      "path": "/products/restro-erp",
+      "status": 200,
+      "canonical": "https://aktech.tech/products/restro-erp",
+      "schemas": 3,
+      "h1": 1
+    },
+    {
+      "path": "/products/fitivo",
+      "status": 200,
+      "canonical": "https://aktech.tech/products/fitivo",
+      "schemas": 3,
+      "h1": 1
+    },
+    {
+      "path": "/services/web-development",
+      "status": 200,
+      "canonical": "https://aktech.tech/services/web-development",
+      "schemas": 5,
+      "h1": 1
+    },
+    {
+      "path": "/services/crm-business-systems",
+      "status": 200,
+      "canonical": "https://aktech.tech/services/crm-business-systems",
+      "schemas": 5,
+      "h1": 1
+    },
+    {
+      "path": "/services/erp-systems",
+      "status": 200,
+      "canonical": "https://aktech.tech/services/erp-systems",
+      "schemas": 5,
+      "h1": 1
+    },
+    {
+      "path": "/services/ai-agent",
+      "status": 200,
+      "canonical": "https://aktech.tech/services/ai-agent",
+      "schemas": 5,
+      "h1": 1
+    },
+    {
+      "path": "/services/mobile-app-development",
+      "status": 200,
+      "canonical": "https://aktech.tech/services/mobile-app-development",
+      "schemas": 5,
+      "h1": 1
+    },
+    {
+      "path": "/services/seo",
+      "status": 200,
+      "canonical": "https://aktech.tech/services/seo",
+      "schemas": 5,
+      "h1": 1
+    },
+    {
+      "path": "/services/uiux-design",
+      "status": 200,
+      "canonical": "https://aktech.tech/services/uiux-design",
+      "schemas": 5,
+      "h1": 1
+    },
+    {
+      "path": "/services/ecommerce-development",
+      "status": 200,
+      "canonical": "https://aktech.tech/services/ecommerce-development",
+      "schemas": 6,
+      "h1": 1
+    },
+    {
+      "path": "/services/custom-software-development",
+      "status": 200,
+      "canonical": "https://aktech.tech/services/custom-software-development",
+      "schemas": 6,
+      "h1": 1
+    },
+    {
+      "path": "/technologies/nextjs-development",
+      "status": 200,
+      "canonical": "https://aktech.tech/technologies/nextjs-development",
+      "schemas": 5,
+      "h1": 1
+    },
+    {
+      "path": "/technologies/react-development",
+      "status": 200,
+      "canonical": "https://aktech.tech/technologies/react-development",
+      "schemas": 5,
+      "h1": 1
+    },
+    {
+      "path": "/industries/education/website-development",
+      "status": 200,
+      "canonical": "https://aktech.tech/industries/education/website-development",
+      "schemas": 5,
+      "h1": 1
+    },
+    {
+      "path": "/industries/retail/ecommerce-development",
+      "status": 200,
+      "canonical": "https://aktech.tech/industries/retail/ecommerce-development",
+      "schemas": 5,
+      "h1": 1
+    },
+    {
+      "path": "/industries/restaurants/business-systems",
+      "status": 200,
+      "canonical": "https://aktech.tech/industries/restaurants/business-systems",
+      "schemas": 5,
+      "h1": 1
+    },
+    {
+      "path": "/solutions/lead-management-automation",
+      "status": 200,
+      "canonical": "https://aktech.tech/solutions/lead-management-automation",
+      "schemas": 5,
+      "h1": 1
+    },
+    {
+      "path": "/locations",
+      "status": 200,
+      "canonical": "https://aktech.tech/locations",
+      "schemas": 3,
+      "h1": 1
+    },
+    {
+      "path": "/work",
+      "status": 200,
+      "canonical": "https://aktech.tech/portfolio",
+      "schemas": 4,
+      "h1": 1
+    }
+  ],
+  "linksChecked": 36,
+  "broken": []
+}

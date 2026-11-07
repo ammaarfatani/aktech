@@ -1,0 +1,10 @@
+▲ Next.js 16.2.6
+- Local:         http://localhost:3013
+- Network:       http://172.27.144.1:3013
+✓ Ready in 8.4s
+Error: Internal: NoFallbackError
+    at ignore-listed frames
+Error: Internal: NoFallbackError
+    at ignore-listed frames
+Error: Internal: NoFallbackError
+    at ignore-listed frames

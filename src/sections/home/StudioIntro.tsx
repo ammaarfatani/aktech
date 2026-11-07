@@ -134,8 +134,8 @@ export function StudioIntro() {
 
           <div className="bg-[#111111] text-white p-6 rounded-2xl flex flex-col items-center justify-center text-center shadow-lg relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent pointer-events-none" />
-            <span className="text-4xl font-heading font-extrabold text-[#E0000B] tracking-tight">98%</span>
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-300 mt-1">CLIENT SATISFACTION</span>
+            <span className="text-lg font-heading font-extrabold text-white tracking-tight">Selected work</span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-300 mt-1">School, restaurant and commerce systems</span>
           </div>
         </motion.div>
 
@@ -150,8 +150,8 @@ export function StudioIntro() {
           <div>
             <div className="flex justify-between items-start mb-2">
               <div>
-                <span className="text-4xl sm:text-5xl font-heading font-extrabold text-[#111111]">80+</span>
-                <p className="text-xs font-bold text-gray-800 uppercase tracking-wider mt-1">Technologies We Use</p>
+                <span className="text-2xl sm:text-3xl font-heading font-extrabold text-[#111111]">Stack</span>
+                <p className="text-xs font-bold text-gray-800 uppercase tracking-wider mt-1">Tools we actually ship with</p>
               </div>
               <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 bg-gray-100 border border-gray-200 px-3 py-1.5 rounded-full">
                 Drag Stack ✋

@@ -20,15 +20,15 @@ const FAQS = [
   },
   {
     question: "What is your pricing structure for enterprise projects?",
-    answer: "We engage in value-based pricing tailored to the specific ROI of your project. Rather than ambiguous hourly billing, we offer transparent, fixed-price engagements based on project scope and deliverables. Custom digital experiences generally start at $15k."
+    answer: "Pricing depends on the agreed scope. We estimate after discovery — looking at workflows, integrations and the work required — rather than publishing a fixed starting price that would not be accurate for every project."
   },
   {
     question: "Do you provide post-launch maintenance and SEO?",
-    answer: "Absolutely. Launching is only the beginning. We offer dedicated retention retainers that include enterprise-grade hosting, automated security patching, SLA-backed support, and continuous technical SEO optimization to keep you dominating search results."
+    answer: "Yes, when a support or SEO agreement is part of the project. Hosting, patching and ongoing optimisation are scoped separately so they match what you actually need after launch."
   },
   {
     question: "How do you ensure performance and security?",
-    answer: "Security and speed are built into our foundation. We deploy edge-network hosting, advanced CDN caching, and precise code splitting to guarantee sub-second load times. All data is handled with strict compliance protocols and state-of-the-art encryption standards."
+    answer: "Performance and security are part of engineering, not a slogan. We plan hosting, caching and access control around the agreed stack. We do not publish a universal page-speed or compliance guarantee on this site."
   }
 ];
 

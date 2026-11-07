@@ -1,0 +1,14 @@
+
+> aktech@0.1.0 start
+> next start --port 3011
+
+▲ Next.js 16.2.6
+- Local:         http://localhost:3011
+- Network:       http://192.168.1.105:3011
+✓ Ready in 12.4s
+Error: Internal: NoFallbackError
+    at ignore-listed frames
+Error: Internal: NoFallbackError
+    at ignore-listed frames
+Error: Internal: NoFallbackError
+    at ignore-listed frames

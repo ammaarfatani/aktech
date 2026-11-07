@@ -3,7 +3,8 @@
 import React, { useRef, useState } from "react";
 import { motion, useScroll, useTransform, useMotionValueEvent, MotionValue } from "framer-motion";
 import Image from "next/image";
-import { Sparkles, CheckCircle2 } from "lucide-react";
+import Link from "next/link";
+import { Sparkles, CheckCircle2, ArrowUpRight } from "lucide-react";
 
 export type ProcessStageData = {
   number: string;
@@ -67,7 +68,7 @@ const STAGES: ProcessStageData[] = [
       "Production deployment & SSL setup",
       "QA testing & security hardening",
       "Comprehensive handover & documentation",
-      "24/7 technical support & maintenance",
+      "Agreed support and maintenance after launch",
     ],
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
     imageAlt: "Product launch and analytics dashboard",
@@ -219,6 +220,13 @@ export function HowWeWork() {
               OUR PROCESS.
             </span>
           </h2>
+          <Link
+            href="/our-process"
+            className="mt-4 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-[#111111] hover:text-[#E0000B]"
+          >
+            Read the full process
+            <ArrowUpRight className="h-3.5 w-3.5" />
+          </Link>
         </div>
 
         {/* ───── MAIN DISPLAY (CENTER STACKED PANEL + RIGHT SIDE NAV) ───── */}

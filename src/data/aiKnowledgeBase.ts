@@ -39,22 +39,23 @@ export const COMPANY_KNOWLEDGE = {
   name: "AKTech Digital Solutions",
   shortName: "AKTech",
   websiteUrl: "https://aktech.tech",
-  tagline: "360° Digital Solutions & Enterprise Engineering Studio",
+  tagline: "A Global Digital Solutions Agency",
   description:
-    "AKTech is a high-end digital solutions and software engineering studio. We build high-performance web applications, autonomous AI agents, enterprise CRM & ERP business management systems, native-grade mobile applications, pixel-perfect UI/UX design systems, and data-driven SEO growth engines.",
+    "AKTECH Digital Solutions is a global digital solutions agency. We build high-performance web applications, autonomous AI agents, enterprise CRM & ERP business management systems, native-grade mobile applications, pixel-perfect UI/UX design systems, and data-driven SEO growth engines for businesses worldwide.",
   positioning:
-    "We serve ambitious startups, SMEs, e-commerce brands, and global enterprises seeking bespoke digital products engineered for sub-second speed, flawless usability, and measurable ROI.",
+    "We serve ambitious startups, SMEs, e-commerce brands, and international teams seeking bespoke digital products engineered for speed, usability, and systems they can actually run. Collaboration is remote.",
   whyChooseUs: [
-    "Sub-Second Core Web Vitals performance — no bloated themes or slow page builders.",
-    "Versatile multi-platform mastery — from custom Next.js/React engineering to tailored WordPress & Shopify solutions.",
-    "End-to-end agency capabilities — research, wireframing, custom software engineering, deployment, and organic SEO growth.",
-    "Transparent development process with dedicated PMs, clean IP handoff, and zero hidden lock-ins.",
-    "Proven track record across E-Commerce, Education, Healthcare, Food & Beverage, SaaS, and Enterprise Logistics."
+    "Custom websites, software, CRM/ERP-style systems, mobile apps, UI/UX, SEO foundations, and automation — scoped to the actual workflow.",
+    "Platform choice is part of discovery: Next.js/React, WordPress, Shopify, and native or React Native mobile when that is the right fit.",
+    "Process: Discover, Strategize, Design, Develop, Test & Launch, Support & Evolve.",
+    "International inquiries are welcome. Delivery is remote; timezone overlap is agreed at the start. We do not list additional offices.",
+    "On-site hiring, when open, is listed separately on Careers and is not the same as client collaboration.",
+    "Published work lives on Our Work, Portfolio and Case Studies — not invented metrics.",
   ],
   developmentApproach:
-    "We follow an agile 4-step development lifecycle: 1. Discovery & Strategy -> 2. UI/UX Wireframing & Design Systems -> 3. High-Performance Engineering -> 4. Quality Assurance, Deployment & SEO Optimization.",
+    "Discover, Strategize, Design, Develop, Test & Launch, then Support & Evolve. Duration depends on agreed scope.",
   supportAndMaintenance:
-    "AKTech provides post-launch maintenance, security monitoring, server infrastructure scaling, performance audits, and SLA-backed ongoing support."
+    "Hosting, patching and retainers are scoped separately when requested. There is no implied unlimited support after launch.",
 };
 
 export const SERVICES_KNOWLEDGE: Record<string, ServiceKnowledge> = {
@@ -639,7 +640,14 @@ export const SMART_ROUTES: Record<string, { title: string; url: string; descript
   "erp-systems": { title: "ERP Systems Service", url: "/services/erp-systems", description: "Multi-Department Inventory, HR & Accounting ERPs" },
   portfolio: { title: "Projects & Case Studies", url: "/portfolio", description: "Selected work, live client platforms & case studies" },
   contact: { title: "Contact AKTech", url: "/contact", description: "Schedule a proposal or speak directly with AKTech engineers" },
-  clients: { title: "Our Clients", url: "/clients", description: "Client portfolio and partner showcase" }
+  clients: { title: "Our Clients", url: "/clients", description: "Client portfolio and partner showcase" },
+  solutions: { title: "Solutions", url: "/solutions", description: "Business-problem oriented solutions across CRM, ERP, schools, restaurants, commerce and AI" },
+  process: { title: "Our Process", url: "/our-process", description: "How AKTECH discovers, designs, builds and supports digital products" },
+  careers: { title: "Careers", url: "/careers", description: "Roles at AKTECH. Listings are only open when hiring is confirmed." },
+  locations: { title: "Global Collaboration", url: "/locations", description: "Remote collaboration with businesses worldwide" },
+  estimator: { title: "Project Estimator", url: "/project-estimator", description: "Requirements worksheet for a tailored estimate — not an instant price" },
+  consultation: { title: "Consultation Request", url: "/book-consultation", description: "Request a conversation; times are confirmed after review" },
+  insights: { title: "Insights", url: "/insights", description: "Published articles from AKTECH" }
 };
 
 export const PROBLEM_SOLVER_RECOMMENDATIONS = [

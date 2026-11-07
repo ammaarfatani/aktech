@@ -1,0 +1,262 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "route": "/products",
+      "status": 200,
+      "heading": "Our engineering.Your everyday advantage.",
+      "overflow": false,
+      "brokenImages": [],
+      "links": [
+        "/products",
+        "/products/acadivo",
+        "/products/restro-erp",
+        "/products/fitivo",
+        "/products"
+      ]
+    },
+    {
+      "width": 1440,
+      "route": "/products/acadivo",
+      "status": 200,
+      "heading": "Acadivo",
+      "overflow": false,
+      "brokenImages": [],
+      "links": [
+        "/products",
+        "/products",
+        "/products/acadivo/school-admin.jpg",
+        "/products/acadivo/teacher.jpg",
+        "/products/acadivo/finance.jpg",
+        "/products"
+      ]
+    },
+    {
+      "width": 1440,
+      "route": "/products/restro-erp",
+      "status": 200,
+      "heading": "Restro ERP",
+      "overflow": false,
+      "brokenImages": [],
+      "links": [
+        "/products",
+        "/products",
+        "/products"
+      ]
+    },
+    {
+      "width": 1440,
+      "route": "/products/fitivo",
+      "status": 200,
+      "heading": "Fitivo",
+      "overflow": false,
+      "brokenImages": [],
+      "links": [
+        "/products",
+        "/products",
+        "/products"
+      ]
+    },
+    {
+      "width": 1440,
+      "route": "/case-studies",
+      "status": 200,
+      "heading": "Case Studies.",
+      "overflow": false,
+      "brokenImages": [],
+      "links": [
+        "/products",
+        "/case-studies/zurane",
+        "/products"
+      ]
+    },
+    {
+      "width": 1440,
+      "route": "/case-studies/zurane",
+      "status": 200,
+      "heading": "Zurane — E-Commerce Experience",
+      "overflow": false,
+      "brokenImages": [],
+      "links": [
+        "/products",
+        "/products"
+      ]
+    },
+    {
+      "width": 768,
+      "route": "/products",
+      "status": 200,
+      "heading": "Our engineering.Your everyday advantage.",
+      "overflow": false,
+      "brokenImages": [],
+      "links": [
+        "/products",
+        "/products/acadivo",
+        "/products/restro-erp",
+        "/products/fitivo",
+        "/products"
+      ]
+    },
+    {
+      "width": 768,
+      "route": "/products/acadivo",
+      "status": 200,
+      "heading": "Acadivo",
+      "overflow": false,
+      "brokenImages": [],
+      "links": [
+        "/products",
+        "/products",
+        "/products/acadivo/school-admin.jpg",
+        "/products/acadivo/teacher.jpg",
+        "/products/acadivo/finance.jpg",
+        "/products"
+      ]
+    },
+    {
+      "width": 768,
+      "route": "/products/restro-erp",
+      "status": 200,
+      "heading": "Restro ERP",
+      "overflow": false,
+      "brokenImages": [],
+      "links": [
+        "/products",
+        "/products",
+        "/products"
+      ]
+    },
+    {
+      "width": 768,
+      "route": "/products/fitivo",
+      "status": 200,
+      "heading": "Fitivo",
+      "overflow": false,
+      "brokenImages": [],
+      "links": [
+        "/products",
+        "/products",
+        "/products"
+      ]
+    },
+    {
+      "width": 768,
+      "route": "/case-studies",
+      "status": 200,
+      "heading": "Case Studies.",
+      "overflow": false,
+      "brokenImages": [],
+      "links": [
+        "/products",
+        "/case-studies/zurane",
+        "/products"
+      ]
+    },
+    {
+      "width": 768,
+      "route": "/case-studies/zurane",
+      "status": 200,
+      "heading": "Zurane — E-Commerce Experience",
+      "overflow": false,
+      "brokenImages": [],
+      "links": [
+        "/products",
+        "/products"
+      ]
+    },
+    {
+      "width": 390,
+      "route": "/products",
+      "status": 200,
+      "heading": "Our engineering.Your everyday advantage.",
+      "overflow": false,
+      "brokenImages": [],
+      "links": [
+        "/products",
+        "/products/acadivo",
+        "/products/restro-erp",
+        "/products/fitivo",
+        "/products"
+      ]
+    },
+    {
+      "width": 390,
+      "route": "/products/acadivo",
+      "status": 200,
+      "heading": "Acadivo",
+      "overflow": false,
+      "brokenImages": [],
+      "links": [
+        "/products",
+        "/products",
+        "/products/acadivo/school-admin.jpg",
+        "/products/acadivo/teacher.jpg",
+        "/products/acadivo/finance.jpg",
+        "/products"
+      ]
+    },
+    {
+      "width": 390,
+      "route": "/products/restro-erp",
+      "status": 200,
+      "heading": "Restro ERP",
+      "overflow": false,
+      "brokenImages": [],
+      "links": [
+        "/products",
+        "/products",
+        "/products"
+      ]
+    },
+    {
+      "width": 390,
+      "route": "/products/fitivo",
+      "status": 200,
+      "heading": "Fitivo",
+      "overflow": false,
+      "brokenImages": [],
+      "links": [
+        "/products",
+        "/products",
+        "/products"
+      ]
+    },
+    {
+      "width": 390,
+      "route": "/case-studies",
+      "status": 200,
+      "heading": "Case Studies.",
+      "overflow": false,
+      "brokenImages": [],
+      "links": [
+        "/products",
+        "/case-studies/zurane",
+        "/products"
+      ]
+    },
+    {
+      "width": 390,
+      "route": "/case-studies/zurane",
+      "status": 200,
+      "heading": "Zurane — E-Commerce Experience",
+      "overflow": false,
+      "brokenImages": [],
+      "links": [
+        "/products",
+        "/products"
+      ]
+    },
+    {
+      "mobileNavigation": "Products link visible and clickable"
+    },
+    {
+      "route": "/products/not-a-product",
+      "status": 404
+    },
+    {
+      "route": "/case-studies/not-a-case",
+      "status": 404
+    }
+  ],
+  "errors": []
+}

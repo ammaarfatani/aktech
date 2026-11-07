@@ -50,7 +50,7 @@ export function generateAIResponse(
   // 1. GREETINGS
   if (isGreeting(query)) {
     return {
-      reply: `Hi there! I'm the AKTech AI Agent.\n\nI can help you find the right digital solution for your business — whether you need high-performance web engineering, WordPress or Shopify stores, an autonomous AI agent, SEO growth, mobile apps, or custom CRM/ERP management systems.\n\nHow can I help you today?`,
+      reply: `Hi there! I'm the AKTech AI Agent.\n\nAKTECH is a global digital solutions agency. I can help you find the right digital solution — web engineering, WordPress or Shopify stores, AI agents, SEO, mobile apps, or custom CRM/ERP systems — whether your team is next door or in another timezone.\n\nHow can I help you today?`,
       suggestedPrompts: [
         "Explore Services",
         "CRM vs ERP",
@@ -171,8 +171,44 @@ function checkDirectNavigation(q: string): AIResponsePayload | null {
   if (/(portfolio|projects|case studies|examples of work|work page|previous work)/i.test(q)) {
     return {
       reply: `You can explore our recent live projects and client case studies on our Portfolio page:`,
-      smartLinks: [{ title: "View Projects →", url: "/portfolio" }],
+      smartLinks: [{ title: "View Projects →", url: "/portfolio" }, { title: "Case studies →", url: "/case-studies" }],
       suggestedPrompts: ["View E-Commerce Projects", "View AkTech Project", "Contact AKTech"]
+    };
+  }
+
+  if (/(career|hiring|job|vacancy|apply|cv|resume)/i.test(q)) {
+    return {
+      reply: `AKTECH is hiring in Karachi, Pakistan. Roles are full-time and on-site:\n\n• Cold Calling Executive\n• Full Stack Software Developer\n• Motion Graphics Designer\n• UI/UX Designer\n\nApply via email to hello@aktech.tech from the role page. Attach your CV before sending. Compensation is discussed during hiring.`,
+      smartLinks: [{ title: "Careers →", url: "/careers" }],
+      suggestedPrompts: ["Full Stack Developer", "UI/UX Designer", "Contact AKTech"]
+    };
+  }
+
+  if (/(where are you|based in|location|karachi|pakistan|international|worldwide|timezone|remote collab|do you work (with|for) (us|uk|uae|europe|america|abroad))/i.test(q)) {
+    return {
+      reply: `AKTECH is a global digital solutions agency. We welcome international clients and deliver through remote collaboration: video discovery, timezone-aware reviews, online consultations and digital handover.\n\nWe do not list additional offices. Open jobs, when listed on Careers, are a separate matter — current hiring is full-time and on-site in Karachi, Pakistan.\n\nShare your country and preferred meeting window on Contact or Book a Consultation.`,
+      smartLinks: [
+        { title: "Global collaboration →", url: "/locations" },
+        { title: "Book a consultation →", url: "/book-consultation" },
+        { title: "Contact →", url: "/contact" },
+        { title: "Careers →", url: "/careers" },
+      ],
+      suggestedPrompts: ["Are you hiring?", "How do I start a project?", "Contact AKTech"],
+    };
+  }
+
+  if (/(consult|book a meeting|schedule|estimator|estimate|faq|insights|blog|process|remote)/i.test(q)) {
+    return {
+      reply: `Useful pages:\n\n• Our Process — from first idea to launch support\n• Global collaboration — remote work with businesses worldwide\n• Insights — published articles\n• FAQ — answers we can actually give\n• Project estimator — a brief for a tailored estimate\n• Book a consultation — request a conversation`,
+      smartLinks: [
+        { title: "Our Process →", url: "/our-process" },
+        { title: "Insights →", url: "/insights" },
+        { title: "FAQ →", url: "/faq" },
+        { title: "Estimator →", url: "/project-estimator" },
+        { title: "Consultation →", url: "/book-consultation" },
+        { title: "Global collaboration →", url: "/locations" },
+      ],
+      suggestedPrompts: ["Are you hiring?", "How do I start a project?", "Contact AKTech"]
     };
   }
 

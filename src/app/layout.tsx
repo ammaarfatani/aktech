@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   verification: { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION },
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "AKTECH Digital Solutions | Web, Software & AI Development Agency",
+    default: "AKTECH Digital Solutions | Global Web, Software & AI Agency",
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteConfig.url,
-    title: "AKTECH Digital Solutions | Web, Software & AI Development Agency",
+    title: "AKTECH Digital Solutions | Global Web, Software & AI Agency",
     description: siteConfig.description,
     siteName: siteConfig.name,
     images: [
@@ -60,13 +60,13 @@ export const metadata: Metadata = {
         url: `${siteConfig.url}/opengraph-image`,
         width: 1200,
         height: 630,
-        alt: "AKTECH Digital Solutions — Enterprise Web & AI Engineering",
+        alt: "AKTECH Digital Solutions — Engineering Digital Experiences Worldwide",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AKTECH Digital Solutions | Web, Software & AI Development Agency",
+    title: "AKTECH Digital Solutions | Global Web, Software & AI Agency",
     description: siteConfig.description,
     images: [`${siteConfig.url}/opengraph-image`],
   },
@@ -94,6 +94,7 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-[#181818] text-[#111111] antialiased selection:bg-[#E0000B]/20 selection:text-[#E0000B] flex flex-col",
+          fontSans.className,
           fontSans.variable,
           fontHeading.variable
         )}

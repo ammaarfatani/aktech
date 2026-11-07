@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "AKTECH Digital Solutions",
     "software development agency",
     "web development studio",
-    "digital agency Karachi",
+    "global digital agency",
     "custom software engineering",
   ],
   alternates: {

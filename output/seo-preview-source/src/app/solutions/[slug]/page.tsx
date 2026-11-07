@@ -1,0 +1,9 @@
+import { notFound } from "next/navigation";
+import { publishedPages, findLanding, seoMetadata } from "@/lib/seo";
+import { LandingPage } from "@/components/seo/LandingPage";
+type Props = { params: Promise<{ slug: string }> };
+export const dynamicParams = false;
+export function generateStaticParams() { return publishedPages.filter(p=>p.path.startsWith("/solutions/")).map(p=>({ slug: p.path.split("/")[2] })); }
+async function resolve(params: Props["params"]) { const { slug: value } = await params; return findLanding(`/solutions/${value}`); }
+export async function generateMetadata({params}: Props) { const page = await resolve(params); if (!page) return {robots: { index: false, follow: false }}; return seoMetadata(page.title,page.description,page.path); }
+export default async function Page({params}: Props) { const page=await resolve(params); if(!page) notFound(); return <LandingPage page={page} />; }

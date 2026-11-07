@@ -5,8 +5,11 @@
   --font-heading: var(--font-heading);
 
   --color-background: #FFFFFF;
-  --color-background-soft: #F8FAFC;
-  --color-background-dark: #111111;
+  --color-background-soft: #F8F8F6;
+  --color-background-warm: #F8F8F6;
+  --color-background-dark: #141414;
+  --color-charcoal: #141414;
+  --color-ink: #080808;
   --color-surface-secondary: #F1F5F9;
   --color-surface-card: #FFFFFF;
   --color-border: rgba(17, 17, 17, 0.1);
@@ -109,6 +112,30 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#E0000B] to-[#111111];
   }
 
+  .display-headline {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: clamp(2.75rem, 7.5vw, 6rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    text-transform: uppercase;
+    max-width: 56rem;
+  }
+
+  .display-accent {
+    background-image: linear-gradient(90deg, #111111 0%, #E0000B 50%, #111111 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .display-accent-dark {
+    background-image: linear-gradient(90deg, #ffffff 0%, #E0000B 50%, #ffffff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
   .cinematic-grain::before {
     content: "";
     position: fixed;
@@ -145,4 +172,20 @@ html.lenis body {
 
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.lenis,
+  html.lenis body {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

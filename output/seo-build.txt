@@ -1,0 +1,227 @@
+
+> aktech@0.1.0 prebuild
+> npm run test:seo
+
+
+> aktech@0.1.0 test:seo
+> node --test scripts/seo.test.cjs
+
+TAP version 13
+# Subtest: complete pilot validates
+ok 1 - complete pilot validates
+  ---
+  duration_ms: 5.5053
+  type: 'test'
+  ...
+# Subtest: rejects duplicate
+ok 2 - rejects duplicate
+  ---
+  duration_ms: 2.5398
+  type: 'test'
+  ...
+# Subtest: rejects canonical
+ok 3 - rejects canonical
+  ---
+  duration_ms: 0.8171
+  type: 'test'
+  ...
+# Subtest: rejects metadata
+ok 4 - rejects metadata
+  ---
+  duration_ms: 0.8216
+  type: 'test'
+  ...
+# Subtest: rejects approval
+ok 5 - rejects approval
+  ---
+  duration_ms: 1.0429
+  type: 'test'
+  ...
+# Subtest: rejects content
+ok 6 - rejects content
+  ---
+  duration_ms: 0.9708
+  type: 'test'
+  ...
+# Subtest: rejects date
+ok 7 - rejects date
+  ---
+  duration_ms: 0.7939
+  type: 'test'
+  ...
+# Subtest: rejects portfolio
+ok 8 - rejects portfolio
+  ---
+  duration_ms: 0.8198
+  type: 'test'
+  ...
+# Subtest: rejects link
+ok 9 - rejects link
+  ---
+  duration_ms: 1.4394
+  type: 'test'
+  ...
+# Subtest: rejects duplicateMetadata
+ok 10 - rejects duplicateMetadata
+  ---
+  duration_ms: 5.3479
+  type: 'test'
+  ...
+# Subtest: rejects existingRoute
+ok 11 - rejects existingRoute
+  ---
+  duration_ms: 1.2878
+  type: 'test'
+  ...
+# Subtest: location drafts excluded from publication
+ok 12 - location drafts excluded from publication
+  ---
+  duration_ms: 0.4474
+  type: 'test'
+  ...
+# Subtest: lead validation and source sanitization
+ok 13 - lead validation and source sanitization
+  ---
+  duration_ms: 1.3716
+  type: 'test'
+  ...
+# Subtest: rejects invalid lead email
+ok 14 - rejects invalid lead email
+  ---
+  duration_ms: 0.4269
+  type: 'test'
+  ...
+# Subtest: rejects invalid lead country
+ok 15 - rejects invalid lead country
+  ---
+  duration_ms: 0.2699
+  type: 'test'
+  ...
+# Subtest: rejects invalid lead description
+ok 16 - rejects invalid lead description
+  ---
+  duration_ms: 0.2332
+  type: 'test'
+  ...
+# Subtest: rejects invalid lead service
+ok 17 - rejects invalid lead service
+  ---
+  duration_ms: 0.1979
+  type: 'test'
+  ...
+# Subtest: rejects invalid lead preferredContact
+ok 18 - rejects invalid lead preferredContact
+  ---
+  duration_ms: 0.3099
+  type: 'test'
+  ...
+# Subtest: rejects invalid lead fullName
+ok 19 - rejects invalid lead fullName
+  ---
+  duration_ms: 0.2204
+  type: 'test'
+  ...
+# Subtest: rejects invalid lead description
+ok 20 - rejects invalid lead description
+  ---
+  duration_ms: 0.2182
+  type: 'test'
+  ...
+# Subtest: limiter enforces cap and expires
+ok 21 - limiter enforces cap and expires
+  ---
+  duration_ms: 0.7622
+  type: 'test'
+  ...
+# Subtest: contact endpoint validates, confirms delivery and does not retry
+ok 22 - contact endpoint validates, confirms delivery and does not retry
+  ---
+  duration_ms: 162.378
+  type: 'test'
+  ...
+# Subtest: all existing service routes have specific metadata
+ok 23 - all existing service routes have specific metadata
+  ---
+  duration_ms: 1.2794
+  type: 'test'
+  ...
+1..23
+# tests 23
+# suites 0
+# pass 23
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2528.5352
+
+> aktech@0.1.0 build
+> next build
+
+▲ Next.js 16.2.6 (Turbopack)
+- Environments: .env
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 23.4s
+  Running TypeScript ...
+  Finished TypeScript in 24.8s ...
+  Collecting page data using 3 workers ...
+  Generating static pages using 3 workers (0/43) ...
+  Generating static pages using 3 workers (10/43) 
+  Generating static pages using 3 workers (21/43) 
+  Generating static pages using 3 workers (32/43) 
+✓ Generating static pages using 3 workers (43/43) in 9.2s
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /about
+├ ƒ /api/chat
+├ ƒ /api/contact
+├ ○ /case-studies
+├ ● /case-studies/[slug]
+│ ├ /case-studies/zurane
+│ ├ /case-studies/international-school
+│ ├ /case-studies/custom-ecommerce
+│ └ [+4 more paths]
+├ ○ /clients
+├ ○ /contact
+├ ● /industries/[...segments]
+│ ├ /industries/education/website-development
+│ ├ /industries/retail/ecommerce-development
+│ └ /industries/restaurants/business-systems
+├ ○ /locations
+├ ● /locations/[...segments]
+├ ○ /opengraph-image
+├ ○ /portfolio
+├ ○ /products
+├ ● /products/[slug]
+│ ├ /products/acadivo
+│ ├ /products/restro-erp
+│ └ /products/fitivo
+├ ○ /robots.txt
+├ ○ /services
+├ ● /services/[slug]
+│ ├ /services/ecommerce-development
+│ └ /services/custom-software-development
+├ ○ /services/ai-agent
+├ ○ /services/crm-business-systems
+├ ○ /services/erp-systems
+├ ○ /services/mobile-app-development
+├ ○ /services/seo
+├ ○ /services/uiux-design
+├ ○ /services/web-development
+├ ○ /sitemap.xml
+├ ● /solutions/[slug]
+│ └ /solutions/lead-management-automation
+├ ● /technologies/[slug]
+│ ├ /technologies/nextjs-development
+│ └ /technologies/react-development
+└ ○ /work
+
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+

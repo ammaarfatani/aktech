@@ -16,13 +16,18 @@ import {
   Clock,
   DollarSign,
   Briefcase,
+  Globe,
+  ChevronDown,
 } from "lucide-react";
 import { trackConversion } from "@/lib/analytics";
 import { siteConfig } from "@/config/site";
+import { DisplayHeadline } from "@/components/ui/DisplayHeadline";
+import { COUNTRIES, formatTimezoneLabel, timezonesForCountry } from "@/data/countries";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     country: "",
+    timezone: "",
     preferredContact: "Email",
     website: "",
     name: "",
@@ -102,7 +107,12 @@ export default function ContactPage() {
       service: formData.service,
       timeline: formData.timeline,
       budget: formData.budget,
-      description: formData.message.trim(),
+      description: [
+        formData.message.trim(),
+        formData.timezone ? `Timezone: ${formatTimezoneLabel(formData.timezone)} (${formData.timezone})` : "",
+      ]
+        .filter(Boolean)
+        .join("\n"),
     };
 
     try {
@@ -115,6 +125,7 @@ export default function ContactPage() {
       // Clear / reset form fields
       setFormData({
         country: "",
+        timezone: "",
         preferredContact: "Email",
         website: "",
         name: "",
@@ -167,12 +178,13 @@ export default function ContactPage() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="max-w-4xl"
           >
-            <h1 className="font-heading font-extrabold text-5xl sm:text-7xl lg:text-8xl text-[#111111] tracking-tight leading-[1.02] uppercase mb-6">
-              LET&apos;S BUILD <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#111111] via-[#E0000B] to-[#111111]">
-                SOMETHING GREAT.
-              </span>
-            </h1>
+            <DisplayHeadline
+              className="mb-6"
+              lines={[
+                { text: "Let's build" },
+                { text: "something great.", accent: true },
+              ]}
+            />
 
             <p className="text-gray-600 text-lg sm:text-2xl font-normal leading-relaxed">
               Have an idea, product or business problem? Let&apos;s turn it into something that works. Fill out the form below or contact us directly.
@@ -237,8 +249,51 @@ export default function ContactPage() {
                 </div>
 
                 <div className="grid gap-6 sm:grid-cols-2">
-                  <div><label htmlFor="contact-country" className="mb-2 block text-sm font-bold">Country *</label><input id="contact-country" autoComplete="country-name" required maxLength={80} value={formData.country} onChange={e=>setFormData({...formData,country:e.target.value})} className="w-full rounded-2xl border border-black/10 bg-gray-50 p-4" />{errors.country && <p role="alert">{errors.country}</p>}</div>
-                  <div><label htmlFor="contact-method" className="mb-2 block text-sm font-bold">Preferred contact method</label><select id="contact-method" value={formData.preferredContact} onChange={e=>setFormData({...formData,preferredContact:e.target.value})} className="w-full rounded-2xl border border-black/10 bg-gray-50 p-4"><option>Email</option><option>WhatsApp</option><option>Phone</option></select>{errors.phone && <p role="alert">{errors.phone}</p>}</div>
+                  <div>
+                    <label htmlFor="contact-country" className="mb-2 block text-xs font-bold uppercase tracking-wider">Country *</label>
+                    <div className="relative">
+                      <Globe className="pointer-events-none absolute left-4 top-1/2 z-10 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                      <select
+                        id="contact-country"
+                        required
+                        value={formData.country}
+                        onChange={(e) => {
+                          const country = e.target.value;
+                          setFormData({ ...formData, country, timezone: timezonesForCountry(country)[0] ?? "" });
+                        }}
+                        className={`w-full appearance-none rounded-2xl border border-black/10 bg-gray-50 py-3.5 pl-11 pr-11 text-sm font-medium outline-none focus:border-[#111111] focus:bg-white ${formData.country ? "text-[#111111]" : "text-gray-400"}`}
+                      >
+                        <option value="">Select your country</option>
+                        {COUNTRIES.map((country) => (
+                          <option key={country.name} value={country.name}>{country.name}</option>
+                        ))}
+                      </select>
+                      <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                    </div>
+                    {errors.country && <p role="alert" className="mt-1 text-xs text-[#E0000B]">{errors.country}</p>}
+                  </div>
+                  <div>
+                    <label htmlFor="contact-timezone" className="mb-2 block text-xs font-bold uppercase tracking-wider">Timezone</label>
+                    <div className="relative">
+                      <Clock className="pointer-events-none absolute left-4 top-1/2 z-10 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                      <select
+                        id="contact-timezone"
+                        value={formData.timezone}
+                        onChange={(e) => setFormData({ ...formData, timezone: e.target.value })}
+                        className={`w-full appearance-none rounded-2xl border border-black/10 bg-gray-50 py-3.5 pl-11 pr-11 text-sm font-medium outline-none focus:border-[#111111] focus:bg-white ${formData.timezone ? "text-[#111111]" : "text-gray-400"}`}
+                      >
+                        <option value="">{formData.country ? "Select timezone" : "Select a country first"}</option>
+                        {timezonesForCountry(formData.country).map((zone) => (
+                          <option key={zone} value={zone}>{formatTimezoneLabel(zone)}</option>
+                        ))}
+                      </select>
+                      <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                    </div>
+                  </div>
+                  <div className="sm:col-span-2">
+                    <label htmlFor="contact-method" className="mb-2 block text-xs font-bold uppercase tracking-wider">Preferred contact method</label>
+                    <select id="contact-method" value={formData.preferredContact} onChange={e=>setFormData({...formData,preferredContact:e.target.value})} className="w-full appearance-none rounded-2xl border border-black/10 bg-gray-50 p-4"><option>Email</option><option>WhatsApp</option><option>Phone</option></select>{errors.phone && <p role="alert">{errors.phone}</p>}
+                  </div>
                 </div>
                 <div hidden aria-hidden="true"><label htmlFor="contact-website">Leave empty</label><input id="contact-website" tabIndex={-1} autoComplete="off" value={formData.website} onChange={e=>setFormData({...formData,website:e.target.value})} /></div>
                 <p className="text-sm text-gray-600">We use these details to respond to your inquiry through our existing Google-hosted contact workflow. Please do not include passwords or sensitive customer records.</p>

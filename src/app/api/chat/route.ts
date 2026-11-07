@@ -1,5 +1,8 @@
 import { NextRequest } from "next/server";
 import { generateAIResponse } from "@/lib/aiAssistantEngine";
+import { consumeLimit } from "@/lib/lead-validation";
+
+const chatLimits = new Map<string, { count: number; expires: number }>();
 
 /**
  * POST /api/chat
@@ -9,6 +12,13 @@ import { generateAIResponse } from "@/lib/aiAssistantEngine";
  */
 export async function POST(request: NextRequest) {
   try {
+    const origin = request.headers.get("origin");
+    if (origin && origin !== new URL(request.url).origin) {
+      return Response.json({ error: "Invalid origin" }, { status: 403 });
+    }
+    if (!consumeLimit(chatLimits, request.headers.get("x-forwarded-for") || "chat", Date.now(), 30)) {
+      return Response.json({ error: "Please wait a moment before sending another message." }, { status: 429 });
+    }
     const body = await request.json();
     const message = body?.message;
     const currentPath = body?.currentPath || "/";

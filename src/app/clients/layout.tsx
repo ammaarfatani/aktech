@@ -3,14 +3,13 @@ import { siteConfig } from "@/config/site";
 import { BreadcrumbJsonLd } from "@/components/shared/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Clients & Trust | Proven Software Solutions & Results",
+  title: "Clients",
   description:
-    "Discover why ambitious startups, enterprise brands, and global businesses partner with AKTECH Digital Solutions for fast, custom, SLA-backed software engineering.",
+    "How AKTECH works with schools, restaurants, retailers and product teams — without invented testimonials or unverified metrics.",
   keywords: [
     "AKTECH clients",
     "trusted software agency",
-    "client testimonials web development",
-    "software development agency Pakistan",
+    "global software development agency",
   ],
   alternates: {
     canonical: `${siteConfig.url}/clients`,

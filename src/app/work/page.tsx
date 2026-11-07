@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Sparkles, ArrowUpRight, Filter } from "lucide-react";
+import { DisplayHeadline } from "@/components/ui/DisplayHeadline";
 import { getCaseStudy } from "@/data/caseStudies";
 import { projects, additionalScreenshots, filterCategories } from "../../../projects";
 
@@ -122,12 +123,13 @@ export default function WorkPage() {
             </span>
           </div>
 
-          <h1 className="font-heading font-extrabold text-4xl sm:text-6xl lg:text-7xl text-[#111111] tracking-tight leading-[1.05] mb-6 uppercase">
-            EVERY PROJECT TELLS A <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#111111] via-[#E0000B] to-[#111111]">
-              STORY OF GROWTH.
-            </span>
-          </h1>
+          <DisplayHeadline
+            className="mb-6"
+            lines={[
+              { text: "Work that" },
+              { text: "speaks for itself.", accent: true },
+            ]}
+          />
 
           <p className="text-gray-600 text-lg sm:text-xl font-normal leading-relaxed">
             Explore our complete portfolio of web applications, custom ERPs, e-commerce storefronts, AI workflows, and bespoke business systems built by AKTECH.

@@ -21,6 +21,10 @@ export function OrganizationJsonLd() {
       addressRegion: siteConfig.address.addressRegion,
       addressCountry: siteConfig.address.addressCountry,
     },
+    areaServed: {
+      "@type": "Place",
+      name: "Worldwide",
+    },
 
     sameAs: [
       siteConfig.links.facebook,
@@ -76,6 +80,10 @@ export function ProfessionalServiceJsonLd() {
       addressLocality: siteConfig.address.addressLocality,
       addressRegion: siteConfig.address.addressRegion,
       addressCountry: siteConfig.address.addressCountry,
+    },
+    areaServed: {
+      "@type": "Place",
+      name: "Worldwide",
     },
   };
 

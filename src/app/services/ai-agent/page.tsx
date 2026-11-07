@@ -82,7 +82,7 @@ export default function AIAgentServicePage() {
               transition={{ duration: 0.8, delay: 0.15 }}
               className="text-gray-600 text-lg sm:text-xl leading-relaxed font-normal"
             >
-              Streamline operations, capture qualified leads 24/7, and eliminate manual tasks with custom OpenAI/Anthropic agents, RAG knowledge engines, and n8n autonomous workflow pipelines.
+              Capture and route inquiries with custom assistants and n8n pipelines, with human review for exceptions.
             </motion.p>
           </div>
 
@@ -108,7 +108,7 @@ export default function AIAgentServicePage() {
             <div className="absolute bottom-5 left-5 right-5 sm:bottom-8 sm:left-8 sm:right-auto z-20 max-w-lg p-5 sm:p-6 rounded-2xl bg-black/70 backdrop-blur-md border border-white/15 hidden sm:block">
               <div className="flex items-center gap-2 text-[#E0000B] text-xs font-bold uppercase tracking-wider mb-1">
                 <BrainCircuit className="w-4 h-4" />
-                <span>24/7 Autonomous Execution</span>
+                <span>Always-on assistants when deployed</span>
               </div>
               <p className="text-white text-xs sm:text-sm leading-snug font-normal">
                 AI Agents process incoming requests, query vector databases, execute complex multi-step API calls, and automatically sync data into your CRM.
@@ -149,7 +149,7 @@ export default function AIAgentServicePage() {
               {
                 icon: Bot,
                 title: "Autonomous Conversational Bots",
-                desc: "Capture qualified leads 24/7, answer technical questions using proprietary knowledge bases, and book strategy meetings directly into calendar schedules."
+                desc: "Capture inquiries, answer questions from an approved knowledge base, and route conversations to the right person."
               },
               {
                 icon: Workflow,
@@ -314,7 +314,7 @@ export default function AIAgentServicePage() {
               {
                 step: "04",
                 title: "Testing, Fine-Tuning & Go-Live",
-                desc: "We run edge-case simulations, refine response quality, and launch the agent live with 24/7 monitoring."
+                desc: "We review edge cases, refine response quality, and launch the agent with monitoring as agreed in the project."
               }
             ].map((proc, pIdx) => (
               <div key={pIdx} className="bg-white border border-black/10 rounded-3xl p-6 sm:p-8 shadow-sm relative">

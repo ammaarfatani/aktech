@@ -84,8 +84,8 @@ const SERVICES_DATA: ServiceItem[] = [
     number: "09",
     title: "Website Maintenance & Support",
     category: "CARE & MAINTENANCE",
-    description: "Proactive ongoing website maintenance, bug fixes, content management, and uptime monitoring ensuring your digital platform operates flawlessly 24/7.",
-    capabilities: ["24/7 Uptime & Health Checks", "Bug Fixes & Patching", "Content & Asset Updates", "Backup & Recovery Infrastructure"],
+    description: "Ongoing website maintenance, bug fixes, content updates and monitoring when a support agreement is in place.",
+    capabilities: ["Uptime & health checks (as agreed)", "Bug fixes & patching", "Content & asset updates", "Backup & recovery planning"],
     image: "/projects/sized.png",
   },
   {

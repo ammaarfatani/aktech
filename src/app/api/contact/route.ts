@@ -22,7 +22,8 @@ export async function POST(request: Request) {
  if(!endpoint.startsWith("https://")) return reply("Contact delivery is unavailable",503);
  try {
   // One delivery attempt only: never retry an ambiguous response automatically.
-  const response=await fetch(endpoint,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(data),signal:AbortSignal.timeout(15000),cache:"no-store"});
+  const payload={...data,inquiryType:data.inquiryType,sheetTag:data.inquiryType.toUpperCase()};
+  const response=await fetch(endpoint,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload),signal:AbortSignal.timeout(15000),cache:"no-store"});
   if(!response.ok) return reply("Delivery could not be confirmed. Please contact us on WhatsApp before resending.",502);
   const result=await response.json();
   if(result?.success !== true && result?.status !== "success") return reply("Delivery could not be confirmed. Please contact us on WhatsApp before resending.",502);

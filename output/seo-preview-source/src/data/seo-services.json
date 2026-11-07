@@ -1,0 +1,51 @@
+[
+  {
+    "slug": "web-development",
+    "title": "Website Development",
+    "primaryKeyword": "web development company in Karachi",
+    "description": "Custom business websites, Next.js applications and e-commerce experiences from AKTECH in Karachi. Discuss your scope, content and integrations.",
+    "path": "/services/web-development"
+  },
+  {
+    "slug": "crm-business-systems",
+    "title": "Custom CRM Development",
+    "primaryKeyword": "custom CRM development company",
+    "description": "Connect lead capture, sales pipelines and customer operations with a custom CRM. Explore AKTECH business systems and request a project consultation.",
+    "path": "/services/crm-business-systems"
+  },
+  {
+    "slug": "erp-systems",
+    "title": "ERP Software Development",
+    "primaryKeyword": "ERP software development services",
+    "description": "Plan connected inventory, finance and operational workflows with AKTECH ERP development. Discuss data migration, permissions and reporting requirements.",
+    "path": "/services/erp-systems"
+  },
+  {
+    "slug": "ai-agent",
+    "title": "AI Agents & Automation",
+    "primaryKeyword": "AI automation agency",
+    "description": "Explore AI agents, business process automation and n8n workflows with AKTECH. Scope integrations, human review and practical automation opportunities.",
+    "path": "/services/ai-agent"
+  },
+  {
+    "slug": "mobile-app-development",
+    "title": "Mobile App Development",
+    "primaryKeyword": "mobile app development company",
+    "description": "Build mobile experiences around your customer workflows. Explore AKTECH app development, platform planning, integrations and project delivery.",
+    "path": "/services/mobile-app-development"
+  },
+  {
+    "slug": "seo",
+    "title": "Technical SEO Services",
+    "primaryKeyword": "SEO agency Karachi",
+    "description": "Improve crawlability, page performance and organic discovery with AKTECH technical SEO services. Request an audit focused on your business goals.",
+    "path": "/services/seo"
+  },
+  {
+    "slug": "uiux-design",
+    "title": "UI/UX Design",
+    "primaryKeyword": "UI UX design agency",
+    "description": "Plan clearer user journeys, interactive prototypes and reusable design systems with AKTECH. Explore UI/UX design for websites and business applications.",
+    "path": "/services/uiux-design"
+  }
+]

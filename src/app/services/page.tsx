@@ -40,7 +40,7 @@ const SERVICES_DATA = [
     icon: Bot,
     tagline: "Autonomous conversational bots, LLM agents & workflow pipelines.",
     description:
-      "Streamline operations, capture qualified leads 24/7, and eliminate repetitive manual tasks using custom OpenAI/Anthropic agents, n8n workflow automations, and intelligent CRM integrations tailored to your business model.",
+      "Automate repetitive inquiry and workflow steps with custom assistants and n8n pipelines, designed so a person can still review exceptions.",
     image: "/services/ai-agent.jpg",
     techStack: ["n8n", "OpenAI API", "Python", "LangChain", "Vector DBs", "Webhooks"],
     deliverables: [

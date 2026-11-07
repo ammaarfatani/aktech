@@ -1,0 +1,194 @@
+
+> aktech@0.1.0 lint
+> eslint
+
+
+D:\aktech\output\verification\audit.cjs
+   1:22  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  28:2   error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+D:\aktech\output\verification\background-image-fit-check.cjs
+  1:18  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  2:14  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+D:\aktech\output\verification\hero-asset-check.cjs
+  1:22  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+D:\aktech\output\verification\light-hero-audit.cjs
+  1:18  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  2:14  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+D:\aktech\output\verification\ui-update-audit.cjs
+  1:22  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  2:16  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  3:12  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+D:\aktech\output\verification\work-spacing-audit.cjs
+  1:18  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  2:14  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+D:\aktech\src\app\clients\page.tsx
+  10:3  warning  'ShieldCheck' is defined but never used  @typescript-eslint/no-unused-vars
+  17:3  warning  'Globe2' is defined but never used       @typescript-eslint/no-unused-vars
+  18:3  warning  'Users' is defined but never used        @typescript-eslint/no-unused-vars
+  21:3  warning  'Code2' is defined but never used        @typescript-eslint/no-unused-vars
+
+D:\aktech\src\app\not-found.tsx
+  3:10  warning  'ArrowLeft' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\aktech\src\app\page.tsx
+  1:28  warning  'FeaturedCaseStudy' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\aktech\src\app\services\ai-agent\page.tsx
+   5:8  warning  'Image' is defined but never used          @typescript-eslint/no-unused-vars
+  12:3  warning  'Zap' is defined but never used            @typescript-eslint/no-unused-vars
+  13:3  warning  'Cpu' is defined but never used            @typescript-eslint/no-unused-vars
+  14:3  warning  'Layers' is defined but never used         @typescript-eslint/no-unused-vars
+  16:3  warning  'LayoutGrid' is defined but never used     @typescript-eslint/no-unused-vars
+  21:3  warning  'MessageSquare' is defined but never used  @typescript-eslint/no-unused-vars
+  24:3  warning  'Activity' is defined but never used       @typescript-eslint/no-unused-vars
+  25:3  warning  'Terminal' is defined but never used       @typescript-eslint/no-unused-vars
+
+D:\aktech\src\app\services\crm-business-systems\page.tsx
+   5:8  warning  'Image' is defined but never used        @typescript-eslint/no-unused-vars
+  12:3  warning  'Zap' is defined but never used          @typescript-eslint/no-unused-vars
+  14:3  warning  'Layers' is defined but never used       @typescript-eslint/no-unused-vars
+  17:3  warning  'Database' is defined but never used     @typescript-eslint/no-unused-vars
+  18:3  warning  'ShieldCheck' is defined but never used  @typescript-eslint/no-unused-vars
+  22:3  warning  'Workflow' is defined but never used     @typescript-eslint/no-unused-vars
+
+D:\aktech\src\app\services\erp-systems\page.tsx
+   5:8  warning  'Image' is defined but never used     @typescript-eslint/no-unused-vars
+  12:3  warning  'Zap' is defined but never used       @typescript-eslint/no-unused-vars
+  14:3  warning  'Layers' is defined but never used    @typescript-eslint/no-unused-vars
+  17:3  warning  'Database' is defined but never used  @typescript-eslint/no-unused-vars
+  23:3  warning  'Workflow' is defined but never used  @typescript-eslint/no-unused-vars
+  24:3  warning  'Lock' is defined but never used      @typescript-eslint/no-unused-vars
+
+D:\aktech\src\app\services\mobile-app-development\page.tsx
+   5:8  warning  'Image' is defined but never used     @typescript-eslint/no-unused-vars
+  12:3  warning  'Zap' is defined but never used       @typescript-eslint/no-unused-vars
+  13:3  warning  'Cpu' is defined but never used       @typescript-eslint/no-unused-vars
+  14:3  warning  'Layers' is defined but never used    @typescript-eslint/no-unused-vars
+  21:3  warning  'Share2' is defined but never used    @typescript-eslint/no-unused-vars
+  22:3  warning  'Terminal' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\aktech\src\app\services\page.tsx
+  26:3  warning  'BarChart3' is defined but never used  @typescript-eslint/no-unused-vars
+  27:3  warning  'Terminal' is defined but never used   @typescript-eslint/no-unused-vars
+
+D:\aktech\src\app\services\seo\page.tsx
+    5:8   warning  'Image' is defined but never used                                @typescript-eslint/no-unused-vars
+   12:3   warning  'Zap' is defined but never used                                  @typescript-eslint/no-unused-vars
+   15:3   warning  'Layers' is defined but never used                               @typescript-eslint/no-unused-vars
+   17:3   warning  'BarChart3' is defined but never used                            @typescript-eslint/no-unused-vars
+   19:3   warning  'ShieldCheck' is defined but never used                          @typescript-eslint/no-unused-vars
+  217:25  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+D:\aktech\src\app\services\uiux-design\page.tsx
+    5:8   warning  'Image' is defined but never used                                @typescript-eslint/no-unused-vars
+   12:3   warning  'Zap' is defined but never used                                  @typescript-eslint/no-unused-vars
+   20:3   warning  'CheckSquare' is defined but never used                          @typescript-eslint/no-unused-vars
+  215:25  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+D:\aktech\src\app\services\web-development\page.tsx
+   5:8  warning  'Image' is defined but never used        @typescript-eslint/no-unused-vars
+  14:3  warning  'ShieldCheck' is defined but never used  @typescript-eslint/no-unused-vars
+  15:3  warning  'Layers' is defined but never used       @typescript-eslint/no-unused-vars
+  17:3  warning  'LayoutGrid' is defined but never used   @typescript-eslint/no-unused-vars
+  18:3  warning  'Database' is defined but never used     @typescript-eslint/no-unused-vars
+  21:3  warning  'Store' is defined but never used        @typescript-eslint/no-unused-vars
+  22:3  warning  'Layout' is defined but never used       @typescript-eslint/no-unused-vars
+  23:3  warning  'Cpu' is defined but never used          @typescript-eslint/no-unused-vars
+  24:3  warning  'CheckSquare' is defined but never used  @typescript-eslint/no-unused-vars
+  25:3  warning  'Lock' is defined but never used         @typescript-eslint/no-unused-vars
+
+D:\aktech\src\app\work\page.tsx
+  53:5  error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+D:\aktech\src\app\work\page.tsx:53:5
+  51 |   // Ensure currentIndex stays within bounds when filter changes
+  52 |   useEffect(() => {
+> 53 |     setCurrentIndex(0);
+     |     ^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  54 |   }, [selectedFilter]);
+  55 |
+  56 |   const totalItems = filteredItems.length;  react-hooks/set-state-in-effect
+  84:6  warning  React Hook useEffect has missing dependencies: 'nextProject' and 'prevProject'. Either include them or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               react-hooks/exhaustive-deps
+
+D:\aktech\src\components\shared\AIAssistant.tsx
+   71:5   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+D:\aktech\src\components\shared\AIAssistant.tsx:71:5
+  69 |       localStorage.setItem("aktech_ai_session_id", sId);
+  70 |     }
+> 71 |     setSessionId(sId);
+     |     ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  72 |
+  73 |     setMessages([
+  74 |       {                                                                                                                                                              react-hooks/set-state-in-effect
+  112:9   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+D:\aktech\src\components\shared\AIAssistant.tsx:112:9
+  110 |       const lastMsg = messages[messages.length - 1];
+  111 |       if (lastMsg && lastMsg.sender === "ai" && lastMsg.id !== "welcome-1") {
+> 112 |         setShowNewMessageIndicator(true);
+      |         ^^^^^^^^^^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  113 |       }
+  114 |     }
+  115 |   }, [messages, isOpen, isLoading, isUserNearBottom]);  react-hooks/set-state-in-effect
+  134:19  error    Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\aktech\src\components\shared\AIAssistant.tsx:134:19
+  132 |
+  133 |     const userMsg: Message = {
+> 134 |       id: `user-${Date.now()}`,
+      |                   ^^^^^^^^^^ Cannot call impure function
+  135 |       sender: "user",
+  136 |       text: query,
+  137 |       timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })                                                                                                                                                                                                                                                                                                                                                                                                                                                                 react-hooks/purity
+  166:19  error    Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\aktech\src\components\shared\AIAssistant.tsx:166:19
+  164 |
+  165 |       const aiMsg: Message = {
+> 166 |         id: `ai-${Date.now()}`,
+      |                   ^^^^^^^^^^ Cannot call impure function
+  167 |         sender: "ai",
+  168 |         text: data.reply || "I am AKTech AI Agent. How can I assist your business today?",
+  169 |         timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),                                                                                                                                                                                                                                                                                                                                                                                      react-hooks/purity
+  239:11  warning  'boldColor' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            @typescript-eslint/no-unused-vars
+
+D:\aktech\src\components\shared\Marquee.tsx
+  32:13  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+D:\aktech\src\lib\aiAssistantEngine.ts
+  2:3  warning  'COMPANY_KNOWLEDGE' is defined but never used              @typescript-eslint/no-unused-vars
+  4:3  warning  'PLATFORM_COMPARISON_KNOWLEDGE' is defined but never used  @typescript-eslint/no-unused-vars
+  6:3  warning  'SMART_ROUTES' is defined but never used                   @typescript-eslint/no-unused-vars
+  9:3  warning  'ProjectKnowledge' is defined but never used               @typescript-eslint/no-unused-vars
+
+✖ 78 problems (19 errors, 59 warnings)
+

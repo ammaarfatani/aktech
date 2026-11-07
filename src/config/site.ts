@@ -10,7 +10,7 @@ export const siteConfig = {
   shortName: "AKTECH",
   legalName: "AKTECH Digital Solutions",
   description:
-    "AKTECH Digital Solutions is a global software engineering and digital agency specializing in custom web applications, Next.js development, mobile apps, AI agents & automation, and business management systems.",
+    "AKTECH Digital Solutions is a global digital solutions agency. We engineer websites, custom software, mobile apps, AI automation and business systems for teams worldwide through remote collaboration.",
   url: getSiteUrl(),
   ogImage: "/opengraph-image",
   email: "hello@aktech.tech",
@@ -23,7 +23,7 @@ export const siteConfig = {
   },
   links: {
     facebook: "https://www.facebook.com/profile.php?id=61593629511161",
-    instagram: "https://www.instagram.com/aktech.digital.solution/",
+    instagram: "https://www.instagram.com/aktech.digital.solutions/",
     linkedin: "https://www.linkedin.com/company/aktech-digital-solution/",
     whatsapp: "https://wa.me/923713410797",
   },
@@ -51,8 +51,9 @@ export const siteConfig = {
     "Shopify development company",
     "UI UX design agency",
     "technical SEO services",
-    "web development company in Karachi",
-    "software development agency in Pakistan",
+    "global digital agency",
+    "remote software development agency",
+    "international web development company",
   ],
   author: "AKTECH Digital Solutions",
 };

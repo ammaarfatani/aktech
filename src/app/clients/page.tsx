@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
+import React from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import {
   Sparkles,
@@ -10,9 +9,6 @@ import {
   ShieldCheck,
   Zap,
   CheckCircle2,
-  Quote,
-  ChevronLeft,
-  ChevronRight,
   Building2,
   Globe2,
   Users,
@@ -20,49 +16,6 @@ import {
   Clock,
   Code2,
 } from "lucide-react";
-
-/* ─────────────────────────────────────────────
-   CLIENT TESTIMONIALS DATA
-   ───────────────────────────────────────────── */
-
-const TESTIMONIALS = [
-  {
-    id: 1,
-    quote: "AKTECH completely transformed our web operations. Their engineering team delivered our custom platform weeks ahead of schedule with sub-second page performance.",
-    name: "Tariq Mahmood",
-    role: "Managing Director",
-    company: "Apex Global Logistics",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop",
-    projectType: "Enterprise Web & ERP Platform"
-  },
-  {
-    id: 2,
-    quote: "The RESTRO ERP built by AKTECH streamlined our multi-branch operations, POS ordering, and table management into one intuitive platform. Incredible UX execution.",
-    name: "Chef Farhan",
-    role: "Founder & Executive Chef",
-    company: "Restro Hospitality Group",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop",
-    projectType: "Custom ERP & POS Ecosystem"
-  },
-  {
-    id: 3,
-    quote: "Integrating n8n workflows and AI Chatbots with AKTECH saved our support team 20+ manual hours every single week. Highly recommend their AI team.",
-    name: "Sarah Jenkins",
-    role: "Head of Operations",
-    company: "WebCloners US Agency",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop",
-    projectType: "AI Workflow & Chatbot Integration"
-  },
-  {
-    id: 4,
-    quote: "Our fashion e-commerce storefront saw an immediate 35% increase in conversion rate after AKTECH redesigned the product catalog and checkout experience.",
-    name: "Syeda Hoorain",
-    role: "Creative Director",
-    company: "LYBA Fashion Brand",
-    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop",
-    projectType: "E-Commerce Architecture & UI/UX"
-  }
-];
 
 /* ─────────────────────────────────────────────
    12 TRUST & REASON POINTS
@@ -114,32 +67,12 @@ const TRUST_REASONS = [
     desc: "Optimized for 95+ Google Core Web Vitals scores to ensure instant sub-second page loads globally."
   },
   {
-    title: "Responsive 24/7 Support",
-    desc: "Dedicated support team on WhatsApp, email, and private Slack channels for rapid emergency resolution."
+    title: "Reachable after launch",
+    desc: "WhatsApp and email remain available. Ongoing support is provided when it is part of the agreed engagement."
   }
 ];
 
 export default function ClientsPage() {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-
-  const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % TESTIMONIALS.length);
-  };
-
-  const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
-  };
-
-  // Auto slide testimonials every 8 seconds
-  useEffect(() => {
-    const timer = setInterval(() => {
-      nextTestimonial();
-    }, 8000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const testimonial = TESTIMONIALS[currentTestimonial];
-
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-[#111111] pt-36 sm:pt-40 pb-20 selection:bg-[#E0000B]/20 selection:text-[#E0000B] overflow-x-hidden">
       
@@ -185,7 +118,7 @@ export default function ClientsPage() {
               className="lg:col-span-4"
             >
               <p className="text-gray-600 text-base sm:text-lg font-normal leading-relaxed mb-6">
-                From fast-scaling startups and retail chains to international media networks and technology firms — we partner with teams that value technical precision and speed.
+                AKTECH works with schools, restaurants, retailers and product teams that need software they can operate. We do not publish invented testimonials or unverified results.
               </p>
 
               <Link
@@ -294,19 +227,19 @@ export default function ClientsPage() {
           <div className="bg-[#111111] text-white rounded-[2.5rem] p-8 sm:p-12 shadow-2xl relative overflow-hidden">
             <div className="max-w-xl mb-8">
               <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#E0000B] mb-2 block">
-                MEASURABLE RESULTS
+                HOW WE WORK
               </span>
               <h2 className="font-heading font-extrabold text-2xl sm:text-3xl uppercase tracking-tight">
-                OUR IMPACT IN NUMBERS
+                WHAT YOU CAN RELY ON
               </h2>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
-                { stat: "30+", label: "Projects Delivered Globally", icon: Building2 },
-                { stat: "98%", label: "Client Retainer Satisfaction", icon: Award },
-                { stat: "100%", label: "On-Time Milestone Rate", icon: Clock },
-                { stat: "sub-1s", label: "Average Page Load Speed", icon: Zap },
+                { stat: "Work", label: "Websites, stores and business systems", icon: Building2 },
+                { stat: "Scope", label: "Discovery before a quote", icon: Award },
+                { stat: "Handover", label: "Access and notes at launch", icon: Clock },
+                { stat: "Support", label: "When it is part of the agreement", icon: Zap },
               ].map((item, idx) => {
                 const IconComp = item.icon;
                 return (
@@ -330,88 +263,18 @@ export default function ClientsPage() {
           </div>
         </section>
 
-        {/* ═════════════════════════════════════════════════════════════
-            5. TESTIMONIALS (WHITE SECTION WITH SLIDER)
-           ═════════════════════════════════════════════════════════════ */}
         <section className="mb-16">
-          <div className="bg-white border border-black/10 rounded-[2.5rem] p-8 sm:p-12 shadow-xl relative overflow-hidden">
-            
-            {/* Header */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-8 border-b border-black/10 mb-8">
-              <div>
-                <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#E0000B] mb-2 block">
-                  CLIENT EXPERIENCE
-                </span>
-                <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-[#111111] tracking-tight uppercase">
-                  WHAT OUR CLIENTS SAY
-                </h2>
-              </div>
-
-              {/* Controls */}
-              <div className="flex items-center gap-4">
-                <span className="text-xs font-bold tracking-widest text-gray-500">
-                  <span className="text-[#E0000B]">{(currentTestimonial + 1).toString().padStart(2, "0")}</span> / {TESTIMONIALS.length.toString().padStart(2, "0")}
-                </span>
-
-                <button
-                  onClick={prevTestimonial}
-                  className="w-10 h-10 rounded-full border border-black/10 bg-gray-50 hover:bg-[#E0000B] hover:border-[#E0000B] hover:text-white flex items-center justify-center transition-colors shadow-sm cursor-pointer text-[#111111]"
-                  aria-label="Previous testimonial"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
-
-                <button
-                  onClick={nextTestimonial}
-                  className="w-10 h-10 rounded-full border border-black/10 bg-gray-50 hover:bg-[#E0000B] hover:border-[#E0000B] hover:text-white flex items-center justify-center transition-colors shadow-sm cursor-pointer text-[#111111]"
-                  aria-label="Next testimonial"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-
-            {/* Testimonial Quote Display */}
-            <div className="min-h-[220px] flex flex-col justify-between">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={testimonial.id}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -15 }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <Quote className="w-8 h-8 text-[#E0000B] mb-4 opacity-80" />
-                  
-                  <p className="text-lg sm:text-2xl font-heading font-medium leading-relaxed mb-8 text-[#111111]">
-                    &ldquo;{testimonial.quote}&rdquo;
-                  </p>
-
-                  <div className="flex items-center gap-4">
-                    <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#E0000B]/50 shrink-0">
-                      <Image
-                        src={testimonial.avatar}
-                        alt={testimonial.name}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <div>
-                      <h4 className="font-heading font-bold text-base text-[#111111]">
-                        {testimonial.name}
-                      </h4>
-                      <p className="text-xs font-medium text-gray-500">
-                        {testimonial.role} — <span className="text-[#E0000B] font-bold">{testimonial.company}</span>
-                      </p>
-                      <span className="inline-block mt-1 text-[10px] font-bold uppercase tracking-wider text-gray-600 bg-gray-100 px-2.5 py-0.5 rounded-full">
-                        {testimonial.projectType}
-                      </span>
-                    </div>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
+          <div className="rounded-[2.5rem] border border-black/10 bg-white p-8 sm:p-12">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#E0000B]">Selected work</p>
+            <h2 className="mt-2 font-heading text-2xl sm:text-3xl font-extrabold tracking-tight uppercase">
+              Projects you can inspect
+            </h2>
+            <p className="mt-4 max-w-2xl text-[#4B5563]">
+              Reviews and conversion claims are not published here. Look at the case studies and portfolio instead.
+            </p>
+            <Link href="/case-studies" className="mt-6 inline-flex text-xs font-bold uppercase tracking-[0.18em] text-[#111111] hover:text-[#E0000B]">
+              View case studies
+            </Link>
           </div>
         </section>
 

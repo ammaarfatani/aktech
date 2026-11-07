@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" fill="none">
+  <rect width="1200" height="675" fill="#0f0f0f"/>
+  <text x="120" y="220" fill="#E0000B" font-family="monospace" font-size="42">&lt;Next /&gt;</text>
+  <text x="120" y="300" fill="#ffffff" opacity="0.55" font-family="monospace" font-size="28">const stack = ["react","node"];</text>
+  <text x="120" y="360" fill="#ffffff" opacity="0.35" font-family="monospace" font-size="28">deploy();</text>
+  <rect x="780" y="160" width="280" height="280" rx="24" stroke="#E0000B" opacity="0.4"/>
+</svg>

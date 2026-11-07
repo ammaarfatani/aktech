@@ -1,627 +1,370 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
-  Menu,
-  X,
-  Globe,
+  ArrowRight,
   Bot,
-  Smartphone,
+  Briefcase,
+  Building2,
+  ChevronDown,
+  Globe,
   LayoutGrid,
+  MapPin,
+  Menu,
   Palette,
   Search,
-  ChevronDown,
-  ChevronRight,
-  ArrowRight,
+  Smartphone,
+  Sparkles,
+  X,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
+import { products } from "@/data/products";
+import { solutions } from "@/data/solutions";
 
-/* ─────────────────────────────────────────────
-   EXACT AKTECH SERVICE CATEGORIES DATA
-   ───────────────────────────────────────────── */
+type MenuId = "services" | "solutions" | "work" | "products" | "company" | "resources";
 
-const SERVICE_CATEGORIES = [
-  {
-    title: "AI & Automation",
-    icon: Bot,
-    href: "/services/ai-agent",
-    items: [
-      { name: "AI Agents", href: "/services/ai-agent" },
-      { name: "AI Chatbots", href: "/services/ai-agent" },
-      { name: "Workflow Automation", href: "/services/ai-agent" },
-      { name: "Business Automation", href: "/services/ai-agent" },
-      { name: "n8n Automation", href: "/services/ai-agent" },
-      { name: "AI Integrations", href: "/services/ai-agent" },
-    ],
-  },
-  {
-    title: "Web Development",
-    icon: Globe,
-    href: "/services/web-development",
-    items: [
-      { name: "Custom Websites", href: "/services/web-development" },
-      { name: "Web Applications", href: "/services/web-development" },
-      { name: "SaaS Development", href: "/services/web-development" },
-      { name: "E-Commerce Development", href: "/services/web-development" },
-      { name: "WordPress Development", href: "/services/web-development" },
-      { name: "Shopify Development", href: "/services/web-development" },
-      { name: "API Development & Integration", href: "/services/web-development" },
-    ],
-  },
-  {
-    title: "Mobile App Development",
-    icon: Smartphone,
-    href: "/services/mobile-app-development",
-    items: [
-      { name: "Android Apps", href: "/services/mobile-app-development" },
-      { name: "iOS Apps", href: "/services/mobile-app-development" },
-      { name: "Cross-Platform Apps", href: "/services/mobile-app-development" },
-      { name: "React Native Development", href: "/services/mobile-app-development" },
-    ],
-  },
-  {
-    title: "CRM / Business Systems",
-    icon: LayoutGrid,
-    href: "/services/crm-business-systems",
-    items: [
-      { name: "CRM Systems", href: "/services/crm-business-systems" },
-      { name: "Inventory Systems", href: "/services/crm-business-systems" },
-      { name: "POS Systems", href: "/services/crm-business-systems" },
-      { name: "ERP Solutions", href: "/services/erp-systems" },
-      { name: "Admin Dashboards", href: "/services/crm-business-systems" },
-      { name: "Business Management Systems", href: "/services/crm-business-systems" },
-    ],
-  },
-  {
-    title: "UI/UX & Design",
-    icon: Palette,
-    href: "/services/uiux-design",
-    items: [
-      { name: "UI/UX Design", href: "/services/uiux-design" },
-      { name: "Web Design", href: "/services/uiux-design" },
-      { name: "Product Design", href: "/services/uiux-design" },
-      { name: "Landing Pages", href: "/services/uiux-design" },
-      { name: "Design Systems", href: "/services/uiux-design" },
-      { name: "Brand Identity", href: "/services/uiux-design" },
-    ],
-  },
-  {
-    title: "SEO / Digital Growth",
-    icon: Search,
-    href: "/services/seo",
-    items: [
-      { name: "Technical SEO", href: "/services/seo" },
-      { name: "Local SEO", href: "/services/seo" },
-      { name: "E-Commerce SEO", href: "/services/seo" },
-      { name: "Digital Marketing", href: "/services/seo" },
-      { name: "Social Media", href: "/services/seo" },
-    ],
-  },
+const SERVICES = [
+  { label: "Web Development", href: "/services/web-development", hint: "Sites, apps and stores", Icon: Globe },
+  { label: "Mobile Applications", href: "/services/mobile-app-development", hint: "iOS, Android, React Native", Icon: Smartphone },
+  { label: "AI Agents & Automation", href: "/services/ai-agent", hint: "Workflows and assistants", Icon: Bot },
+  { label: "CRM & Business Systems", href: "/services/crm-business-systems", hint: "Sales and operations tools", Icon: LayoutGrid },
+  { label: "UI/UX Design", href: "/services/uiux-design", hint: "Interfaces and systems", Icon: Palette },
+  { label: "SEO & Digital Growth", href: "/services/seo", hint: "Technical and local SEO", Icon: Search },
 ];
 
-/* ─────────────────────────────────────────────
-   EXACT NAV LINKS
-   ───────────────────────────────────────────── */
+const WORK = [
+  { label: "Selected Work", href: "/work", hint: "Live sites and products" },
+  { label: "Case Studies", href: "/case-studies", hint: "How the work was built" },
+  { label: "Portfolio", href: "/portfolio", hint: "Visual collection" },
+  { label: "Clients", href: "/clients", hint: "How we collaborate" },
+];
 
-const NAV_LINKS = [
+const COMPANY = [
+  { label: "About", href: "/about", hint: "Who we are", Icon: Building2 },
+  { label: "Our Process", href: "/our-process", hint: "Idea to launch", Icon: Sparkles },
+  { label: "Careers", href: "/careers", hint: "Open roles in Karachi", Icon: Briefcase },
+  { label: "Global Collaboration", href: "/locations", hint: "Work with us from anywhere", Icon: MapPin },
+  { label: "Contact", href: "/contact", hint: "Start a project" },
+];
+
+const RESOURCES = [
+  { label: "Insights", href: "/insights", hint: "Studio writing" },
+  { label: "Project Estimator", href: "/project-estimator", hint: "Scope a brief" },
+  { label: "Book a Consultation", href: "/book-consultation", hint: "Request a conversation" },
+  { label: "FAQs", href: "/faq", hint: "Common questions" },
+];
+
+const NAV: { name: string; href: string; menu?: MenuId }[] = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Services", href: "/services", hasMega: true },
-  { name: "Products", href: "/products" },
-  { name: "Portfolio", href: "/portfolio" },
-  { name: "Clients", href: "/clients" },
-  { name: "Contact Us", href: "/contact" },
+  { name: "Services", href: "/services", menu: "services" },
+  { name: "Solutions", href: "/solutions", menu: "solutions" },
+  { name: "Our Work", href: "/work", menu: "work" },
+  { name: "Products", href: "/products", menu: "products" },
+  { name: "Company", href: "/about", menu: "company" },
+  { name: "Resources", href: "/insights", menu: "resources" },
 ];
 
-/* ─────────────────────────────────────────────
-   NAVBAR COMPONENT
-   ───────────────────────────────────────────── */
+const INTRO: Record<MenuId, { label: string; title: string; body: string; cta: string; href: string }> = {
+  services: {
+    label: "What we do",
+    title: "Build the right system.",
+    body: "Web, mobile, AI, CRM and design — scoped to how your team actually works.",
+    cta: "All services",
+    href: "/services",
+  },
+  solutions: {
+    label: "Solutions",
+    title: "Problems, not product names.",
+    body: "CRM, schools, restaurants, commerce, SaaS and analytics — mapped to operations.",
+    cta: "All solutions",
+    href: "/solutions",
+  },
+  work: {
+    label: "Our work",
+    title: "Inspect the product.",
+    body: "Real websites, stores and systems. No invented case-study metrics.",
+    cta: "View work",
+    href: "/work",
+  },
+  products: {
+    label: "Products",
+    title: "Software we are building.",
+    body: "Acadivo, Restro ERP and Fitivo remain Coming Soon until a public launch is confirmed.",
+    cta: "Product ecosystem",
+    href: "/products",
+  },
+  company: {
+    label: "Company",
+    title: "A global digital agency.",
+    body: "Engineering, design and hiring — with remote collaboration for businesses worldwide.",
+    cta: "About AKTECH",
+    href: "/about",
+  },
+  resources: {
+    label: "Resources",
+    title: "Plan the next conversation.",
+    body: "Insights, a project estimator, consultation requests and FAQs.",
+    cta: "Read insights",
+    href: "/insights",
+  },
+};
 
 export function Navbar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [megaOpen, setMegaOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const pathname = usePathname();
-
-  const megaRef = useRef<HTMLDivElement>(null);
-  const servicesButtonRef = useRef<HTMLButtonElement>(null);
-  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  // Route-aware navbar: Home page starts transparent and turns white on scroll.
-  // All other pages start immediately in the solid white navbar style.
-  const isHomePage = pathname === "/";
-  const showSolidNavbar = !isHomePage || isScrolled;
+  const [scrolled, setScrolled] = useState(false);
+  const [openMenu, setOpenMenu] = useState<MenuId | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileGroup, setMobileGroup] = useState<string | null>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const menuId = useId();
+  const isHome = pathname === "/";
+  const solid = !isHome || scrolled;
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close mega-menu on outside click
   useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (
-        megaOpen &&
-        megaRef.current &&
-        !megaRef.current.contains(e.target as Node) &&
-        servicesButtonRef.current &&
-        !servicesButtonRef.current.contains(e.target as Node)
-      ) {
-        setMegaOpen(false);
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpenMenu(null);
+        setMobileOpen(false);
       }
     };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, [megaOpen]);
-
-  // Close mega-menu on scroll
-  useEffect(() => {
-    if (!megaOpen) return;
-    const handler = () => setMegaOpen(false);
-    window.addEventListener("scroll", handler, { passive: true });
-    return () => window.removeEventListener("scroll", handler);
-  }, [megaOpen]);
-
-  const handleMegaEnter = useCallback(() => {
-    if (closeTimerRef.current) {
-      clearTimeout(closeTimerRef.current);
-      closeTimerRef.current = null;
-    }
-    setMegaOpen(true);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  const handleMegaLeave = useCallback(() => {
-    closeTimerRef.current = setTimeout(() => {
-      setMegaOpen(false);
-    }, 200);
+  const show = useCallback((id: MenuId) => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setOpenMenu(id);
   }, []);
+
+  const hide = useCallback(() => {
+    closeTimer.current = setTimeout(() => setOpenMenu(null), 180);
+  }, []);
+
+  function active(href: string, menu?: MenuId) {
+    if (href === "/") return pathname === "/";
+    if (pathname === href || pathname.startsWith(`${href}/`)) return true;
+    if (menu === "company") return ["/about", "/our-process", "/careers", "/locations", "/contact"].some((p) => pathname.startsWith(p));
+    if (menu === "resources") return ["/insights", "/project-estimator", "/book-consultation", "/faq"].some((p) => pathname.startsWith(p));
+    if (menu === "work") return ["/work", "/case-studies", "/portfolio", "/clients"].some((p) => pathname.startsWith(p));
+    return false;
+  }
 
   return (
     <>
-      <motion.header
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed top-0 left-0 right-0 z-[100] px-4 sm:px-6 pointer-events-none flex justify-center transition-all duration-500"
-        style={{
-          paddingTop: showSolidNavbar ? "0.5rem" : "1.25rem"
-        }}
-      >
+      <header className="pointer-events-none fixed inset-x-0 top-0 z-[100] flex justify-center px-3 pt-3 sm:px-5">
+        <div className="pointer-events-auto flex w-full max-w-[1280px] flex-col items-center overflow-visible" onMouseLeave={hide}>
         <div
           className={cn(
-            "pointer-events-auto flex items-center justify-between",
-            "w-full max-w-[1400px] px-6 sm:px-8 rounded-[999px]",
-            "transition-all duration-500 ease-[0.16,1,0.3,1]",
-            "relative",
-            showSolidNavbar ? "h-[62px] sm:h-[68px]" : "h-[76px] sm:h-[82px]"
+            "relative flex h-16 w-full items-center justify-between rounded-full px-4 sm:px-6",
+            solid ? "border border-black/8 bg-white/96 shadow-[0_10px_30px_rgba(0,0,0,0.06)] backdrop-blur-xl" : "bg-transparent"
           )}
-          style={{
-            background: showSolidNavbar
-              ? "rgba(255, 255, 255, 0.96)"
-              : "transparent",
-
-            backdropFilter: showSolidNavbar ? "blur(20px)" : "none",
-            WebkitBackdropFilter: showSolidNavbar ? "blur(20px)" : "none",
-
-            border: showSolidNavbar
-              ? "1px solid rgba(0, 0, 0, 0.08)"
-              : "1px solid transparent",
-
-            boxShadow: showSolidNavbar
-              ? "0 8px 24px rgba(0, 0, 0, 0.06)"
-              : "none",
-          }}
         >
-          {/* --- LOGO (Original Asset) --- */}
-          <Link
-            href="/"
-            className="flex items-center gap-3 shrink-0 relative z-10 group"
-          >
-            <div className={cn(
-              "relative transition-all duration-300",
-              showSolidNavbar ? "w-8 h-8 sm:w-9 sm:h-9" : "w-10 h-10 sm:w-11 sm:h-11"
-            )}>
-              <Image
-                src="/logo.png"
-                alt="AKTECH Logo"
-                fill
-                priority
-                className="object-contain transition-transform duration-300 group-hover:scale-105"
-              />
-            </div>
-            <span
-              className={cn(
-                "font-heading font-black text-lg sm:text-xl tracking-tight hidden sm:inline-block transition-colors duration-500",
-                showSolidNavbar ? "text-[#111111]" : "text-white"
-              )}
-            >
+          <Link href="/" className="relative z-10 flex items-center gap-2.5" onClick={() => setOpenMenu(null)}>
+            <span className={cn("relative h-8 w-8", !solid && "rounded-full bg-white p-1")}>
+              <Image src="/logo.png" alt="AKTECH" fill className="object-contain" priority />
+            </span>
+            <span className={cn("hidden font-heading text-lg font-bold tracking-tight sm:inline", solid ? "text-[#111111]" : "text-white")}>
               AKTECH
             </span>
           </Link>
 
-          {/* --- DESKTOP NAV LINKS --- */}
-          <nav className="hidden lg:flex items-center gap-1.5 relative z-10">
-            {NAV_LINKS.map((link) => {
-              const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
-
-              // Services link with hover mega menu
-              if (link.hasMega) {
+          <nav className="hidden items-center xl:flex" aria-label="Primary">
+            {NAV.map((item) => {
+              const isOn = active(item.href, item.menu);
+              if (!item.menu) {
                 return (
-                  <div
-                    key={link.name}
-                    className="relative inline-flex items-center"
-                    onMouseEnter={handleMegaEnter}
-                    onMouseLeave={handleMegaLeave}
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={cn(
+                      "px-2.5 py-2 text-[11px] font-bold uppercase tracking-[0.14em]",
+                      isOn ? "text-[#E0000B]" : solid ? "text-[#111111] hover:text-[#E0000B]" : "text-white/80 hover:text-white"
+                    )}
                   >
-                    <button
-                      ref={servicesButtonRef}
-                      onClick={() => setMegaOpen((prev) => !prev)}
-                      className={cn(
-                        "relative px-4 py-2 text-[10px] font-bold tracking-[0.18em] uppercase transition-all duration-300 rounded-full group flex items-center gap-1 cursor-pointer",
-                        megaOpen || isActive
-                          ? "text-[#E0000B]"
-                          : showSolidNavbar
-                          ? "text-[#111111] hover:text-[#E0000B]"
-                          : "text-gray-200 hover:text-white"
-                      )}
-                    >
-                      <span className="relative z-10">{link.name}</span>
-                      <ChevronDown
-                        className={cn(
-                          "w-3 h-3 transition-transform duration-300",
-                          megaOpen ? "rotate-180 text-[#E0000B]" : ""
-                        )}
-                      />
-
-                      {/* Hover Glow */}
-                      <div className={cn(
-                        "absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300",
-                        showSolidNavbar ? "bg-black/[0.04]" : "bg-white/[0.1]"
-                      )} />
-                    </button>
-                  </div>
+                    {item.name}
+                  </Link>
                 );
               }
-
               return (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className={cn(
-                    "relative px-4 py-2 text-[10px] font-bold tracking-[0.18em] uppercase transition-all duration-300 rounded-full group",
-                    isActive
-                      ? "text-[#E0000B]"
-                      : showSolidNavbar
-                      ? "text-[#111111] hover:text-[#E0000B]"
-                      : "text-gray-200 hover:text-white"
-                  )}
-                >
-                  <span className="relative z-10">
-                    {link.name}
-                  </span>
-
-                  {/* Active Pill Indicator */}
-                  {isActive && (
-                    <motion.div
-                      layoutId="nav-active"
-                      className="absolute inset-0 rounded-full"
-                      style={{
-                        background: "rgba(224, 0, 11, 0.08)",
-                        border: "1px solid rgba(224, 0, 11, 0.25)"
-                      }}
-                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                    />
-                  )}
-
-                  {/* Hover Glow */}
-                  {!isActive && (
-                    <div className={cn(
-                      "absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300",
-                      showSolidNavbar ? "bg-black/[0.04]" : "bg-white/[0.1]"
-                    )} />
-                  )}
-                </Link>
+                <div key={item.name} onMouseEnter={() => show(item.menu!)} className="relative">
+                  <button
+                    type="button"
+                    aria-expanded={openMenu === item.menu}
+                    aria-haspopup="true"
+                    aria-controls={`${menuId}-${item.menu}`}
+                    onClick={() => setOpenMenu((prev) => (prev === item.menu ? null : item.menu!))}
+                    onFocus={() => show(item.menu!)}
+                    className={cn(
+                      "flex items-center gap-1 px-2.5 py-2 text-[11px] font-bold uppercase tracking-[0.14em]",
+                      isOn || openMenu === item.menu
+                        ? "text-[#E0000B]"
+                        : solid
+                          ? "text-[#111111] hover:text-[#E0000B]"
+                          : "text-white/80 hover:text-white"
+                    )}
+                  >
+                    {item.name}
+                    <ChevronDown className={cn("h-3 w-3 transition-transform duration-200", openMenu === item.menu && "rotate-180")} />
+                  </button>
+                </div>
               );
             })}
           </nav>
 
-          {/* --- DESKTOP CTA BUTTON (Contact Us -> /contact) --- */}
-          <div className="hidden lg:block relative z-10">
-            <Link
-              href="/contact"
-              className={cn(
-                "relative flex items-center justify-center rounded-full text-[10px] font-bold uppercase tracking-[0.15em] transition-all duration-300 hover:scale-[1.04] active:scale-95 group overflow-hidden text-white bg-[#E0000B] hover:bg-[#C00009]",
-                showSolidNavbar ? "h-9 px-6" : "h-10 px-7"
-              )}
-              style={{
-                boxShadow: "0 4px 18px rgba(224, 0, 11, 0.3)",
-              }}
-            >
-              <div className="absolute inset-0 w-[200%] h-full bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-[100%] group-hover:translate-x-[50%] transition-transform duration-[1.2s] ease-in-out" />
-              <span className="relative z-10 font-bold">Contact Us</span>
-            </Link>
-          </div>
+          <Link
+            href="/contact"
+            className="hidden h-10 items-center rounded-full bg-[#E0000B] px-5 text-[11px] font-bold uppercase tracking-[0.16em] text-white hover:bg-[#C00009] xl:inline-flex"
+          >
+            Let&apos;s Talk
+          </Link>
 
-          {/* --- MOBILE MENU TOGGLE --- */}
           <button
-            aria-label="Toggle Navigation Menu"
-            className={cn(
-              "lg:hidden relative z-50 p-2 rounded-full transition-all duration-300 active:scale-95",
-              showSolidNavbar ? "text-[#111111] hover:bg-black/5" : "text-white hover:bg-white/10"
-            )}
-            style={{
-              border: showSolidNavbar ? "1px solid rgba(0, 0, 0, 0.1)" : "1px solid rgba(255, 255, 255, 0.2)"
-            }}
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            type="button"
+            className={cn("rounded-full border p-2 xl:hidden", solid ? "border-black/10 text-[#111111]" : "border-white/25 text-white")}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            onClick={() => setMobileOpen((v) => !v)}
           >
-            {mobileMenuOpen ? (
-              <X className={cn("w-4 h-4", showSolidNavbar ? "text-[#111111]" : "text-white")} />
-            ) : (
-              <Menu className={cn("w-4 h-4", showSolidNavbar ? "text-[#111111]" : "text-white")} />
-            )}
+            {mobileOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
+
         </div>
-      </motion.header>
+          <AnimatePresence>
+            {openMenu && (
+              <motion.div
+                id={`${menuId}-${openMenu}`}
+                role="menu"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 6 }}
+                transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+                onMouseEnter={() => show(openMenu)}
+                className="relative z-[110] mt-2 hidden w-[min(680px,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-black/8 bg-white shadow-[0_24px_60px_rgba(0,0,0,0.12)] xl:block"
+              >
+                <CompactMenu id={openMenu} onNavigate={() => setOpenMenu(null)} />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </header>
 
-      {/* ═══════════════════════════════════════════════════════════
-          DESKTOP MEGA-MENU — FULL-WIDTH BELOW NAVBAR
-         ═══════════════════════════════════════════════════════════ */}
       <AnimatePresence>
-        {megaOpen && (
+        {mobileOpen && (
           <motion.div
-            ref={megaRef}
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            onMouseEnter={handleMegaEnter}
-            onMouseLeave={handleMegaLeave}
-            className="fixed left-0 right-0 z-[99] pointer-events-auto hidden lg:block"
-            style={{
-              top: showSolidNavbar ? "78px" : "96px",
-            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[90] overflow-y-auto bg-[#111111] px-5 pb-16 pt-24 text-white xl:hidden"
           >
-            <div className="w-full bg-white border-b border-gray-200 shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
-              <div className="max-w-[1400px] mx-auto px-8 lg:px-12">
-                <div className="grid grid-cols-12 gap-0">
-
-                  {/* ── LEFT COLUMN: INTRO ── */}
-                  <div className="col-span-3 py-10 pr-10 border-r border-gray-100 flex flex-col justify-between">
-                    <div>
-                      <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#E0000B] mb-4 block">
-                        WHAT WE DO
-                      </span>
-                      <h3 className="font-heading font-extrabold text-xl text-[#111111] tracking-tight mb-3 leading-snug">
-                        360° Digital Solutions
-                      </h3>
-                      <p className="text-gray-500 text-[13px] leading-relaxed mb-6 font-normal">
-                        Digital products, intelligent systems and experiences built for ambitious businesses.
-                      </p>
-                    </div>
-
-                    {/* Trust / Fact points */}
-                    <div className="flex flex-col gap-2.5 pt-4 border-t border-gray-100">
-                      {[
-                        { value: "30+", label: "Projects Delivered" },
-                        { value: "1+", label: "Years Experience" },
-                        { value: "Global", label: "Clients World-Wide" },
-                      ].map((fact) => (
-                        <div key={fact.label} className="flex items-center gap-2.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#E0000B]" />
-                          <span className="text-xs text-gray-700 font-medium">
-                            <span className="font-extrabold text-[#111111]">{fact.value}</span>{" "}
-                            {fact.label}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* ── RIGHT COLUMN: 6 SERVICE CATEGORIES GRID ── */}
-                  <div className="col-span-9 py-10 pl-10">
-                    <div className="grid grid-cols-3 gap-x-10 gap-y-8">
-                      {SERVICE_CATEGORIES.map((category) => {
-                        const IconComp = category.icon;
-                        return (
-                          <div key={category.title}>
-                            {/* Category Header */}
-                            <div className="flex items-center gap-2 mb-2.5">
-                              <IconComp className="w-3.5 h-3.5 text-[#E0000B]" strokeWidth={2.5} />
-                              <Link
-                                href={category.href}
-                                onClick={() => setMegaOpen(false)}
-                                className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#111111] hover:text-[#E0000B] transition-colors"
-                              >
-                                {category.title}
-                              </Link>
-                            </div>
-                            <div className="w-full h-px bg-gray-100 mb-3" />
-
-                            {/* Service Items */}
-                            <ul className="flex flex-col gap-1.5">
-                              {category.items.map((item) => (
-                                <li key={item.name}>
-                                  <Link
-                                    href={item.href}
-                                    onClick={() => setMegaOpen(false)}
-                                    className="group flex items-center gap-2 py-1 text-[13px] text-gray-600 hover:text-[#111111] transition-colors duration-200 font-medium"
-                                  >
-                                    <span>{item.name}</span>
-                                    <ArrowRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 text-[#E0000B]" />
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* ═══════════════════════════════════════════════════════════
-          MOBILE NAVIGATION OVERLAY
-         ═══════════════════════════════════════════════════════════ */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            animate={{ opacity: 1, backdropFilter: "blur(30px)" }}
-            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-[90] flex flex-col items-center justify-start pt-28 px-8 bg-[#111111]/98 text-white overflow-y-auto pb-16"
-          >
-            <nav className="flex flex-col items-center gap-6 w-full relative z-10 max-w-md">
-              {NAV_LINKS.map((link, i) => {
-                // Services with expandable sub-menu on mobile
-                if (link.hasMega) {
-                  return (
-                    <motion.div
-                      key={link.name}
-                      initial={{ opacity: 0, y: 25 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 15 }}
-                      transition={{ delay: i * 0.05, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                      className="w-full text-center"
-                    >
-                      <div className="flex items-center justify-center gap-2">
-                        <Link
-                          href="/services"
-                          onClick={() => setMobileMenuOpen(false)}
-                          className={cn(
-                            "text-3xl sm:text-4xl font-heading font-bold tracking-tight transition-all duration-300",
-                            pathname === link.href ? "text-[#E0000B]" : "text-gray-300 hover:text-white"
-                          )}
-                        >
-                          {link.name}
-                        </Link>
-                        <button
-                          onClick={() => setMobileServicesOpen((prev) => !prev)}
-                          className="p-1 cursor-pointer"
-                        >
-                          <ChevronDown
-                            className={cn(
-                              "w-6 h-6 transition-transform duration-300",
-                              mobileServicesOpen ? "rotate-180 text-[#E0000B]" : "text-gray-400"
-                            )}
-                          />
-                        </button>
-                      </div>
-
-                      {/* Mobile Services Expansion */}
-                      <AnimatePresence>
-                        {mobileServicesOpen && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                            className="overflow-hidden"
-                          >
-                            <div className="pt-6 pb-2 flex flex-col gap-5 text-left">
-                              {SERVICE_CATEGORIES.map((category) => {
-                                const IconComp = category.icon;
-                                return (
-                                  <div key={category.title}>
-                                    <div className="flex items-center gap-2 mb-2">
-                                      <IconComp className="w-3.5 h-3.5 text-[#E0000B]" strokeWidth={2.5} />
-                                      <Link
-                                        href={category.href}
-                                        onClick={() => {
-                                          setMobileMenuOpen(false);
-                                          setMobileServicesOpen(false);
-                                        }}
-                                        className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/70 hover:text-white"
-                                      >
-                                        {category.title}
-                                      </Link>
-                                    </div>
-                                    <div className="w-full h-px bg-white/10 mb-2" />
-                                    <ul className="flex flex-col gap-1 pl-5">
-                                      {category.items.map((item) => (
-                                        <li key={item.name}>
-                                          <Link
-                                            href={item.href}
-                                            onClick={() => {
-                                              setMobileMenuOpen(false);
-                                              setMobileServicesOpen(false);
-                                            }}
-                                            className="flex items-center gap-2 py-1 text-sm text-gray-400 hover:text-white transition-colors font-medium"
-                                          >
-                                            <ChevronRight className="w-3 h-3 text-[#E0000B]/60" />
-                                            {item.name}
-                                          </Link>
-                                        </li>
-                                      ))}
-                                    </ul>
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </motion.div>
-                  );
-                }
-
-                return (
-                  <motion.div
-                    key={link.name}
-                    initial={{ opacity: 0, y: 25 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 15 }}
-                    transition={{ delay: i * 0.05, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                    className="w-full text-center"
-                  >
-                    <Link
-                      href={link.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className={cn(
-                        "block text-3xl sm:text-4xl font-heading font-bold tracking-tight transition-all duration-300",
-                        pathname === link.href ? "text-[#E0000B]" : "text-gray-300 hover:text-white"
-                      )}
-                    >
-                      {link.name}
+            <button type="button" className="absolute right-5 top-6 rounded-full border border-white/20 p-2" aria-label="Close menu" onClick={() => setMobileOpen(false)}>
+              <X className="h-4 w-4" />
+            </button>
+            <nav className="mx-auto flex max-w-md flex-col gap-2">
+              <Link href="/" onClick={() => setMobileOpen(false)} className="py-3 font-heading text-3xl font-bold">
+                Home
+              </Link>
+              {[
+                { id: "services", label: "Services", href: "/services", items: SERVICES },
+                { id: "solutions", label: "Solutions", href: "/solutions", items: solutions.map((s) => ({ label: s.title, href: `/solutions/${s.slug}` })) },
+                { id: "work", label: "Our Work", href: "/work", items: WORK },
+                { id: "products", label: "Products", href: "/products", items: products.map((p) => ({ label: `${p.name} · Coming soon`, href: `/products/${p.slug}` })) },
+                { id: "company", label: "Company", href: "/about", items: COMPANY },
+                { id: "resources", label: "Resources", href: "/insights", items: RESOURCES },
+              ].map((group) => (
+                <div key={group.id} className="border-b border-white/10 py-2">
+                  <div className="flex items-center justify-between gap-3">
+                    <Link href={group.href} onClick={() => setMobileOpen(false)} className="py-2 font-heading text-3xl font-bold">
+                      {group.label}
                     </Link>
-                  </motion.div>
-                );
-              })}
-            </nav>
-
-            <motion.div
-              initial={{ opacity: 0, y: 25 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 15 }}
-              transition={{ delay: NAV_LINKS.length * 0.05 + 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-12"
-            >
+                    <button
+                      type="button"
+                      aria-expanded={mobileGroup === group.id}
+                      className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15"
+                      onClick={() => setMobileGroup((v) => (v === group.id ? null : group.id))}
+                    >
+                      <ChevronDown className={cn("h-5 w-5", mobileGroup === group.id && "rotate-180 text-[#E0000B]")} />
+                    </button>
+                  </div>
+                  {mobileGroup === group.id && (
+                    <ul className="mb-3 space-y-1 pl-1">
+                      {group.items.map((item) => (
+                        <li key={item.href}>
+                          <Link href={item.href} onClick={() => setMobileOpen(false)} className="block py-2.5 text-base text-white/70">
+                            {item.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
               <Link
                 href="/contact"
-                onClick={() => setMobileMenuOpen(false)}
-                className="h-12 px-10 flex items-center justify-center rounded-full text-white font-bold text-[11px] uppercase tracking-[0.2em] transition-transform active:scale-95 bg-[#E0000B] hover:bg-[#C00009] shadow-[0_10px_30px_rgba(224,0,11,0.4)]"
+                onClick={() => setMobileOpen(false)}
+                className="mt-6 inline-flex h-12 items-center justify-center rounded-full bg-[#E0000B] text-xs font-bold uppercase tracking-[0.2em]"
               >
-                Contact Us
+                Let&apos;s Talk
               </Link>
-            </motion.div>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>
     </>
+  );
+}
+
+function CompactMenu({ id, onNavigate }: { id: MenuId; onNavigate: () => void }) {
+  const intro = INTRO[id];
+  const links =
+    id === "services"
+      ? SERVICES
+      : id === "solutions"
+        ? solutions.map((item) => ({ label: item.title, href: `/solutions/${item.slug}`, hint: item.summary }))
+        : id === "work"
+          ? WORK
+          : id === "products"
+            ? products.map((item) => ({ label: item.name, href: `/products/${item.slug}`, hint: "Coming soon" }))
+            : id === "company"
+              ? COMPANY
+              : RESOURCES;
+
+  return (
+    <div className="grid grid-cols-12">
+      <div className="col-span-4 border-r border-black/6 bg-[#F8F8F6] p-5">
+        <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#E0000B]">{intro.label}</p>
+        <p className="mt-2 font-heading text-lg font-bold leading-snug">{intro.title}</p>
+        <p className="mt-2 text-[13px] leading-relaxed text-[#4B5563]">{intro.body}</p>
+        <Link href={intro.href} onClick={onNavigate} className="mt-4 inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-[0.16em] text-[#111111] hover:text-[#E0000B]">
+          {intro.cta} <ArrowRight className="h-3 w-3" />
+        </Link>
+      </div>
+      <ul className={cn("col-span-8 p-2", id === "solutions" || id === "services" ? "grid grid-cols-2" : "grid grid-cols-1")}>
+        {links.map((item) => (
+          <li key={item.href}>
+            <Link
+              href={item.href}
+              onClick={onNavigate}
+              className="group flex items-start gap-3 rounded-xl px-3 py-2.5 hover:bg-[#F8F8F6]"
+            >
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-black/15 group-hover:bg-[#E0000B]" />
+              <span>
+                <span className="block text-sm font-semibold text-[#111111] group-hover:text-[#E0000B]">{item.label}</span>
+                {"hint" in item && item.hint ? <span className="mt-0.5 line-clamp-1 block text-xs text-[#6B7280]">{item.hint}</span> : null}
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

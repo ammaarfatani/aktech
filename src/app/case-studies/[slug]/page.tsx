@@ -222,6 +222,9 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
               <p className="text-lg sm:text-xl leading-relaxed font-normal">
                 {project.caseStudy.result}
               </p>
+              <p className="mt-4 text-sm text-white/70">
+                No conversion, traffic or revenue figures are claimed unless they have been verified separately.
+              </p>
             </div>
           </div>
         </section>

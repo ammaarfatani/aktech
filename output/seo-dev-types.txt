@@ -1,0 +1,15 @@
+
+> aktech@0.1.0 dev
+> next dev --port 3012
+
+▲ Next.js 16.2.6 (Turbopack)
+- Local:         http://localhost:3012
+- Network:       http://192.168.1.105:3012
+- Environments: .env
+✓ Ready in 12.5s
+⚠ Slow filesystem detected. The benchmark took 291ms. If D:\aktech\.next/dev is a network drive, consider moving it to a local folder.
+See more: https://nextjs.org/docs/app/guides/local-development
+
+✓ Finished writing to filesystem cache in 60s
+✓ Finished filesystem cache database compaction in 58s
+✓ Finished filesystem cache database compaction in 51s

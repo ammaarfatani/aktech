@@ -51,15 +51,10 @@ export function AIAssistant() {
   const [showNewMessageIndicator, setShowNewMessageIndicator] = useState(false);
   const [isUserNearBottom, setIsUserNearBottom] = useState(true);
 
-  // Lead Capture State
-  const [leadName, setLeadName] = useState<string>("");
-  const [leadContact, setLeadContact] = useState<string>("");
-  const [leadService, setLeadService] = useState<string>("");
-  const [leadSubmitted, setLeadSubmitted] = useState<boolean>(false);
-
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const messageSeq = useRef(0);
 
   // Initialize session & welcome message
   useEffect(() => {
@@ -131,7 +126,7 @@ export function AIAssistant() {
     if (!query || isLoading) return;
 
     const userMsg: Message = {
-      id: `user-${Date.now()}`,
+      id: `user-${messageSeq.current++}`,
       sender: "user",
       text: query,
       timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
@@ -161,19 +156,48 @@ export function AIAssistant() {
       }
 
       const data = await response.json();
+      const fullText = data.reply || "I am AKTech AI Agent. How can I assist your business today?";
+      const messageId = `ai-${messageSeq.current++}`;
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: messageId,
+          sender: "ai",
+          text: "",
+          timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+        },
+      ]);
+      setIsLoading(false);
 
-      const aiMsg: Message = {
-        id: `ai-${Date.now()}`,
-        sender: "ai",
-        text: data.reply || "I am AKTech AI Agent. How can I assist your business today?",
-        timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-        smartLinks: data.smartLinks || [],
-        suggestedPrompts: data.suggestedPrompts || [],
-        projectHighlights: data.projectHighlights || [],
-        leadCapturePrompt: data.leadCapturePrompt || false
-      };
-
-      setMessages((prev) => [...prev, aiMsg]);
+      await new Promise<void>((resolve) => {
+        let index = 0;
+        const tick = () => {
+          index = Math.min(fullText.length, index + 5);
+          setMessages((prev) =>
+            prev.map((msg) => (msg.id === messageId ? { ...msg, text: fullText.slice(0, index) } : msg))
+          );
+          if (index < fullText.length) {
+            window.setTimeout(tick, 8);
+          } else {
+            setMessages((prev) =>
+              prev.map((msg) =>
+                msg.id === messageId
+                  ? {
+                      ...msg,
+                      text: fullText,
+                      smartLinks: data.smartLinks || [],
+                      suggestedPrompts: data.suggestedPrompts || [],
+                      projectHighlights: data.projectHighlights || [],
+                      leadCapturePrompt: data.leadCapturePrompt || false,
+                    }
+                  : msg
+              )
+            );
+            resolve();
+          }
+        };
+        tick();
+      });
     } catch (err) {
       console.error("AI Assistant error:", err);
       setMessages((prev) => [
@@ -209,22 +233,6 @@ export function AIAssistant() {
     setShowNewMessageIndicator(false);
   };
 
-  const handleLeadSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!leadName || !leadContact) return;
-
-    setLeadSubmitted(true);
-    setMessages((prev) => [
-      ...prev,
-      {
-        id: `lead-ack-${Date.now()}`,
-        sender: "ai",
-        text: `Thank you, **${leadName}**! We have received your inquiry for **${leadService || "Digital Services"}**. An AKTech engineer will reach out to you via **${leadContact}** shortly.`,
-        timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-        smartLinks: [{ title: "Explore Services →", url: "/services" }, { title: "View Projects →", url: "/portfolio" }]
-      }
-    ]);
-  };
 
   /**
    * Render clean, human-friendly formatted text.
@@ -310,7 +318,7 @@ export function AIAssistant() {
           1. AKTECH BRAND LAUNCHER BUTTON
              Positioned at bottom-24 right-6 — ABOVE WhatsApp (bottom-6 right-6)
          ═════════════════════════════════════════════════════════════ */}
-      <div className="fixed bottom-24 right-6 z-[10001]">
+      <div className="fixed bottom-6 right-4 sm:right-6 z-[10001]">
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
           whileHover={{ scale: 1.04 }}
@@ -366,7 +374,7 @@ export function AIAssistant() {
                   </h3>
                   <div className="flex items-center gap-2 text-[11px] text-gray-500 font-medium">
                     <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                    <span>Online • Ready to help</span>
+                    <span>Guided answers from AKTECH site content</span>
                   </div>
                 </div>
               </div>
@@ -475,38 +483,14 @@ export function AIAssistant() {
                       )}
 
                       {/* INLINE LEAD CAPTURE FORM */}
-                      {!isUser && msg.leadCapturePrompt && !leadSubmitted && (
-                        <form onSubmit={handleLeadSubmit} className="mt-3.5 pt-3 border-t border-gray-100 space-y-2.5">
-                          <input
-                            type="text"
-                            placeholder="Your Name"
-                            value={leadName}
-                            onChange={(e) => setLeadName(e.target.value)}
-                            required
-                            className="w-full px-3 py-2 rounded-xl bg-[#F8FAFC] border border-gray-200 text-xs text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#E0000B] transition-colors"
-                          />
-                          <input
-                            type="text"
-                            placeholder="Email or WhatsApp Number"
-                            value={leadContact}
-                            onChange={(e) => setLeadContact(e.target.value)}
-                            required
-                            className="w-full px-3 py-2 rounded-xl bg-[#F8FAFC] border border-gray-200 text-xs text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#E0000B] transition-colors"
-                          />
-                          <input
-                            type="text"
-                            placeholder="Service Required (e.g. Web Dev, CRM, AI)"
-                            value={leadService}
-                            onChange={(e) => setLeadService(e.target.value)}
-                            className="w-full px-3 py-2 rounded-xl bg-[#F8FAFC] border border-gray-200 text-xs text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#E0000B] transition-colors"
-                          />
-                          <button
-                            type="submit"
-                            className="w-full py-2.5 rounded-xl bg-[#E0000B] text-white font-heading font-bold text-xs uppercase tracking-wider hover:bg-[#C00009] transition-colors"
-                          >
-                            Submit Inquiry
-                          </button>
-                        </form>
+                      {!isUser && msg.leadCapturePrompt && (
+                        <Link
+                          href="/contact"
+                          onClick={() => setIsOpen(false)}
+                          className="mt-3 inline-flex w-full items-center justify-center rounded-xl bg-[#E0000B] px-3 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#C00009]"
+                        >
+                          Open the contact form
+                        </Link>
                       )}
                     </div>
 
@@ -535,7 +519,7 @@ export function AIAssistant() {
                     <Image src="/logo.png" alt="AKTech" fill className="object-contain" />
                   </div>
                   <div className="flex items-center gap-2.5 p-3 rounded-2xl bg-white border border-gray-200 shadow-xs">
-                    <span className="text-[11px] font-semibold text-gray-500">Thinking</span>
+                    <span className="text-[11px] font-semibold text-gray-500">Composing</span>
                     <div className="flex gap-1">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#E0000B] animate-bounce" style={{ animationDelay: "0ms" }} />
                       <span className="w-1.5 h-1.5 rounded-full bg-[#E0000B] animate-bounce" style={{ animationDelay: "150ms" }} />
