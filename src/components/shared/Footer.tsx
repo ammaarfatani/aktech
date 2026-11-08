@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ArrowUpRight, Mail } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { footerColumns } from "@/data/navigation";
+import { openConsentPreferences } from "@/lib/analytics";
 
 function FacebookIcon({ className }: { className?: string }) {
   return (
@@ -133,6 +134,14 @@ export function Footer() {
               <Link href="/privacy" className="hover:text-[#E0000B]">Privacy</Link>
               {" · "}
               <Link href="/terms" className="hover:text-[#E0000B]">Terms</Link>
+              {" · "}
+              <button
+                type="button"
+                onClick={openConsentPreferences}
+                className="cursor-pointer hover:text-[#E0000B] transition-colors"
+              >
+                Cookie Preferences
+              </button>
             </p>
             <p className="font-heading text-[11px] font-bold uppercase tracking-[0.2em] text-black/25">Worldwide digital solutions</p>
           </div>

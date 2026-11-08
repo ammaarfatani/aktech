@@ -37,20 +37,50 @@ test("contact endpoint validates, confirms delivery and does not retry",async()=
 });
 test("all existing service routes have specific metadata",()=>{for(const page of services){const source=fs.readFileSync(`src/app${page.path}/layout.tsx`,"utf8");assert.ok(source.includes(page.path));assert.ok(source.includes("seoMetadata"));}});
 test("analytics respects consent and sends no query or form values",()=>{
- const previousWindow=global.window,previousStorage=global.localStorage; const events=[];
+ const previousWindow=global.window,previousStorage=global.localStorage; const events=[]; const dispatched=[];
  try {
-  global.window={location:{origin:"https://aktech.tech",pathname:"/contact",search:"?email=private@example.com"},gtag:(...args)=>events.push(args)};
-  global.localStorage={getItem:()=>"denied"};
-  const analytics=load("src/lib/analytics.ts");analytics.trackConversion("generate_lead","Web Development");assert.equal(events.length,0);
-  global.localStorage={getItem:()=>"granted"};analytics.trackConversion("generate_lead","Web Development");assert.equal(events.length,1);
+  const storageMap=new Map();
+  global.localStorage={
+    getItem:(k)=>storageMap.get(k)??null,
+    setItem:(k,v)=>storageMap.set(k,v)
+  };
+  global.window={
+    location:{origin:"https://aktech.tech",pathname:"/contact",search:"?email=private@example.com"},
+    gtag:(...args)=>events.push(args),
+    dispatchEvent:(ev)=>dispatched.push(ev)
+  };
+  global.CustomEvent=class CustomEvent { constructor(type,init){this.type=type;this.detail=init?.detail;} };
+
+  const analytics=load("src/lib/analytics.ts");
+  assert.equal(analytics.getConsentStatus(),"undecided");
+  assert.equal(analytics.analyticsAllowed(),false);
+
+  analytics.setConsentStatus("denied");
+  assert.equal(analytics.getConsentStatus(),"denied");
+  assert.equal(analytics.analyticsAllowed(),false);
+  analytics.trackConversion("generate_lead","Web Development");
+  assert.equal(events.length,0);
+
+  analytics.setConsentStatus("granted");
+  assert.equal(analytics.getConsentStatus(),"granted");
+  assert.equal(analytics.analyticsAllowed(),true);
+  analytics.trackConversion("generate_lead","Web Development");
+  assert.equal(events.length,1);
   assert.deepEqual(events[0],["event","generate_lead",{page_location:"https://aktech.tech/contact",page_referrer:"",landing_path:"/contact",service:"Web Development"}]);
+
   analytics.trackConversion("contact_form_submission","Web Development");assert.equal(events.length,2);
   analytics.trackConversion("consultation_booking_submission","AI Agents");assert.equal(events.length,3);
   analytics.trackConversion("project_estimator_submission","Mobile Apps");assert.equal(events.length,4);
   global.window.location.search="?debug_ga=true";analytics.trackConversion("whatsapp_click");assert.equal(events.length,5);
   assert.equal(events[4][2].debug_mode,true);
-  global.localStorage={getItem:()=>{throw new Error("blocked");}};analytics.trackConversion("whatsapp_click");assert.equal(events.length,5);
- } finally {global.window=previousWindow;global.localStorage=previousStorage;}
+
+  analytics.openConsentPreferences();
+  assert.ok(dispatched.some(e=>e.type==="aktech_open_consent"));
+
+  global.localStorage.getItem=()=>{throw new Error("blocked");};
+  assert.equal(analytics.getConsentStatus(),"denied");
+  assert.equal(analytics.analyticsAllowed(),false);
+ } finally {global.window=previousWindow;global.localStorage=previousStorage;delete global.CustomEvent;}
 });
 test("preview indexing protection never applies to production",async()=>{
  const before=process.env.VERCEL_ENV;

@@ -7,13 +7,37 @@ export type ConversionEvent =
   | "consultation_booking_submission"
   | "project_estimator_submission";
 
+export type ConsentStatus = "granted" | "denied" | "undecided";
+
 type AnalyticsWindow = Window & { gtag?: (...args: unknown[]) => void };
 
-export function analyticsAllowed(): boolean {
+export function getConsentStatus(): ConsentStatus {
   try {
-    return localStorage.getItem("aktech_analytics_consent") === "granted";
+    const val = localStorage.getItem("aktech_analytics_consent");
+    if (val === "granted") return "granted";
+    if (val === "denied") return "denied";
+    return "undecided";
   } catch {
-    return false;
+    return "denied";
+  }
+}
+
+export function analyticsAllowed(): boolean {
+  return getConsentStatus() === "granted";
+}
+
+export function setConsentStatus(status: "granted" | "denied"): void {
+  try {
+    localStorage.setItem("aktech_analytics_consent", status);
+  } catch {}
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new CustomEvent("aktech_consent_change", { detail: status }));
+  }
+}
+
+export function openConsentPreferences(): void {
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new CustomEvent("aktech_open_consent"));
   }
 }
 
