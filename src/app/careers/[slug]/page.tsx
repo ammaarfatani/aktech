@@ -57,7 +57,8 @@ export default async function JobPage({ params }: Props) {
 
           {job.status !== "open" && (
             <p className="mb-10 rounded-2xl border border-black/10 bg-[#F8F8F6] px-5 py-4 text-sm text-[#4B5563]">
-              This listing is not open for applications.
+              <span className="mr-3 inline-block rounded-full bg-gray-100 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-gray-600">Expired</span>
+              Applications closed.
             </p>
           )}
 
@@ -104,6 +105,10 @@ export default async function JobPage({ params }: Props) {
                 ))}
               </ul>
             </section>
+          )}
+
+          {job.status === "closed" && (
+            <button type="button" disabled className="mt-12 rounded-full border border-black/10 bg-gray-100 px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.16em] text-gray-500 cursor-not-allowed">Apply now</button>
           )}
 
           {job.status === "open" && (

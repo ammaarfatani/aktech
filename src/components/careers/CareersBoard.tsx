@@ -12,7 +12,7 @@ export function CareersBoard() {
 
   const visible = useMemo(() => {
     return jobs.filter((job) => {
-      if (job.status !== "open") return false;
+      if (job.status === "draft") return false;
       const departmentMatch = department === "All" || job.department === department;
       const haystack = `${job.title} ${job.department} ${job.summary} ${job.skills.join(" ")}`.toLowerCase();
       return departmentMatch && haystack.includes(query.trim().toLowerCase());
@@ -53,8 +53,8 @@ function JobRow({ job }: { job: JobListing }) {
     <li className="flex flex-col justify-between rounded-[1.5rem] border border-black/8 bg-white p-6 transition-colors hover:border-[#E0000B]/30">
       <div>
         <div className="flex flex-wrap gap-2">
-          <span className="rounded-full bg-[#E0000B]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[#E0000B]">
-            Actively hiring
+          <span className={`rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] ${job.status === "closed" ? "bg-gray-100 text-gray-600" : "bg-[#E0000B]/10 text-[#E0000B]"}`}>
+            {job.status === "closed" ? "Expired" : "Actively hiring"}
           </span>
           <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#6B7280]">{job.department}</span>
         </div>
@@ -68,9 +68,11 @@ function JobRow({ job }: { job: JobListing }) {
         <Link href={`/careers/${job.slug}`} className="rounded-full bg-[#111111] px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.16em] text-white hover:bg-[#E0000B]">
           View details
         </Link>
-        <a href={mailto} className="rounded-full border border-black/10 px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.16em] hover:border-[#E0000B] hover:text-[#E0000B]">
+        {job.status === "closed" ? (
+          <button type="button" disabled className="rounded-full border border-black/10 bg-gray-100 px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.16em] text-gray-500 cursor-not-allowed">Apply now</button>
+        ) : (<a href={mailto} className="rounded-full border border-black/10 px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.16em] hover:border-[#E0000B] hover:text-[#E0000B]">
           Apply now
-        </a>
+        </a>)}
       </div>
     </li>
   );
